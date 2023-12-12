@@ -18,15 +18,11 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-
-
 public class Base {
 
 	static Properties props;
 	protected static WebDriver driver;
-	
-	
-	
+
 	public static void Initialize(String browser) throws IOException
 	{
 		
@@ -127,5 +123,4 @@ public class Base {
     	wait.until(ExpectedConditions.invisibilityOfElementLocated(element));
         }
   
-    
 }
