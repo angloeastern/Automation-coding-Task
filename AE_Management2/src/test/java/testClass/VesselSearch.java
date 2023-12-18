@@ -6,6 +6,7 @@ import java.util.stream.IntStream;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
@@ -56,7 +57,7 @@ public class VesselSearch extends Base {
 			System.out.println(vessel + "******************");
 			// Vessel Selection
 			iWait();
-
+			Thread.sleep(700);
 			eWait(selection.vesseldropdown);
 			selection.vesseldropdown.click();
 			eWait(selection.Vesselclear);
@@ -107,22 +108,22 @@ public class VesselSearch extends Base {
 		eWait(selection.FinancialMonth);
 		String myAEmonth = getPageText(selection.FinancialMonth);
 		System.out.println("Financial Month: " + getPageText(selection.FinancialMonth));
-		ReadExcelFile.setData(0, row, 4, myAEmonth);
+		ReadExcelFile.setData(0, row, 4, myAEmonth,IndexedColors.BLACK.getIndex());
 		if (month.equalsIgnoreCase(myAEmonth)) {
-			ReadExcelFile.setData(0, row, 5, "Yes");
+			ReadExcelFile.setData(0, row, 5,"Yes",IndexedColors.GREEN.getIndex());
 			log.info("Financial Month Matched");
 		} else {
-			ReadExcelFile.setData(0, row, 5, "No");
+			ReadExcelFile.setData(0, row, 5, "No",IndexedColors.RED.getIndex());
 			log.info("Financial Month Not Matched");
 		}
 		softAssert.assertEquals(getPageText(selection.FinancialMonth), month, vessel + " Financial Month Not Matched");
 		if (getPageText(selection.TotalBudget).equals("-")) {
 			softAssert.assertTrue(false, vasselCode + " " + vessel + " Financial Header Not Load");
-			ReadExcelFile.setData(0, row, 6, "Not Loading");
+			ReadExcelFile.setData(0, row, 6, "Not Loading",IndexedColors.RED.getIndex());
 			log.info("Financial Header Not Loading");
 		} else {
 			softAssert.assertTrue(true, vasselCode + " " + vessel + "Financial Load");
-			ReadExcelFile.setData(0, row, 6, "Loading");
+			ReadExcelFile.setData(0, row, 6, "Loading",IndexedColors.GREEN.getIndex());
 			log.info("Financial Header Loading");
 		}
 		System.out.println("Total Budget: " + getPageText(selection.TotalBudget));
@@ -148,11 +149,11 @@ public class VesselSearch extends Base {
 		System.out.println("Operating Expenses Budget: " + getPageText(selection.OperatingExpenses));
 		if (getPageText(selection.OperatingExpenses).contains("is not yet published")) {
 			softAssert.assertTrue(false, vasselCode + " " + vessel + " Opex Report is not yet published");
-			ReadExcelFile.setData(0, row, 8, "Not published");
+			ReadExcelFile.setData(0, row, 8, "Not published",IndexedColors.RED.getIndex());
 			log.info("Opex Report is not yet published");
 		} else {
 			softAssert.assertTrue(true, vasselCode + " " + vessel + " Opex Report published");
-			ReadExcelFile.setData(0, row, 8, "Published");
+			ReadExcelFile.setData(0, row, 8, "Published",IndexedColors.GREEN.getIndex());
 			log.info("Opex Report published");
 		}
 		eWait(selection.inculdecheckbox);
@@ -161,11 +162,11 @@ public class VesselSearch extends Base {
 
 		if (getPageText(selection.TotalBudget).equals("-") && getPageText(selection.Actual).equals("-")) {
 			softAssert.assertTrue(false, vasselCode + " " + vessel + " Financial Header Not Load");
-			ReadExcelFile.setData(0, row, 7, "Not Loading");
+			ReadExcelFile.setData(0, row, 7, "Not Loading",IndexedColors.RED.getIndex());
 			log.info("Financial Header Not Loading");
 		} else {
 			softAssert.assertTrue(true, vasselCode + " " + vessel + "Financial Load");
-			ReadExcelFile.setData(0, row, 7, "Loading");
+			ReadExcelFile.setData(0, row, 7, "Loading",IndexedColors.GREEN.getIndex());
 			log.info("Financial Header Loading");
 		}
 		System.out.println("Total Budget: " + getPageText(selection.TotalBudget));
@@ -199,11 +200,11 @@ public class VesselSearch extends Base {
 		System.out.println("Operating Expenses Budget: " + getPageText(selection.OperatingExpenses));
 		if (getPageText(selection.OperatingExpenses).contains("is not yet published")) {
 			softAssert.assertTrue(false, vasselCode + " " + vessel + " Opex Report is not yet published");
-			ReadExcelFile.setData(0, row, 9, "Not published");
+			ReadExcelFile.setData(0, row, 9, "Not published",IndexedColors.RED.getIndex());
 			log.info("Opex Report is not yet published");
 		} else {
 			softAssert.assertTrue(true, vasselCode + " " + vessel + " Opex Report published");
-			ReadExcelFile.setData(0, row, 9, "Published");
+			ReadExcelFile.setData(0, row, 9, "Published",IndexedColors.GREEN.getIndex());
 			log.info("Opex Report published");
 		}
 	}

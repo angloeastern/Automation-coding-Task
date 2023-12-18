@@ -24,7 +24,7 @@ public class VoyageData extends Base {
 	public static final String ANSI_G = "\u001B[32m";
 	static String ownerName;
 	static int row=1;
-	
+
 	public static SoftAssert softAssert = new SoftAssert();
 	static NavigationPage selection;
 
@@ -53,14 +53,14 @@ public class VoyageData extends Base {
 			eWait(vessels);
 			vessels.click();
 			System.out.println(ANSI_G + "Vessel Selection successful" + ANSI_RESET);
-		//log.info("Vessel Selection successfully");
+			//log.info("Vessel Selection successfully");
 		} catch (NoSuchElementException n) {
 			// TODO: handle exception
 			softAssert.assertTrue(false, "Error in vessel Search" +  n.getMessage());
 			n.printStackTrace();
 			System.out.println("Error in vessel Search" +  n.getMessage());
 			//log.error("Error in vessel Search" + n.getMessage());
-			
+
 		}
 		selection = new NavigationPage(driver);
 		eWait(selection.VoyageSnapshot);
@@ -69,13 +69,13 @@ public class VoyageData extends Base {
 		System.out.println(ANSI_Y_BACKGROUND + VoyageSnapshot + ANSI_RESET);
 
 		//String VoyageSnapshot1 = getPageText(selection.VoyageSnapshot1);
-		
-	    eWait(selection.VoyageSnapshot1);
-	    System.out.println(ANSI_G + "Voyage Snapshot Load Successfully" + ANSI_RESET);
-	    ReadExcel.setData(0, row,2, "Voyage Snapshot Load Successfully");
+
+		eWait(selection.VoyageSnapshot1);
+		System.out.println(ANSI_G + "Voyage Snapshot Load Successfully" + ANSI_RESET);
+		ReadExcel.setData(0, row,2, "Voyage Snapshot Load Successfully");
 		String port = selection.port.getAttribute("title");
 		System.out.println(port);
-		
+
 		if (port.equalsIgnoreCase("In Port")) {
 			eWait(selection.portName);
 			String portName = getPageText(selection.portName);
@@ -98,15 +98,15 @@ public class VoyageData extends Base {
 			System.out.println("Voyage Snapshot not Loading");
 			ReadExcel.setData(0, row,2, "Voyage Snapshot Not Loading");
 		}
-	
+
 	}
-		
-		@AfterMethod
-		public void AfterMethod() throws IOException, InterruptedException {
-			row++;
-			softAssert.assertTrue(true);
-		}
-	
+
+	@AfterMethod
+	public void AfterMethod() throws IOException, InterruptedException {
+		row++;
+		softAssert.assertTrue(true);
+	}
+
 	// DataProvider
 
 	@DataProvider(name = "VoyageInfo")

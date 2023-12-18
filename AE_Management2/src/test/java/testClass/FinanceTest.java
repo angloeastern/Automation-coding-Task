@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -19,7 +20,9 @@ public class FinanceTest extends VesselSearch {
 	public static final String ANSI_G = "\u001B[32m";
 	public static SoftAssert softAssert = new SoftAssert();
 	static int row = 1;
-
+	static final short red= IndexedColors.RED.getIndex();
+	static final short black= IndexedColors.BLACK.getIndex();
+	static final short green= IndexedColors.GREEN.getIndex();
 	@Test
 	public static void FinanceRecords(String month, String vasselCode, String ownerName, String vessel)
 			throws InterruptedException, ParseException, IOException {
@@ -40,22 +43,22 @@ public class FinanceTest extends VesselSearch {
 
 		String myAEmonth = getPageText(selection.FinancialMonth);
 		System.out.println("Financial Month: " + getPageText(selection.FinancialMonth));
-		ReadExcelFile.setData(0, row, 3, myAEmonth);
+		ReadExcelFile.setData(0, row, 3, myAEmonth,black);
 
 		if (month.equalsIgnoreCase(myAEmonth)) {
-			ReadExcelFile.setData(0, row, 4, "Matched");
+			ReadExcelFile.setData(0, row, 4, "Matched",red);
 		} else {
-			ReadExcelFile.setData(0, row, 4, "Period Not Matched");
+			ReadExcelFile.setData(0, row, 4, "Period Not Matched",red);
 		}
 
 		softAssert.assertEquals(getPageText(selection.FinancialMonth), month, vessel + " Financial Month Not Matched");
 
 		if (getPageText(selection.TotalBudget).equals("-")) {
 			softAssert.assertTrue(false, vasselCode + " " + vessel + " Financial Header Not Load");
-			ReadExcelFile.setData(0, row, 5, "Financial Header Not Loading");
+			ReadExcelFile.setData(0, row, 5, "Financial Header Not Loading",red);
 		} else {
 			softAssert.assertTrue(true, vasselCode + " " + vessel + "Financial Load");
-			ReadExcelFile.setData(0, row, 5, "Financial Header Load");
+			ReadExcelFile.setData(0, row, 5, "Financial Header Load",red);
 		}
 		System.out.println("Total Budget: " + getPageText(selection.TotalBudget));
 		// System.out.println("Actual: "+ getPageText(selection.Actual));
@@ -91,10 +94,10 @@ public class FinanceTest extends VesselSearch {
 
 		if (getPageText(selection.OperatingExpenses).contains("is not yet published")) {
 			softAssert.assertTrue(false, vasselCode + " " + vessel + " Opex Report is not yet published");
-			ReadExcelFile.setData(0, row, 6, "Opex Report is not yet published");
+			ReadExcelFile.setData(0, row, 6, "Opex Report is not yet published",red);
 		} else {
 			softAssert.assertTrue(true, vasselCode + " " + vessel + " Opex Report published");
-			ReadExcelFile.setData(0, row, 6, "Opex Report published");
+			ReadExcelFile.setData(0, row, 6, "Opex Report published",red);
 		}
 
 		Thread.sleep(2000);
@@ -103,10 +106,10 @@ public class FinanceTest extends VesselSearch {
 
 		if (getPageText(selection.TotalBudget).equals("-")) {
 			softAssert.assertTrue(false, vasselCode + " " + vessel + " Financial Header Not Load");
-			ReadExcelFile.setData(0, row, 7, "Financial Header Not Loading");
+			ReadExcelFile.setData(0, row, 7, "Financial Header Not Loading",red);
 		} else {
 			softAssert.assertTrue(true, vasselCode + " " + vessel + "Financial Load");
-			ReadExcelFile.setData(0, row, 7, "Financial Header Load");
+			ReadExcelFile.setData(0, row, 7, "Financial Header Load",red);
 		}
 		System.out.println("Total Budget: " + getPageText(selection.TotalBudget));
 		// System.out.println("Actual: "+ getPageText(selection.Actual));
@@ -142,10 +145,10 @@ public class FinanceTest extends VesselSearch {
 
 		if (getPageText(selection.OperatingExpenses).contains("is not yet published")) {
 			softAssert.assertTrue(false, vasselCode + " " + vessel + " Opex Report is not yet published");
-			ReadExcelFile.setData(0, row, 8, "Opex Report is not yet published");
+			ReadExcelFile.setData(0, row, 8, "Opex Report is not yet published",red);
 		} else {
 			softAssert.assertTrue(true, vasselCode + " " + vessel + " Opex Report published");
-			ReadExcelFile.setData(0, row, 8, "Opex Report published");
+			ReadExcelFile.setData(0, row, 8, "Opex Report published",red);
 		}
 
 		Thread.sleep(2000);
