@@ -1,13 +1,15 @@
 package testClass;
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
-import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.Color;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
@@ -25,10 +27,12 @@ public class VesselSearch extends Base {
 	public static final String ANSI_Y_BACKGROUND = "\u001B[43m";
 	public static final String ANSI_G_BACKGROUND = "\u001B[42m";
 	public static final String ANSI_G = "\u001B[32m";
-
-	
+	static String ownerName;
+	static int row = 1;
+	static Logger log = LogManager.getLogger(VesselSearch.class.getName());
 	public static SoftAssert softAssert = new SoftAssert();
 	static NavigationPage selection ;
+	
 	@BeforeClass
 	public void ProgramStart() throws InterruptedException, IOException {
 		AELogin.Login();
@@ -38,29 +42,40 @@ public class VesselSearch extends Base {
 	public static void vesselSearch(String vessel, String test, String test1) throws InterruptedException {
 try {
 		// Vessel Selection
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-
-		selection = new NavigationPage(driver);
-		Thread.sleep(2000);
-		selection.SelectVessel.click();
-		selection.VesselSelect.click();
-		Thread.sleep(2000);
-		selection.VesselSelect.sendKeys(vessel);
-		Thread.sleep(2000);
-		driver.findElement(By.xpath("//div[text()='" + vessel + "']")).click();
-		Thread.sleep(2000);
-		// System.out.println(getPageText(By.xpath("//div[@data-testid='map-sidebox']/div/div/h4")));
-		System.out.println("OwnerName: " + getPageText(selection.OwnerName));
-		String vesselName = getPageText(selection.vesselName);
-		Thread.sleep(2000);
-		System.out.println("vesselName: " + vesselName);
-		softAssert.assertEquals(vessel, vesselName);
-		System.out.println(ANSI_G_BACKGROUND + "Vessel Selection successful" + ANSI_RESET);
-}
-catch (Exception e) {
+	selection = new NavigationPage(driver);
+	iWait();
+	Thread.sleep(700);
+	eWait(selection.vesseldropdown);
+	selection.vesseldropdown.click();
+	eWait(selection.Vesselclear);
+	selection.Vesselclear.clear();
+	eWait(selection.Vesselclear);
+	selection.Vesselclear.click();
+	eWait(selection.Vesselclear);
+	selection.Vesselclear.sendKeys(vessel);
+	boolean exists = driver.findElements(By.xpath("//div[text()='" + vessel + "']")).size() != 0;
+	if (exists) {
+		WebElement vessels = driver.findElement(By.xpath("//div[text()='" + vessel + "']"));
+		eWait(vessels);
+		vessels.click();
+	} else {
+		System.out.println("Error in vessel Search");
+		log.error("Error in vessel Search");
+		eWait(selection.Vesselclear);
+		selection.Vesselclear.clear();
+		Thread.sleep(1000);
+		eWait(selection.vesseldropdown);
+		selection.vesseldropdown.click();
+		Assert.assertTrue(false, "vessel not founded in list");
+	}
+	System.out.println(ANSI_G + "Vessel Selection successful" + ANSI_RESET);
+	log.info("Vessel Selection successfully");
+} catch (NoSuchElementException n) {
 	// TODO: handle exception
-	e.printStackTrace();
-	System.out.println("Error in vessel Search"+e);
+	softAssert.assertTrue(false, "Error in vessel Search" + n.getMessage());
+	n.printStackTrace();
+	System.out.println("Error in vessel Search" + n.getMessage());
+	log.error("Error in vessel Search" + n.getMessage());
 }
 	}
 
@@ -69,38 +84,40 @@ catch (Exception e) {
 		// Voyage Snapshot
 
 		selection = new NavigationPage(driver);
-		Thread.sleep(2000);
+		eWait(selection.VoyageSnapshot);
 		String VoyageSnapshot = getPageText(selection.VoyageSnapshot);
-		Thread.sleep(2000);
+
 		System.out.println(ANSI_Y_BACKGROUND + VoyageSnapshot + ANSI_RESET);
-		Thread.sleep(2000);
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		String VoyageSnapshot1 = getPageText(selection.VoyageSnapshot1);
-		if (VoyageSnapshot1.isBlank()) {
-			System.out.println(ANSI_RED_BACKGROUND + "Voyage Snapshot Not Loading" + ANSI_RESET);
-		} else {
-			System.out.println(ANSI_G + "Voyage Snapshot Load Successfully" + ANSI_RESET);
-		}
-		softAssert.assertNotNull(VoyageSnapshot1);
-		Thread.sleep(2000);
-		System.out.println("Voyage Snapshot: " + VoyageSnapshot1);
+
+		//String VoyageSnapshot1 = getPageText(selection.VoyageSnapshot1);
+
+		eWait(selection.VoyageSnapshot1);
+		System.out.println(ANSI_G + "Voyage Snapshot Load Successfully" + ANSI_RESET);
+		//ReadExcel.setData(0, row,2, "Voyage Snapshot Load Successfully");
 		String port = selection.port.getAttribute("title");
 		System.out.println(port);
+
 		if (port.equalsIgnoreCase("In Port")) {
-			Thread.sleep(2000);
+			eWait(selection.portName);
 			String portName = getPageText(selection.portName);
 			String portOn = getPageText(selection.portOn);
 			System.out.println("Vessel In Port: " + portName);
+			//ReadExcel.setData(0, row,4, portName);
 			System.out.println("Vessel port on: " + portOn);
+			//ReadExcel.setData(0, row,6, portOn);
 		} else if (port.equalsIgnoreCase("Last Port")) {
-			Thread.sleep(2000);
+			eWait(selection.LastPort);
 			System.out.println("Last Port: " + getPageText(selection.LastPort));
+			//ReadExcel.setData(0, row,3, getPageText(selection.LastPort));
 			String portOn = getPageText(selection.LastPorton);
 			System.out.println("Vessel port on: " + portOn);
-			Thread.sleep(2000);
+			//ReadExcel.setData(0, row,6, portOn);
+			eWait(selection.NextPort);
 			System.out.println("Next Port: " + getPageText(selection.NextPort));
+			//ReadExcel.setData(0, row,5, getPageText(selection.NextPort));
 		} else {
 			System.out.println("Voyage Snapshot not Loading");
+			//ReadExcel.setData(0, row,2, "Voyage Snapshot Not Loading");
 		}
 		softAssert.assertTrue(true);
 
@@ -179,7 +196,7 @@ catch (Exception e) {
 		Thread.sleep(2000);
 		selection.dollarsign.click();
 		Thread.sleep(2000);
-		FinanceTest.FinanceRecords();
+		FinanceTest1.FinanceRecords();
 		softAssert.assertTrue(true);
 
 	}
@@ -230,6 +247,6 @@ catch (Exception e) {
 	@AfterClass
 	public void endTest() {
 		softAssert.assertAll();
-		// driver.close();
+		 driver.close();
 	}
 }

@@ -7,7 +7,7 @@ import org.testng.annotations.Test;
 import ActionClass.VesselAction;
 import pages.FinancePage;
 
-public class FinanceTest extends VesselAction{
+public class FinanceTest1 extends VesselAction{
 
 	@Test
 	public static void FinanceRecords() throws InterruptedException

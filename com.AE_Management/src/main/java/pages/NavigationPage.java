@@ -7,23 +7,25 @@ import org.openqa.selenium.support.PageFactory;
 
 public class NavigationPage {
 
-    //Vessel Selection
-	WebDriver driver;
-	@FindBy(xpath = "//div[text()='Select Vessel']")
-	public
-	WebElement SelectVessel;
+	// Vessel Selection
+		WebDriver driver;
+		@FindBy(xpath = "//*[@data-testid='vessel-dropdown']")
+		public WebElement vesseldropdown;
 
-	@FindBy(xpath = "//input[@placeholder='Select Vessel']")
-	public
-	WebElement VesselSelect;
+		@FindBy(xpath = "//div[text()='Select Vessel']")
+		public WebElement SelectVessel;
 
-	@FindBy(xpath = "//div[@data-testid='map-sidebox']/div/div/h4")
-	public
-	WebElement OwnerName;
+		@FindBy(xpath = "//input[@placeholder='Select Vessel']")
+		public WebElement VesselSelect;
 
-	@FindBy(xpath = "//div[@data-testid='map-sidebox']/div/div/h3")
-	public
-	WebElement vesselName;
+		@FindBy(xpath = "//*[@id='root']/div/div/div[3]/nav/div[2]/div/div[1]/div/div[2]/div/div/input")
+		public WebElement Vesselclear;// *[@id="root"]/div/div/div[3]/nav/div[2]/div/div[1]/div/div[2]/div/div/input
+
+		@FindBy(xpath = "//div[@data-testid='map-sidebox']/div/div/h4")
+		public WebElement OwnerName;
+
+		@FindBy(xpath = "//div[@data-testid='map-sidebox']/div/div/h3")
+		public WebElement vesselName;
 	
 	
 	// Voyage Snapshot

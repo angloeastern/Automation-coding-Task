@@ -26,7 +26,7 @@
       <span class="top-banner-title-font">Test results</span>
       <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
       <br/>
-      <span class="top-banner-font-1">1 suite, 3 failed tests</span>
+      <span class="top-banner-font-1">1 suite</span>
     </div> <!-- top-banner-root -->
     <div class="navigator-root">
       <div class="navigator-suite-header">
@@ -40,7 +40,7 @@
         <div class="rounded-window">
           <div class="suite-header light-rounded-window-top">
             <a href="#" panel-name="suite-Test" class="navigator-link">
-              <span class="suite-name border-failed">Test</span>
+              <span class="suite-name border-passed">Test</span>
             </a> <!-- navigator-link -->
           </div> <!-- suite-header light-rounded-window-top -->
           <div class="navigator-suite-content">
@@ -51,7 +51,7 @@
               <ul>
                 <li>
                   <a href="#" panel-name="test-xml-Test" class="navigator-link ">
-                    <span>D:\WorkInno\Poonam\Tasks\AE Automation\AE_Management\AETest.xml</span>
+                    <span>D:\WorkInno\Poonam\TestingCodeRepositry\Automation-coding-Task\com.AE_Management\AETest.xml</span>
                   </a> <!-- navigator-link  -->
                 </li>
                 <li>
@@ -93,31 +93,7 @@
               <div class="suite-section-content">
                 <ul>
                   <li>
-                    <span class="method-stats">5 methods, 3 failed,   2 passed</span>
-                  </li>
-                  <li>
-                    <span class="method-list-title failed">Failed methods</span>
-                    <span class="show-or-hide-methods failed">
-                      <a href="#" panel-name="suite-Test" class="hide-methods failed suite-Test"> (hide)</a> <!-- hide-methods failed suite-Test -->
-                      <a href="#" panel-name="suite-Test" class="show-methods failed suite-Test"> (show)</a> <!-- show-methods failed suite-Test -->
-                    </span>
-                    <div class="method-list-content failed suite-Test">
-                      <span>
-                        <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Test" title="testClass.VesselSearch" class="method navigator-link" hash-for-method="financialData">financialData</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Test" title="testClass.VesselSearch" class="method navigator-link" hash-for-method="vesselParticulars">vesselParticulars</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                      <span>
-                        <img src="failed.png" width="3%"/>
-                        <a href="#" panel-name="suite-Test" title="testClass.VesselSearch" class="method navigator-link" hash-for-method="voyageSnapshot">voyageSnapshot</a> <!-- method navigator-link -->
-                      </span>
-                      <br/>
-                    </div> <!-- method-list-content failed suite-Test -->
+                    <span class="method-stats">5 methods,   5 passed</span>
                   </li>
                   <li>
                     <span class="method-list-title passed">Passed methods</span>
@@ -133,7 +109,22 @@
                       <br/>
                       <span>
                         <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Test" title="testClass.VesselSearch" class="method navigator-link" hash-for-method="financialData">financialData</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Test" title="testClass.VesselSearch" class="method navigator-link" hash-for-method="vesselParticulars">vesselParticulars</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
                         <a href="#" panel-name="suite-Test" title="testClass.VesselSearch" class="method navigator-link" hash-for-method="vesselSearch(Federal Hunter, Federal Hunter, Federal Hunter)">vesselSearch(Federal Hunter, Federal Hunter, Federal Hunter)</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Test" title="testClass.VesselSearch" class="method navigator-link" hash-for-method="voyageSnapshot">voyageSnapshot</a> <!-- method navigator-link -->
                       </span>
                       <br/>
                     </div> <!-- method-list-content passed suite-Test -->
@@ -148,125 +139,6 @@
     <div class="wrapper">
       <div class="main-panel-root">
         <div panel-name="suite-Test" class="panel Test">
-          <div class="suite-Test-class-failed">
-            <div class="main-panel-header rounded-window-top">
-              <img src="failed.png"/>
-              <span class="class-name">testClass.VesselSearch</span>
-            </div> <!-- main-panel-header rounded-window-top -->
-            <div class="main-panel-content rounded-window-bottom">
-              <div class="method">
-                <div class="method-content">
-                  <a name="financialData">
-                  </a> <!-- financialData -->
-                  <span class="method-name">financialData</span>
-                  <div class="stack-trace">org.openqa.selenium.InvalidSelectorException: invalid selector: Unable to locate an element with the xpath expression //*[@title=&apos;Variance ($)&apos; or @title=&apos;Variance (-)]/../div[2]/div/div/span because of the following error:
-SyntaxError: Failed to execute &apos;evaluate&apos; on &apos;Document&apos;: The string &apos;//*[@title=&apos;Variance ($)&apos; or @title=&apos;Variance (-)]/../div[2]/div/div/span&apos; is not a valid XPath expression.
-  (Session info: chrome=118.0.5993.70)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/invalid_selector_exception.html
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;INNOL-019&apos;, ip: &apos;192.168.5.61&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 118.0.5993.70, chrome: {chromedriverVersion: 117.0.5938.132 (fa569fb226d..., userDataDir: C:\Users\Poonam\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59726}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: caa7935ceb8ada6f3d8107a0e6e12bea
-*** Element info: {Using=xpath, value=//*[@title=&apos;Variance ($)&apos; or @title=&apos;Variance (-)]/../div[2]/div/div/span}
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
-	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at jdk.proxy2/jdk.proxy2.$Proxy13.getCssValue(Unknown Source)
-	at testClass.FinanceTest.FinanceRecords(FinanceTest.java:33)
-	at testClass.VesselSearch.financialData(VesselSearch.java:182)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 32 stack frames
-</div> <!-- stack-trace -->
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="vesselParticulars">
-                  </a> <!-- vesselParticulars -->
-                  <span class="method-name">vesselParticulars</span>
-                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//h3[text()=&apos;Vessel Particulars&apos;]&quot;}
-  (Session info: chrome=118.0.5993.70)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;INNOL-019&apos;, ip: &apos;192.168.5.61&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 118.0.5993.70, chrome: {chromedriverVersion: 117.0.5938.132 (fa569fb226d..., userDataDir: C:\Users\Poonam\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59726}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: caa7935ceb8ada6f3d8107a0e6e12bea
-*** Element info: {Using=xpath, value=//h3[text()=&apos;Vessel Particulars&apos;]}
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
-	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at jdk.proxy2/jdk.proxy2.$Proxy13.getWrappedElement(Unknown Source)
-	at org.openqa.selenium.remote.internal.WebElementToJsonConverter.apply(WebElementToJsonConverter.java:50)
-	at java.base/java.util.stream.ReferencePipeline$3$1.accept(ReferencePipeline.java:197)
-	at java.base/java.util.Spliterators$ArraySpliterator.forEachRemaining(Spliterators.java:992)
-	at java.base/java.util.stream.AbstractPipeline.copyInto(AbstractPipeline.java:509)
-	at java.base/java.util.stream.AbstractPipeline.wrapAndCopyInto(AbstractPipeline.java:499)
-	at java.base/java.util.stream.ReduceOps$ReduceOp.evaluateSequential(ReduceOps.java:921)
-	at java.base/java.util.stream.AbstractPipeline.evaluate(AbstractPipeline.java:234)
-	at java.base/java.util.stream.ReferencePipeline.collect(ReferencePipeline.java:682)
-	at org.openqa.selenium.remote.RemoteWebDriver.executeScript(RemoteWebDriver.java:484)
-	at testClass.VesselSearch.vesselParticulars(VesselSearch.java:194)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 32 stack frames
-</div> <!-- stack-trace -->
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-              <div class="method">
-                <div class="method-content">
-                  <a name="voyageSnapshot">
-                  </a> <!-- voyageSnapshot -->
-                  <span class="method-name">voyageSnapshot</span>
-                  <div class="stack-trace">org.openqa.selenium.NoSuchElementException: no such element: Unable to locate element: {&quot;method&quot;:&quot;xpath&quot;,&quot;selector&quot;:&quot;//h3[text()=&apos;Voyage Snapshot&apos;]/../../div[2]&quot;}
-  (Session info: chrome=118.0.5993.70)
-For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;INNOL-019&apos;, ip: &apos;192.168.5.61&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 118.0.5993.70, chrome: {chromedriverVersion: 117.0.5938.132 (fa569fb226d..., userDataDir: C:\Users\Poonam\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:59726}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: caa7935ceb8ada6f3d8107a0e6e12bea
-*** Element info: {Using=xpath, value=//h3[text()=&apos;Voyage Snapshot&apos;]/../../div[2]}
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:323)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElementByXPath(RemoteWebDriver.java:428)
-	at org.openqa.selenium.By$ByXPath.findElement(By.java:353)
-	at org.openqa.selenium.remote.RemoteWebDriver.findElement(RemoteWebDriver.java:315)
-	at org.openqa.selenium.support.pagefactory.DefaultElementLocator.findElement(DefaultElementLocator.java:69)
-	at org.openqa.selenium.support.pagefactory.internal.LocatingElementHandler.invoke(LocatingElementHandler.java:38)
-	at jdk.proxy2/jdk.proxy2.$Proxy13.getText(Unknown Source)
-	at base.Base.getPageText(Base.java:99)
-	at testClass.VesselSearch.voyageSnapshot(VesselSearch.java:78)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 32 stack frames
-</div> <!-- stack-trace -->
-                </div> <!-- method-content -->
-              </div> <!-- method -->
-            </div> <!-- main-panel-content rounded-window-bottom -->
-          </div> <!-- suite-Test-class-failed -->
           <div class="suite-Test-class-passed">
             <div class="main-panel-header rounded-window-top">
               <img src="passed.png"/>
@@ -282,10 +154,31 @@ Session ID: caa7935ceb8ada6f3d8107a0e6e12bea
               </div> <!-- method -->
               <div class="method">
                 <div class="method-content">
+                  <a name="financialData">
+                  </a> <!-- financialData -->
+                  <span class="method-name">financialData</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="vesselParticulars">
+                  </a> <!-- vesselParticulars -->
+                  <span class="method-name">vesselParticulars</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
                   <a name="vesselSearch(Federal Hunter, Federal Hunter, Federal Hunter)">
                   </a> <!-- vesselSearch(Federal Hunter, Federal Hunter, Federal Hunter) -->
                   <span class="method-name">vesselSearch</span>
                   <span class="parameters">(Federal Hunter, Federal Hunter, Federal Hunter)</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="voyageSnapshot">
+                  </a> <!-- voyageSnapshot -->
+                  <span class="method-name">voyageSnapshot</span>
                 </div> <!-- method-content -->
               </div> <!-- method -->
             </div> <!-- main-panel-content rounded-window-bottom -->
@@ -293,7 +186,7 @@ Session ID: caa7935ceb8ada6f3d8107a0e6e12bea
         </div> <!-- panel Test -->
         <div panel-name="test-xml-Test" class="panel">
           <div class="main-panel-header rounded-window-top">
-            <span class="header-content">D:\WorkInno\Poonam\Tasks\AE Automation\AE_Management\AETest.xml</span>
+            <span class="header-content">D:\WorkInno\Poonam\TestingCodeRepositry\Automation-coding-Task\com.AE_Management\AETest.xml</span>
           </div> <!-- main-panel-header rounded-window-top -->
           <div class="main-panel-content rounded-window-bottom">
             <pre>
@@ -347,30 +240,30 @@ data.addColumn('string', 'Class');
 data.addColumn('number', 'Time (ms)');
 data.addRows(5);
 data.setCell(0, 0, 0)
-data.setCell(0, 1, 'voyageSnapshot')
+data.setCell(0, 1, 'vesselSearch')
 data.setCell(0, 2, 'testClass.VesselSearch')
-data.setCell(0, 3, 36447);
+data.setCell(0, 3, 29285);
 data.setCell(1, 0, 1)
-data.setCell(1, 1, 'vesselParticulars')
+data.setCell(1, 1, 'financialData')
 data.setCell(1, 2, 'testClass.VesselSearch')
-data.setCell(1, 3, 32255);
+data.setCell(1, 3, 20257);
 data.setCell(2, 0, 2)
-data.setCell(2, 1, 'vesselSearch')
+data.setCell(2, 1, 'crewInfo')
 data.setCell(2, 2, 'testClass.VesselSearch')
-data.setCell(2, 3, 31079);
+data.setCell(2, 3, 17700);
 data.setCell(3, 0, 3)
-data.setCell(3, 1, 'crewInfo')
+data.setCell(3, 1, 'voyageSnapshot')
 data.setCell(3, 2, 'testClass.VesselSearch')
-data.setCell(3, 3, 25436);
+data.setCell(3, 3, 12906);
 data.setCell(4, 0, 4)
-data.setCell(4, 1, 'financialData')
+data.setCell(4, 1, 'vesselParticulars')
 data.setCell(4, 2, 'testClass.VesselSearch')
-data.setCell(4, 3, 17564);
+data.setCell(4, 3, 8329);
 window.suiteTableData['Test']= { tableData: data, tableDiv: 'times-div-Test'}
 return data;
 }
               </script>
-              <span class="suite-total-time">Total running time: 2 minutes</span>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
               <div id="times-div-Test">
               </div> <!-- times-div-Test -->
             </div> <!-- times-div -->
@@ -403,33 +296,27 @@ return data;
               </div> <!-- configuration-class before -->
               <div class="test-method">
                 <span class="method-name">vesselSearch(Federal Hunter, Federal Hunter, Federal Hunter)</span>
-                <span class="method-start">36079 ms</span>
+                <span class="method-start">22864 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
                 <span class="method-name">voyageSnapshot</span>
-                <span class="method-start">67875 ms</span>
+                <span class="method-start">56458 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
                 <span class="method-name">crewInfo</span>
-                <span class="method-start">105148 ms</span>
+                <span class="method-start">69912 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
                 <span class="method-name">financialData</span>
-                <span class="method-start">132265 ms</span>
+                <span class="method-start">89968 ms</span>
               </div> <!-- test-method -->
               <div class="test-method">
-                <img src="failed.png">
-                </img>
                 <span class="method-name">vesselParticulars</span>
-                <span class="method-start">150396 ms</span>
+                <span class="method-start">112951 ms</span>
               </div> <!-- test-method -->
               <div class="configuration-class after">
                 <span class="method-name">endTest</span>
-                <span class="method-start">182924 ms</span>
+                <span class="method-start">121549 ms</span>
               </div> <!-- configuration-class after -->
           </div> <!-- main-panel-content rounded-window-bottom -->
         </div> <!-- panel -->

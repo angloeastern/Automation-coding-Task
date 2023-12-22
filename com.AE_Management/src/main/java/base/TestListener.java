@@ -41,13 +41,7 @@ public class TestListener extends Base implements ITestListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		try {
-			ExtentTestManager.getTest().addScreenCaptureFromPath(ss);
-		
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		ExtentTestManager.getTest().addScreenCaptureFromPath(ss);
 
 	}
 
@@ -64,12 +58,7 @@ public class TestListener extends Base implements ITestListener {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		try {
-			ExtentTestManager.getTest().addScreenCaptureFromPath(ss);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		ExtentTestManager.getTest().addScreenCaptureFromPath(ss);
 		
 	}
 

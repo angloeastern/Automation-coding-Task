@@ -161,7 +161,7 @@ public class VesselSearchOLD extends VesselAction {
 		Thread.sleep(2000);
 		selection.dollarsign.click();
 		Thread.sleep(2000);
-		FinanceTest.FinanceRecords();
+		FinanceTest1.FinanceRecords();
 		softAssert.assertTrue(true);
 		
 	}
