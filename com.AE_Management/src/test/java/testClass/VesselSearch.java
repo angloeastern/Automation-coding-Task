@@ -1,6 +1,9 @@
 package testClass;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.IntStream;
 
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
@@ -39,7 +42,7 @@ public class VesselSearch extends Base {
 	}
 
 	@Test(priority = 0, dataProvider = "Vesseldata")
-	public static void vesselSearch(String vessel, String test, String test1) throws InterruptedException {
+	public static void vesselSearch(String vesselCode, String VesselName) throws InterruptedException {
 try {
 		// Vessel Selection
 	selection = new NavigationPage(driver);
@@ -52,10 +55,10 @@ try {
 	eWait(selection.Vesselclear);
 	selection.Vesselclear.click();
 	eWait(selection.Vesselclear);
-	selection.Vesselclear.sendKeys(vessel);
-	boolean exists = driver.findElements(By.xpath("//div[text()='" + vessel + "']")).size() != 0;
+	selection.Vesselclear.sendKeys(VesselName);
+	boolean exists = driver.findElements(By.xpath("//div[text()='" + VesselName + "']")).size() != 0;
 	if (exists) {
-		WebElement vessels = driver.findElement(By.xpath("//div[text()='" + vessel + "']"));
+		WebElement vessels = driver.findElement(By.xpath("//div[text()='" + VesselName + "']"));
 		eWait(vessels);
 		vessels.click();
 	} else {
@@ -128,12 +131,12 @@ try {
 		// Crew Info
 
 		selection = new NavigationPage(driver);
-		Thread.sleep(2000);
+		eWait(selection.CrewInfo);
 		WebElement element = selection.CrewInfo;
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-		Thread.sleep(2000);
+		Thread.sleep(500);
 		System.out.println(ANSI_Y_BACKGROUND + getPageText(selection.CrewInfo) + ANSI_RESET);
-		Thread.sleep(2000);
+		eWait(selection.CrewUpdateOn);
 		String CrewUpdateOn = getPageText(selection.CrewUpdateOn);
 
 		if (CrewUpdateOn.isBlank()) {
@@ -148,7 +151,7 @@ try {
 		System.out.println("Master Name:  " + getPageText(selection.ChiefEng));
 		System.out.println("ChiefEng Name:  " + getPageText(selection.Master));
 
-		Thread.sleep(2000);
+		eWait(selection.Crew);
 		selection.Crew.click();
 		Thread.sleep(2000);
 		CrewTest.crewRecords();
@@ -167,7 +170,7 @@ try {
 		
 		WebElement element = selection.Financial;
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-		Thread.sleep(2000);
+		eWait(selection.Financial);
 		System.out.println(ANSI_Y_BACKGROUND + getPageText(selection.Financial) + ANSI_RESET);
 		System.out.println("Currency " + getPageText(selection.Currency));
 		System.out.println("Daily Running Cost: " + getPageText(selection.DailyRunningCost));
@@ -176,7 +179,7 @@ try {
 		} else {
 			System.out.println(ANSI_G + "Financial Load Successfully" + ANSI_RESET);
 			System.out.println("Update on " + getPageText(selection.FinancialUpdateOn));
-			Thread.sleep(2000);
+			eWait(selection.DailyRunningCost);
 			System.out.println("Daily Running Cost: " + getPageText(selection.DailyRunningCost));
 			System.out.println("Daily Budget: " + getPageText(selection.DailyBudget));
 			System.out.println("color is:  " + selection.color.getCssValue("color"));
@@ -184,7 +187,7 @@ try {
 			String cssColorString = selection.color.getCssValue("color");
 			Color color = Color.fromString(cssColorString);
 			System.out.println(color.asHex());
-			Thread.sleep(2000);
+			eWait(selection.TotalVariance);
 			System.out.println("Total Variance: " + getPageText(selection.TotalVariance));
 			System.out.println("Total Budget Variance: " + getPageText(selection.TotalBudget));
 		}
@@ -193,7 +196,7 @@ try {
 		// getPageText(By.xpath("//h3[text()='Financial']/../div"));
 		// System.out.println("Currency " + getPageText(selection.Currency));
 
-		Thread.sleep(2000);
+		eWait(selection.dollarsign);
 		selection.dollarsign.click();
 		Thread.sleep(2000);
 		FinanceTest1.FinanceRecords();
@@ -204,6 +207,29 @@ try {
 	@Test(priority = 4)
 	public static void vesselParticulars() throws InterruptedException {
 		// Vessel Particulars
+
+		selection = new NavigationPage(driver);
+		Thread.sleep(2000);
+		WebElement element = selection.VesselParticulars;
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+		eWait(selection.VesselParticulars);
+		System.out.println(ANSI_Y_BACKGROUND + getPageText(selection.VesselParticulars) + ANSI_RESET);
+		System.out.println("Flag:  " + getPageText(selection.Flag));
+		eWait(selection.PortofRegistry);
+		System.out.println("Port of Registry:  " + getPageText(selection.PortofRegistry));
+		System.out.println("Call Sign: " + getPageText(selection.CallSign));
+		System.out.println("Official Number:  " + getPageText(selection.OfficialNumber));
+		eWait(selection.IMONumber);
+		System.out.println("IMO Number:  " + getPageText(selection.IMONumber));
+		System.out.println("Class:  " + getPageText(selection.Class));
+		System.out.println("VSAT Tel:  " + getPageText(selection.VSATTel));
+		softAssert.assertTrue(true);
+
+	}
+	
+/*	@Test(priority = 5)
+	public static void viewAndDownloadCertificates() throws InterruptedException {
+		// Certificates
 
 		selection = new NavigationPage(driver);
 		Thread.sleep(2000);
@@ -220,29 +246,28 @@ try {
 		System.out.println("IMO Number:  " + getPageText(selection.IMONumber));
 		System.out.println("Class:  " + getPageText(selection.Class));
 		System.out.println("VSAT Tel:  " + getPageText(selection.VSATTel));
+		
+		Map<String, Object> fileMap = new HashMap<>();
+		fileMap.put("fileName", "...the file name...");
+		((JavascriptExecutor) driver).executeScript("tb:fileExists", fileMap);
 		softAssert.assertTrue(true);
 
 	}
-
+	
+	*/
 	// DataProvider
-
-	@DataProvider(name = "Vesseldata")
-	public Object[][] testDataExample() {
-		ReadExcelFile configuration = new ReadExcelFile(
-				System.getProperty("user.dir") + "\\src\\main\\resources\\Data\\Login.xlsx");
-		int rows = configuration.getRowCount(0);
-		int cells = configuration.getcellCount(0, rows);
-		System.out.println(rows + "rows");
-		System.out.println(cells + "cells");
-		Object[][] signin_credentials = new Object[rows][cells];
-
-		for (int i = 0; i < rows; i++) {
-			for (int j = 0; j < cells; j++) {
-				signin_credentials[i][j] = configuration.getData(0, i, j);
-			}
+		@DataProvider(name = "Vesseldata")
+		public Object[][] testDataExample() throws IOException {
+			ReadExcelFile configuration = new ReadExcelFile("D:\\WorkInno\\Poonam\\TestingCodeRepositry\\Automation-coding-Task\\com.AE_Management\\src\\main\\resources\\Data\\Login.xlsx");
+			int rows = configuration.getRowCount(0);
+			int cells = configuration.getcellCount(0, rows);
+			System.out.println(rows + "rows");
+			System.out.println(cells + "cells");
+			String[][] signin_credentials = new String[rows][cells];
+			IntStream.range(0, rows).forEach(i -> IntStream.range(0, cells)
+					.forEach(j -> signin_credentials[i][j] = configuration.getData(0, i + 1, j)));
+			return signin_credentials;
 		}
-		return signin_credentials;
-	}
 
 	@AfterClass
 	public void endTest() {

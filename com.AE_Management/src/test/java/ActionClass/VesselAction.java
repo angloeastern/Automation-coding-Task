@@ -28,13 +28,10 @@ public class VesselAction extends Base {
 	
 	
 @Test(dataProvider="Vesseldata")
-public void selectVessel(String VesselName,String test,String test1) throws InterruptedException 
+public void selectVessel(String VesselName,String vesselcode) throws InterruptedException 
 	{
-	VesselSearchOLD.vesselSearch(VesselName,test,test1);
-	VesselSearchOLD.voyageSnapshot();
-	VesselSearchOLD.crewInfo();
-	VesselSearchOLD.Financial();
-	VesselSearchOLD.Particulars();
+	VesselSearchOLD.vesselSearch(vesselcode,VesselName);
+	
 	}
 	
 @DataProvider(name="Vesseldata")
