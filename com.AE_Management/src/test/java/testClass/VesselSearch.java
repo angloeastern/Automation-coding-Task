@@ -1,6 +1,7 @@
 package testClass;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.IntStream;
@@ -160,7 +161,7 @@ try {
 	}
 
 	@Test(priority = 3)
-	public static void financialData() throws InterruptedException {
+	public static void financialData(String vesselCode, String VesselName) throws InterruptedException, ParseException, IOException {
 		// Financial
 
 		selection = new NavigationPage(driver);
@@ -199,7 +200,7 @@ try {
 		eWait(selection.dollarsign);
 		selection.dollarsign.click();
 		Thread.sleep(2000);
-		FinanceTest1.FinanceRecords();
+		FinanceTest.FinanceRecords(vesselCode,VesselName);
 		softAssert.assertTrue(true);
 
 	}
@@ -224,37 +225,47 @@ try {
 		System.out.println("Class:  " + getPageText(selection.Class));
 		System.out.println("VSAT Tel:  " + getPageText(selection.VSATTel));
 		softAssert.assertTrue(true);
-
 	}
-	
-/*	@Test(priority = 5)
-	public static void viewAndDownloadCertificates() throws InterruptedException {
+	@Test(priority = 5)
+	public static void Certificates() throws InterruptedException {
+		
 		// Certificates
 
 		selection = new NavigationPage(driver);
-		Thread.sleep(2000);
-		WebElement element = selection.VesselParticulars;
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-		Thread.sleep(2000);
-		System.out.println(ANSI_Y_BACKGROUND + getPageText(selection.VesselParticulars) + ANSI_RESET);
-		System.out.println("Flag:  " + getPageText(selection.Flag));
-		Thread.sleep(2000);
-		System.out.println("Port of Registry:  " + getPageText(selection.PortofRegistry));
-		System.out.println("Call Sign: " + getPageText(selection.CallSign));
-		System.out.println("Official Number:  " + getPageText(selection.OfficialNumber));
-		Thread.sleep(2000);
-		System.out.println("IMO Number:  " + getPageText(selection.IMONumber));
-		System.out.println("Class:  " + getPageText(selection.Class));
-		System.out.println("VSAT Tel:  " + getPageText(selection.VSATTel));
+		eWait(selection.certificate);
+		selection.certificate.click();
+		eWait(selection.AllCertificates);
+		selection.AllCertificates.click();
 		
+		WebElement wb=driver.findElement(By.xpath("(//div[@data-testid='collapse-content'])[1]/table/tbody/tr[1]/td[1]/div/span[2]"));
+		eWait(wb);
+		wb.click();
+		
+		WebElement wb1=driver.findElement(By.xpath("//*[@id='view-body']/div[2]/div/div[1]/h3"));
+		eWait(wb1);
+		String text=wb1.getText();
+		wb1.click();
+		System.out.println(text);
+		
+		WebElement wb2=driver.findElement(By.xpath("(//*[@id='view-body']/div[2]/div/div[1]/div[2]/div/*)[1]"));
+		eWait(wb2);
+		wb2.click();
 		Map<String, Object> fileMap = new HashMap<>();
-		fileMap.put("fileName", "...the file name...");
+		fileMap.put("fileName", text);
 		((JavascriptExecutor) driver).executeScript("tb:fileExists", fileMap);
 		softAssert.assertTrue(true);
+		
+		WebElement wb3=driver.findElement(By.xpath("(//*[@id='view-body']/div[2]/div/div[1]/div[2]/div/*)[2]"));
+		eWait(wb3);
+		wb3.click();
+		
+		softAssert.assertTrue(true);
+		
+		//(//div[@data-testid="collapse-content"])[1]/table/tbody/tr[1]/td[1]/div/span[2]
 
 	}
+
 	
-	*/
 	// DataProvider
 		@DataProvider(name = "Vesseldata")
 		public Object[][] testDataExample() throws IOException {

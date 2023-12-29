@@ -4,10 +4,9 @@ import java.util.concurrent.TimeUnit;
 
 import org.testng.annotations.Test;
 
-import ActionClass.VesselAction;
 import pages.CrewPage;
 
-public class CrewTest extends VesselAction {
+public class CrewTest extends VesselSearchOLD {
 	
 	@Test
 	public static void crewRecords() throws InterruptedException

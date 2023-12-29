@@ -159,6 +159,16 @@ public class NavigationPage {
 	public
 	WebElement VSATTel;
 	
+	//Certificates
+	@FindBy(xpath = "//*[@data-icon='file-certificate']")
+	public
+	WebElement certificate;
+	
+	@FindBy(xpath = "//li[text()='All Certificates']")
+	public
+	WebElement AllCertificates;
+	
+	
 	
 	
 	public NavigationPage(WebDriver driver) {

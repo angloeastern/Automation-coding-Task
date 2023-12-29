@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
@@ -16,6 +17,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -34,7 +36,13 @@ public class Base {
 		if (browser.equalsIgnoreCase("chrome"))
 		{
 	    System.setProperty("webdriver.chrome.driver", "D:\\WorkInno\\Poonam\\TestingCodeRepositry\\Automation-coding-Task\\com.AE_Management\\Driver\\chromedriver.exe");
-		driver=new ChromeDriver();
+		//driver=new ChromeDriver();
+		ChromeOptions options = new ChromeOptions();
+		HashMap<String, Object> chromePref = new HashMap<>();
+		chromePref.put("download.default_directory", System.getProperty("java.io.tmpdir"));
+		options.setExperimentalOption("prefs", chromePref);
+		driver = new ChromeDriver(options);
+		
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		}
@@ -123,5 +131,20 @@ public class Base {
         WebDriverWait wait = new WebDriverWait(driver,20);
     	wait.until(ExpectedConditions.invisibilityOfElementLocated(element));
         }
-  
+    public static void downlaodFileChecker(String fileName) {
+    WebDriverWait wait = new WebDriverWait(driver, 30);
+	String tmpFolderPath = System.getProperty("java.io.tmpdir");
+	String expectedFileName = fileName;
+	File file = new File(tmpFolderPath + expectedFileName);
+	System.out.println(file);
+	wait.until((ExpectedCondition<Boolean>) webDriver -> file.exists());
+	if (file.exists())
+	{
+		System.out.println(file + " is present");
+	}
+	else
+	{
+		System.out.println(file + " is not present");
+	}
+    }
 }

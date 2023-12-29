@@ -6,14 +6,13 @@
   </listeners>
   <test thread-count="5" name="Test(failed)">
     <classes>
-      <class name="testClass.VesselSearch">
+      <class name="testClass.VesselSearchOLD">
         <methods>
-          <include name="voyageSnapshot"/>
-          <include name="financialData"/>
-          <include name="endTest"/>
+          <include name="vesselSearch"/>
           <include name="ProgramStart"/>
+          <include name="endTest"/>
         </methods>
-      </class> <!-- testClass.VesselSearch -->
+      </class> <!-- testClass.VesselSearchOLD -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Test] -->

@@ -1,6 +1,7 @@
 package testClass;
 
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.stream.IntStream;
 
 import org.apache.log4j.LogManager;
@@ -16,6 +17,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+
 import base.Base;
 import pages.NavigationPage;
 import utilities.ReadExcelFile;
@@ -32,52 +34,52 @@ public class VesselSearchOLD extends Base {
 	static Logger log = LogManager.getLogger(VesselSearchOLD.class.getName());
 	public static SoftAssert softAssert = new SoftAssert();
 	static NavigationPage selection ;
-	
+
 	@BeforeClass
 	public void ProgramStart() throws InterruptedException, IOException {
 		AELogin.Login();
 	}
 
 	@Test(priority = 0, dataProvider = "Vesseldata")
-	public static void vesselSearch(String vesselCode, String VesselName) throws InterruptedException {
-try {
-		// Vessel Selection
-	selection = new NavigationPage(driver);
-	iWait();
-	Thread.sleep(700);
-	eWait(selection.vesseldropdown);
-	selection.vesseldropdown.click();
-	eWait(selection.Vesselclear);
-	selection.Vesselclear.clear();
-	eWait(selection.Vesselclear);
-	selection.Vesselclear.click();
-	eWait(selection.Vesselclear);
-	selection.Vesselclear.sendKeys(VesselName);
-	boolean exists = driver.findElements(By.xpath("//div[text()='" + VesselName + "']")).size() != 0;
-	if (exists) {
-		WebElement vessels = driver.findElement(By.xpath("//div[text()='" + VesselName + "']"));
-		eWait(vessels);
-		vessels.click();
-	} else {
-		System.out.println("Error in vessel Search");
-		log.error("Error in vessel Search");
-		eWait(selection.Vesselclear);
-		selection.Vesselclear.clear();
-		Thread.sleep(1000);
-		eWait(selection.vesseldropdown);
-		selection.vesseldropdown.click();
-		Assert.assertTrue(false, "vessel not founded in list");
-	}
-	System.out.println(ANSI_G + "Vessel Selection successful" + ANSI_RESET);
-	log.info("Vessel Selection successfully");
-} catch (NoSuchElementException n) {
-	// TODO: handle exception
-	softAssert.assertTrue(false, "Error in vessel Search" + n.getMessage());
-	n.printStackTrace();
-	System.out.println("Error in vessel Search" + n.getMessage());
-	log.error("Error in vessel Search" + n.getMessage());
-}
-	
+	public static void vesselSearch(String vesselCode, String VesselName) throws InterruptedException, ParseException, IOException {
+		try {
+			// Vessel Selection
+			selection = new NavigationPage(driver);
+			iWait();
+			Thread.sleep(700);
+			eWait(selection.vesseldropdown);
+			selection.vesseldropdown.click();
+			eWait(selection.Vesselclear);
+			selection.Vesselclear.clear();
+			eWait(selection.Vesselclear);
+			selection.Vesselclear.click();
+			eWait(selection.Vesselclear);
+			selection.Vesselclear.sendKeys(VesselName);
+			boolean exists = driver.findElements(By.xpath("//div[text()='" + VesselName + "']")).size() != 0;
+			if (exists) {
+				WebElement vessels = driver.findElement(By.xpath("//div[text()='" + VesselName + "']"));
+				eWait(vessels);
+				vessels.click();
+			} else {
+				System.out.println("Error in vessel Search");
+				log.error("Error in vessel Search");
+				eWait(selection.Vesselclear);
+				selection.Vesselclear.clear();
+				Thread.sleep(1000);
+				eWait(selection.vesseldropdown);
+				selection.vesseldropdown.click();
+				Assert.assertTrue(false, "vessel not founded in list");
+			}
+			System.out.println(ANSI_G + "Vessel Selection successful" + ANSI_RESET);
+			log.info("Vessel Selection successfully");
+		} catch (NoSuchElementException n) {
+			// TODO: handle exception
+			softAssert.assertTrue(false, "Error in vessel Search" + n.getMessage());
+			n.printStackTrace();
+			System.out.println("Error in vessel Search" + n.getMessage());
+			log.error("Error in vessel Search" + n.getMessage());
+		}
+		
 		// Voyage Snapshot
 
 		selection = new NavigationPage(driver);
@@ -117,7 +119,7 @@ try {
 			//ReadExcel.setData(0, row,2, "Voyage Snapshot Not Loading");
 		}
 		softAssert.assertTrue(true);
-	
+
 		// Crew Info
 
 		selection = new NavigationPage(driver);
@@ -147,13 +149,13 @@ try {
 		CrewTest.crewRecords();
 		softAssert.assertTrue(true);
 
-	
+		// Financial
 
 		selection = new NavigationPage(driver);
 		Thread.sleep(2000);
 		// String Financial =
 		// getPageText(By.xpath("//h3[text()='Financial']"));//h3[text()='Financial']/../div
-		
+
 		WebElement element2 = selection.Financial;
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element2);
 		eWait(selection.Financial);
@@ -185,7 +187,7 @@ try {
 		eWait(selection.dollarsign);
 		selection.dollarsign.click();
 		Thread.sleep(2000);
-		FinanceTest1.FinanceRecords();
+		FinanceTest.FinanceRecords(vesselCode,VesselName);
 		softAssert.assertTrue(true);
 
 		// Vessel Particulars
@@ -206,52 +208,37 @@ try {
 		System.out.println("Class:  " + getPageText(selection.Class));
 		System.out.println("VSAT Tel:  " + getPageText(selection.VSATTel));
 		softAssert.assertTrue(true);
-
-	}
-	
-/*	@Test(priority = 5)
-	public static void viewAndDownloadCertificates() throws InterruptedException {
-		// Certificates
-
-		selection = new NavigationPage(driver);
-		Thread.sleep(2000);
-		WebElement element = selection.VesselParticulars;
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-		Thread.sleep(2000);
-		System.out.println(ANSI_Y_BACKGROUND + getPageText(selection.VesselParticulars) + ANSI_RESET);
-		System.out.println("Flag:  " + getPageText(selection.Flag));
-		Thread.sleep(2000);
-		System.out.println("Port of Registry:  " + getPageText(selection.PortofRegistry));
-		System.out.println("Call Sign: " + getPageText(selection.CallSign));
-		System.out.println("Official Number:  " + getPageText(selection.OfficialNumber));
-		Thread.sleep(2000);
-		System.out.println("IMO Number:  " + getPageText(selection.IMONumber));
-		System.out.println("Class:  " + getPageText(selection.Class));
-		System.out.println("VSAT Tel:  " + getPageText(selection.VSATTel));
+		 
 		
-		Map<String, Object> fileMap = new HashMap<>();
-		fileMap.put("fileName", "...the file name...");
-		((JavascriptExecutor) driver).executeScript("tb:fileExists", fileMap);
+		// Certificates
+		selection = new NavigationPage(driver);
+		System.out.println(ANSI_Y_BACKGROUND + "Certificates" + ANSI_RESET);
+		eWait(selection.certificate);
+		selection.certificate.click();
+		eWait(selection.AllCertificates);
+		selection.AllCertificates.click();
+		Thread.sleep(2000);
+	    Cartificates.allCertificate();
 		softAssert.assertTrue(true);
-	}	
-	*/
+	}
+
 	// DataProvider
-		@DataProvider(name = "Vesseldata")
-		public Object[][] testDataExample() throws IOException {
-			ReadExcelFile configuration = new ReadExcelFile("D:\\WorkInno\\Poonam\\TestingCodeRepositry\\Automation-coding-Task\\com.AE_Management\\src\\main\\resources\\Data\\Login.xlsx");
-			int rows = configuration.getRowCount(0);
-			int cells = configuration.getcellCount(0, rows);
-			System.out.println(rows + "rows");
-			System.out.println(cells + "cells");
-			String[][] signin_credentials = new String[rows][cells];
-			IntStream.range(0, rows).forEach(i -> IntStream.range(0, cells)
-					.forEach(j -> signin_credentials[i][j] = configuration.getData(0, i + 1, j)));
-			return signin_credentials;
-		}
+	@DataProvider(name = "Vesseldata")
+	public Object[][] testDataExample() throws IOException {
+		ReadExcelFile configuration = new ReadExcelFile("D:\\WorkInno\\Poonam\\TestingCodeRepositry\\Automation-coding-Task\\com.AE_Management\\src\\main\\resources\\Data\\Login.xlsx");
+		int rows = configuration.getRowCount(0);
+		int cells = configuration.getcellCount(0, rows);
+		System.out.println(rows + "rows");
+		System.out.println(cells + "cells");
+		String[][] signin_credentials = new String[rows][cells];
+		IntStream.range(0, rows).forEach(i -> IntStream.range(0, cells)
+				.forEach(j -> signin_credentials[i][j] = configuration.getData(0, i + 1, j)));
+		return signin_credentials;
+	}
 
 	@AfterClass
 	public void endTest() {
 		softAssert.assertAll();
-		 driver.close();
+		driver.close();
 	}
 }
