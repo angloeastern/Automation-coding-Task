@@ -23,8 +23,8 @@ public class AELogin extends Base {
 		LoginPage page= new LoginPage(driver);
 		page.clickUM();
 		LoginPage.MyAELogin(getProperty("UserName"), getProperty("Password"));
-		eWait(page.SelectVessel);
-		//Thread.sleep(10000);
+	eWait(page.SelectVessel);
+	//	Thread.sleep(5000);
 		// driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
 		// System.out.println(driver.getTitle());
 		String text = getPageText(page.SelectVessel);

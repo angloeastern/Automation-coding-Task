@@ -3,12 +3,18 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="ActionClass.VesselAction">
+      <class name="testClass.VesselSearch">
         <methods>
-          <include name="ProgramStarted"/>
-          <include name="selectVessel" invocation-numbers="0"/>
+          <include name="voyageSnapshot"/>
+          <include name="Certificates"/>
+          <include name="crewInfo"/>
+          <include name="financialData"/>
+          <include name="vesselSearch"/>
+          <include name="endTest"/>
+          <include name="vesselParticulars"/>
+          <include name="ProgramStart"/>
         </methods>
-      </class> <!-- ActionClass.VesselAction -->
+      </class> <!-- testClass.VesselSearch -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

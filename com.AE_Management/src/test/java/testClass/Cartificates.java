@@ -3,7 +3,6 @@ package testClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.Test;
 
 import pages.CertificatePage;
@@ -25,8 +24,8 @@ public class Cartificates extends VesselSearchOLD {
 		eWait(wb2);
 		Thread.sleep(500);
 		wb2.click();
-		downlaodFileChecker(fileName);
-		Thread.sleep(500);
+		downlaodFileChecker(fileName);	
+		Thread.sleep(500);	
 		WebElement wb3=driver.findElement(By.xpath("(//*[@id='view-body']/div[2]/div/div[1]/div[2]/div/*)[2]"));
 		eWait(wb3);
 		wb3.click();

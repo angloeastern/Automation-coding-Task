@@ -20,6 +20,7 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 
 public class Base {
 
@@ -134,8 +135,9 @@ public class Base {
     public static void downlaodFileChecker(String fileName) {
     WebDriverWait wait = new WebDriverWait(driver, 30);
 	String tmpFolderPath = System.getProperty("java.io.tmpdir");
+	//String tmpFolderPath = "C:\\Users\\Poonam\\AppData\\Local\\Temp\\";
 	String expectedFileName = fileName;
-	File file = new File(tmpFolderPath + expectedFileName);
+	File file = new File(tmpFolderPath + expectedFileName+ ".pdf");
 	System.out.println(file);
 	wait.until((ExpectedCondition<Boolean>) webDriver -> file.exists());
 	if (file.exists())
@@ -147,4 +149,26 @@ public class Base {
 		System.out.println(file + " is not present");
 	}
     }
+
+	public static void downlaodFileChecker1(String file) {
+		File folder = new File(System.getProperty("user.dir"));
+		// List the files on that folder
+		File[] listOfFiles = folder.listFiles();
+		boolean found = false;
+		File f = null;
+		// Look for the file in the files
+		// You should write smart REGEX according to the filename
+		for (File listOfFile : listOfFiles) {
+			if (listOfFile.isFile()) {
+				String fileName = listOfFile.getName();
+				System.out.println("File " + listOfFile.getName());
+				if (fileName.matches(file)) {
+					f = new File(fileName);
+					found = true;
+				}
+			}
+		}
+		Assert.assertTrue(found, "Downloaded document is not found");
+		f.deleteOnExit();
+	}
 }

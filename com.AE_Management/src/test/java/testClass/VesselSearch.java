@@ -5,7 +5,6 @@ import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.IntStream;
-
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -19,7 +18,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
-
 import base.Base;
 import pages.NavigationPage;
 import utilities.ReadExcelFile;
@@ -44,7 +42,9 @@ public class VesselSearch extends Base {
 
 	@Test(priority = 0, dataProvider = "Vesseldata")
 	public static void vesselSearch(String vesselCode, String VesselName) throws InterruptedException {
+
 try {
+	
 		// Vessel Selection
 	selection = new NavigationPage(driver);
 	iWait();
@@ -257,14 +257,10 @@ try {
 		
 		WebElement wb3=driver.findElement(By.xpath("(//*[@id='view-body']/div[2]/div/div[1]/div[2]/div/*)[2]"));
 		eWait(wb3);
-		wb3.click();
-		
+		wb3.click();		
 		softAssert.assertTrue(true);
-		
 		//(//div[@data-testid="collapse-content"])[1]/table/tbody/tr[1]/td[1]/div/span[2]
-
 	}
-
 	
 	// DataProvider
 		@DataProvider(name = "Vesseldata")

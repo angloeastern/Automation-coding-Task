@@ -168,7 +168,15 @@ public class NavigationPage {
 	public
 	WebElement AllCertificates;
 	
-	
+	//Reports
+		@FindBy(xpath = "//*[@data-icon='file-chart-pie']")
+		public
+		WebElement Reports;
+		
+		//Vessel Drawings / Shipyard Drawings
+		@FindBy(xpath = "//*[@data-icon='compass-drafting']")
+		public
+		WebElement VesselDrawings;
 	
 	
 	public NavigationPage(WebDriver driver) {

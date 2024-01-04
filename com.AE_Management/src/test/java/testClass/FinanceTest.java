@@ -3,7 +3,6 @@ package testClass;
 import java.io.IOException;
 import java.text.ParseException;
 import java.util.concurrent.TimeUnit;
-
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -43,9 +42,9 @@ public class FinanceTest extends VesselSearchOLD {
 		//ReadExcelFile.setData(0, row, 3, myAEmonth,black);
 
 		//if (month.equalsIgnoreCase(myAEmonth)) {
-			//ReadExcelFile.setData(0, row, 4, "Matched",red);
+		//ReadExcelFile.setData(0, row, 4, "Matched",red);
 		//} else {
-			//ReadExcelFile.setData(0, row, 4, "Period Not Matched",red);
+		//ReadExcelFile.setData(0, row, 4, "Period Not Matched",red);
 		//}
 
 		//softAssert.assertEquals(getPageText(selection.FinancialMonth), month, vessel + " Financial Month Not Matched");
@@ -61,16 +60,15 @@ public class FinanceTest extends VesselSearchOLD {
 		System.out.println("Actual: "+ getPageText(selection.Actual));
 		System.out.println("Budget: "+ getPageText(selection.Budget));
 		System.out.println("Variance: "+ getPageText(selection.Variance));
-		Thread.sleep(2000);
+		eWait(selection.Variance);
 		if (getPageText(selection.Variance).equals("-")) {
 			System.out.println(ANSI_RED_BACKGROUND + vessel + " Financial Not Loading" + ANSI_RESET);
 
 		} else {
+			System.out.println("88888888888");
 			System.out.println("Variance Budget: " + getPageText(selection.VarianceBudget));
 			System.out.println("color is: "+selection.color.getCssValue("color"));
 		}
-		System.out.println("Variance Budget: "+
-				getPageText(selection.VarianceBudget));
 
 		System.out.println("ActualYTD: "+ getPageText(selection.ActualYTD));
 		System.out.println("BudgetYTD: "+ getPageText(selection.BudgetYTD));
@@ -80,10 +78,7 @@ public class FinanceTest extends VesselSearchOLD {
 			System.out.println("VarianceYTD Budget: " + getPageText(selection.VarianceYTDBudget));
 			System.out.println("color YTD is: "+selection.colorYTD.getCssValue("color"));
 		}
-		System.out.println("VarianceYTD Budget: "+
-				getPageText(selection.VarianceYTDBudget));
 		Thread.sleep(2000);
-
 		selection.OPEXReport.click();
 		Thread.sleep(2000);
 
@@ -120,8 +115,7 @@ public class FinanceTest extends VesselSearchOLD {
 			System.out.println("Variance Budget: " + getPageText(selection.VarianceBudget));
 			System.out.println("color is: "+selection.color.getCssValue("color"));
 		}
-		System.out.println("Variance Budget: "+
-				getPageText(selection.VarianceBudget));
+		
 
 		System.out.println("ActualYTD: "+ getPageText(selection.ActualYTD));
 		System.out.println("BudgetYTD: "+ getPageText(selection.BudgetYTD));
@@ -131,10 +125,8 @@ public class FinanceTest extends VesselSearchOLD {
 			System.out.println("VarianceYTD Budget: " + getPageText(selection.VarianceYTDBudget));
 			System.out.println("color YTD is: "+selection.colorYTD.getCssValue("color"));
 		}
-		System.out.println("VarianceYTD Budget: "+
-				getPageText(selection.VarianceYTDBudget));
+		
 		Thread.sleep(2000);
-
 		selection.OPEXReport.click();
 		Thread.sleep(2000);
 
