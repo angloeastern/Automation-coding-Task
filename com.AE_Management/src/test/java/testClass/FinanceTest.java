@@ -26,19 +26,19 @@ public class FinanceTest extends VesselSearchOLD {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		FinancePage selection = new FinancePage(driver);
 		Thread.sleep(2000);
-		System.out.println("Vessel Owner Name: " + getPageText(selection.VesselOwnerName));
+		System.out.println("Vessel Owner Name: " + eWaitText(selection.VesselOwnerName));
 		//softAssert.assertEquals(getPageText(selection.VesselOwnerName), ownerName);
-		System.out.println("Vessel Code: " + getPageText(selection.VesselCode));
-		String vasselcode = getPageText(selection.VesselCode);
+		System.out.println("Vessel Code: " + eWaitText(selection.VesselCode));
+		String vasselcode = eWaitText(selection.VesselCode);
 		String vc[] = vasselcode.split(":");
 
 		softAssert.assertEquals(vc[1].trim(), vasselCode.trim(), vessel + " Vessel Code Not Matched");
 
-		System.out.println("Financial Overview: " + getPageText(selection.FinancialOverview));
+		System.out.println("Financial Overview: " + eWaitText(selection.FinancialOverview));
 		Thread.sleep(2000);
 
 		String myAEmonth = getPageText(selection.FinancialMonth);
-		System.out.println("Financial Month: " + getPageText(selection.FinancialMonth));
+		System.out.println("Financial Month: " + eWaitText(selection.FinancialMonth));
 		//ReadExcelFile.setData(0, row, 3, myAEmonth,black);
 
 		//if (month.equalsIgnoreCase(myAEmonth)) {
@@ -56,26 +56,24 @@ public class FinanceTest extends VesselSearchOLD {
 			softAssert.assertTrue(true, vasselCode + " " + vessel + "Financial Load");
 			//ReadExcelFile.setData(0, row, 5, "Financial Header Load",red);
 		}
-		System.out.println("Total Budget: " + getPageText(selection.TotalBudget));
-		System.out.println("Actual: "+ getPageText(selection.Actual));
-		System.out.println("Budget: "+ getPageText(selection.Budget));
-		System.out.println("Variance: "+ getPageText(selection.Variance));
-		eWait(selection.Variance);
-		if (getPageText(selection.Variance).equals("-")) {
+		System.out.println("Total Budget: " + eWaitText(selection.TotalBudget));
+		System.out.println("Actual: "+ eWaitText(selection.Actual));
+		System.out.println("Budget: "+ eWaitText(selection.Budget));
+		System.out.println("Variance: "+ eWaitText(selection.Variance));
+		if (eWaitText(selection.Variance).equals("-")) {
 			System.out.println(ANSI_RED_BACKGROUND + vessel + " Financial Not Loading" + ANSI_RESET);
 
 		} else {
-			System.out.println("88888888888");
-			System.out.println("Variance Budget: " + getPageText(selection.VarianceBudget));
+			System.out.println("Variance Budget: " + eWaitText(selection.VarianceBudget));
 			System.out.println("color is: "+selection.color.getCssValue("color"));
 		}
 
-		System.out.println("ActualYTD: "+ getPageText(selection.ActualYTD));
-		System.out.println("BudgetYTD: "+ getPageText(selection.BudgetYTD));
-		System.out.println("VarianceYTD: "+ getPageText(selection.VarianceYTD));
-		if (getPageText(selection.VarianceYTD).equals("-")) {
+		System.out.println("ActualYTD: "+ eWaitText(selection.ActualYTD));
+		System.out.println("BudgetYTD: "+ eWaitText(selection.BudgetYTD));
+		System.out.println("VarianceYTD: "+ eWaitText(selection.VarianceYTD));
+		if (eWaitText(selection.VarianceYTD).equals("-")) {
 		} else {
-			System.out.println("VarianceYTD Budget: " + getPageText(selection.VarianceYTDBudget));
+			System.out.println("VarianceYTD Budget: " + eWaitText(selection.VarianceYTDBudget));
 			System.out.println("color YTD is: "+selection.colorYTD.getCssValue("color"));
 		}
 		Thread.sleep(2000);
@@ -96,33 +94,33 @@ public class FinanceTest extends VesselSearchOLD {
 		selection.inculdecheckbox.click();
 		Thread.sleep(2000);
 
-		if (getPageText(selection.TotalBudget).equals("-")) {
+		if (eWaitText(selection.TotalBudget).equals("-")) {
 			softAssert.assertTrue(false, vasselCode + " " + vessel + " Financial Header Not Load");
 			//ReadExcelFile.setData(0, row, 7, "Financial Header Not Loading",red);
 		} else {
 			softAssert.assertTrue(true, vasselCode + " " + vessel + "Financial Load");
 			//ReadExcelFile.setData(0, row, 7, "Financial Header Load",red);
 		}
-		System.out.println("Total Budget: " + getPageText(selection.TotalBudget));
-		System.out.println("Actual: "+ getPageText(selection.Actual));
-		System.out.println("Budget: "+ getPageText(selection.Budget));
-		System.out.println("Variance: "+ getPageText(selection.Variance));
+		System.out.println("Total Budget: " + eWaitText(selection.TotalBudget));
+		System.out.println("Actual: "+ eWaitText(selection.Actual));
+		System.out.println("Budget: "+ eWaitText(selection.Budget));
+		System.out.println("Variance: "+ eWaitText(selection.Variance));
 
-		if (getPageText(selection.Variance).equals("-")) {
+		if (eWaitText(selection.Variance).equals("-")) {
 			System.out.println(ANSI_RED_BACKGROUND + vessel + " Financial Not Loading" + ANSI_RESET);
 
 		} else {
-			System.out.println("Variance Budget: " + getPageText(selection.VarianceBudget));
+			System.out.println("Variance Budget: " + eWaitText(selection.VarianceBudget));
 			System.out.println("color is: "+selection.color.getCssValue("color"));
 		}
 		
 
-		System.out.println("ActualYTD: "+ getPageText(selection.ActualYTD));
-		System.out.println("BudgetYTD: "+ getPageText(selection.BudgetYTD));
-		System.out.println("VarianceYTD: "+ getPageText(selection.VarianceYTD));
-		if (getPageText(selection.VarianceYTD).equals("-")) {
+		System.out.println("ActualYTD: "+ eWaitText(selection.ActualYTD));
+		System.out.println("BudgetYTD: "+ eWaitText(selection.BudgetYTD));
+		System.out.println("VarianceYTD: "+ eWaitText(selection.VarianceYTD));
+		if (eWaitText(selection.VarianceYTD).equals("-")) {
 		} else {
-			System.out.println("VarianceYTD Budget: " + getPageText(selection.VarianceYTDBudget));
+			System.out.println("VarianceYTD Budget: " + eWaitText(selection.VarianceYTDBudget));
 			System.out.println("color YTD is: "+selection.colorYTD.getCssValue("color"));
 		}
 		

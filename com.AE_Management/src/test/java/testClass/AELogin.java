@@ -27,7 +27,7 @@ public class AELogin extends Base {
 	//	Thread.sleep(5000);
 		// driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
 		// System.out.println(driver.getTitle());
-		String text = getPageText(page.SelectVessel);
+		String text = eWaitText(page.SelectVessel);
 		softAssert.assertEquals("Select Vessel", text);
 		System.out.println(ANSI_BACKGROUND+"Login successful"+ANSI_RESET);
 		log.info("Login successful");

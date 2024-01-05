@@ -13,13 +13,13 @@ public class Reports extends VesselSearchOLD {
 		iWait();
 		// ExternalInspections
 		ReportPage selection = new ReportPage(driver);
-		eWait(selection.ExternalInspections);
-		selection.ExternalInspections.click();
+		eWaitClick(selection.ExternalInspections);
+		System.out.println("External Inspections");
 		Thread.sleep(2000);
 		boolean RecordE = driver.findElements(By.xpath("//*[text()='No record to display']")).size() != 0;
 		boolean RecordEMPages= driver.findElements(By.xpath("//*[@title='navigation']")).size() != 0;
 		if (RecordE) {
-			System.out.println(ANSI_RED+"External Inspections: " + getPageText(selection.NoRecords)+ANSI_RESET);
+			System.out.println(ANSI_RED+"External Inspections: " + eWaitText(selection.NoRecords)+ANSI_RESET);
 		} 
 		else if (RecordEMPages) {
 			WebElement wb = driver.findElement(By.xpath("//*[@title='navigation']"));
@@ -45,6 +45,7 @@ public class Reports extends VesselSearchOLD {
 					System.out.println();
 				}
 				driver.findElement(By.xpath("//*[@title='navigation']/li[" + ListSize + "]")).click();
+				Thread.sleep(500);
 			}
 		}
 		else {
@@ -69,13 +70,13 @@ public class Reports extends VesselSearchOLD {
 		Thread.sleep(1000);
 
 		// InternalInspections
-		eWait(selection.InternalInspections);
-		selection.InternalInspections.click();
+		eWaitClick(selection.InternalInspections);
+		System.out.println("Internal Inspections");
 		Thread.sleep(2000);
 		boolean RecordI = driver.findElements(By.xpath("//*[text()='No record to display']")).size() != 0;
 		boolean RecordIMPages= driver.findElements(By.xpath("//*[@title='navigation']")).size() != 0;
 		if (RecordI) {
-			System.out.println(ANSI_RED+"Internal Inspections: " + getPageText(selection.NoRecords)+ANSI_RESET);
+			System.out.println(ANSI_RED+"Internal Inspections: " + eWaitText(selection.NoRecords)+ANSI_RESET);
 		} 
 		else if (RecordIMPages) {
 			WebElement wb = driver.findElement(By.xpath("//*[@title='navigation']"));
@@ -101,6 +102,7 @@ public class Reports extends VesselSearchOLD {
 					System.out.println();
 				}
 				driver.findElement(By.xpath("//*[@title='navigation']/li[" + ListSize + "]")).click();
+				Thread.sleep(500);
 			}
 		}
 		

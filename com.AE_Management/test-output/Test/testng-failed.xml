@@ -8,7 +8,7 @@
     <classes>
       <class name="testClass.VesselSearchOLD">
         <methods>
-          <include name="vesselSearch"/>
+          <include name="vesselSearch" invocation-numbers="0"/>
           <include name="ProgramStart"/>
           <include name="endTest"/>
         </methods>

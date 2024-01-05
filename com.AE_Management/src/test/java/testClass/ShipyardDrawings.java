@@ -12,13 +12,12 @@ public class ShipyardDrawings extends VesselSearchOLD {
 	public static void shipyardDrawings() throws InterruptedException {
 		iWait();
 		ShipyardDrawing selection = new ShipyardDrawing(driver);
-		eWait(selection.ShipyardDrawing);
-		selection.ShipyardDrawing.click();
+		eWaitClick(selection.ShipyardDrawing);
 		Thread.sleep(2000);
 		boolean Record = driver.findElements(By.xpath("//*[text()='No record to display']")).size() != 0;
 		boolean RecordSDPages= driver.findElements(By.xpath("//*[@title='navigation']")).size() != 0;
 		if (Record) {
-			System.out.println(ANSI_RED+"Shipyard Drawing: " + getPageText(selection.NoRecords)+ANSI_RESET);
+			System.out.println(ANSI_RED+"Shipyard Drawing: " + eWaitText(selection.NoRecords)+ANSI_RESET);
 		} 
 		else if (RecordSDPages) {
 			WebElement wb = driver.findElement(By.xpath("//*[@title='navigation']"));
@@ -61,8 +60,7 @@ public class ShipyardDrawings extends VesselSearchOLD {
 				System.out.println();
 			}
 		}
-		eWait(selection.InstructionManuals);
-		selection.InstructionManuals.click();
+		eWaitClick(selection.InstructionManuals);
 		Thread.sleep(1000);
 		boolean RecordIM = driver.findElements(By.xpath("//*[text()='No record to display']")).size() != 0;
 		Thread.sleep(500);
@@ -70,7 +68,7 @@ public class ShipyardDrawings extends VesselSearchOLD {
 		
 	
 		if (RecordIM) {
-			System.out.println(ANSI_RED+"Instruction Manuals: " + getPageText(selection.NoRecords)+ANSI_RESET);
+			System.out.println(ANSI_RED+"Instruction Manuals: " + eWaitText(selection.NoRecords)+ANSI_RESET);
 		}
 
 		else if (RecordIMPages) {
@@ -116,7 +114,7 @@ public class ShipyardDrawings extends VesselSearchOLD {
 			}
 		}
 		Thread.sleep(500);
-		selection.compass.click();
+		//selection.compass.click();
 
 	}
 }

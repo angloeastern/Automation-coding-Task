@@ -124,6 +124,18 @@ public class Base {
     WebDriverWait wait = new WebDriverWait(driver,50);
 	wait.until(ExpectedConditions.elementToBeClickable(element));
     }
+    public static void eWaitClick(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver,50);
+    	wait.until(ExpectedConditions.elementToBeClickable(element)).click();;
+        }
+    public static String eWaitText(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver,50);
+    	return wait.until(ExpectedConditions.elementToBeClickable(element)).getText();
+        }
+    public static void eWaitClear(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver,50);
+    	wait.until(ExpectedConditions.elementToBeClickable(element)).clear();
+        }
     public static void visibilityOfElement(By element) {
         WebDriverWait wait = new WebDriverWait(driver,20);
     	wait.until(ExpectedConditions.visibilityOfElementLocated(element));

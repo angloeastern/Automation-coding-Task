@@ -12,8 +12,7 @@ public class Cartificates extends VesselSearchOLD {
   @Test
   public static void allCertificate() throws InterruptedException {
 	     selection = new CertificatePage(driver);
-	    eWait(driver.findElement(By.xpath("(//div[@data-testid='collapse-content'])[1]/table/tbody/tr[2]/td[2]/span")));
-		driver.findElement(By.xpath("(//div[@data-testid='collapse-content'])[1]/table/tbody/tr[2]/td[2]/span")).click();
+	    eWaitClick(driver.findElement(By.xpath("(//div[@data-testid='collapse-content'])[1]/table/tbody/tr[2]/td[2]/span")));
 		eWait(driver.findElement(By.xpath("//*[@id='view-body']/div[2]/div/div[1]/h3")));
 		Thread.sleep(8000);
 		String fileName=driver.findElement(By.xpath("//*[@id='view-body']/div[2]/div/div[1]/h3")).getText();
