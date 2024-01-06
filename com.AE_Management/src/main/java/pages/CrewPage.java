@@ -45,6 +45,9 @@ public class CrewPage {
 	
 	@FindBy(xpath="//div[@data-testid='crew-list']/table/tbody/tr")
 	public List<WebElement> crewlist;
+
+	@FindBy(xpath="//div[@data-testid='crew-list']/table/tbody/tr[1]/td[1]/div/span[2]")
+	public WebElement crewStatus;
 	
 	@FindBy(xpath = "//*[@data-icon='compass']")
 	public

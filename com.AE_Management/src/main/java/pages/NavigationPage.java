@@ -51,7 +51,15 @@ public class NavigationPage {
 
 	@FindBy(xpath = "//h3[text()='Next Port']/../div")
 	public WebElement NextPort;
-
+	
+	// Main Contects
+	
+	@FindBy(xpath = "//*[@data-icon='user-headset']/..")
+	public WebElement Contects;
+	
+	@FindBy(xpath = "//*[@role='heading']")
+	public WebElement MainContect;
+	
 	// Crew Info
 	@FindBy(xpath = "//h3[text()='Crew Info']")
 	public WebElement CrewInfo;

@@ -14,7 +14,7 @@ import com.aventstack.extentreports.ExtentTest;
 
 import base.Base;
 import testClass.AELogin;
-import testClass.VesselSearchOLD;
+import testClass.VesselSearch;
 import utilities.ReadExcelFile;
 
 public class VesselAction extends Base {
@@ -31,8 +31,12 @@ public class VesselAction extends Base {
 @Test(dataProvider="Vesseldata")
 public void selectVessel(String VesselName,String vesselcode) throws InterruptedException, ParseException, IOException 
 	{
-	//VesselSearchOLD.vesselSearch(vesselcode,VesselName,OwnerName);
-	
+	VesselSearch.vesselSearch(vesselcode,VesselName);
+	VesselSearch.voyageSnapshot();
+	VesselSearch.crewInfo();
+	VesselSearch.financialData(vesselcode, VesselName);
+	VesselSearch.vesselParticulars();;
+	VesselSearch.Certificates();
 	}
 	
 @DataProvider(name="Vesseldata")

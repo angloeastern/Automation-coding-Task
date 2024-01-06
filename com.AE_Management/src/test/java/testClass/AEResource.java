@@ -52,7 +52,7 @@ public class AEResource extends VesselSearchOLD {
 				Thread.sleep(500);
 			}
 		} else {
-			int ListSizeI = selection.LookoutList.findElements(By.tagName("div")).size();
+			int ListSizeI = driver.findElements(By.xpath("//*[@id='view-body']/div/div/div/div[1]/div/div")).size();
 			System.out.println("Total Shipyard Drawing List: " + ListSizeI);
 			for (int i = 1; i <= ListSizeI; i++) {
 				String name = driver
@@ -116,7 +116,7 @@ public class AEResource extends VesselSearchOLD {
 				Thread.sleep(500);
 			}
 		} else {
-			int ListSizeI = selection.LookoutList.findElements(By.tagName("div")).size();
+			int ListSizeI = driver.findElements(By.xpath("//*[@id='view-body']/div/div/div/div[1]/div/div")).size();
 			System.out.println("Total Shipyard Drawing List: " + ListSizeI);
 			for (int i = 1; i <= ListSizeI; i++) {
 				String name = driver
