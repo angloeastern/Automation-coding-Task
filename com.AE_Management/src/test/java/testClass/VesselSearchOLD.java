@@ -42,7 +42,7 @@ public class VesselSearchOLD extends Base {
 	@Test(priority = 0, dataProvider = "Vesseldata")
 	public static void vesselSearch(String vesselCode, String VesselName)
 			throws InterruptedException, ParseException, IOException {
-	try {
+		try {
 			// Vessel Selection
 			selection = new NavigationPage(driver);
 			iWait();
@@ -75,189 +75,183 @@ public class VesselSearchOLD extends Base {
 			log.error("Error in vessel Search" + n.getMessage());
 		}
 
-	if(getProperty("VoyageSnapshot").equalsIgnoreCase("Yes"))
-	{
-		// Voyage Snapshot
-		selection = new NavigationPage(driver);
-		String VoyageSnapshot = eWaitText(selection.VoyageSnapshot);
-		System.out.println(ANSI_Y_BACKGROUND + VoyageSnapshot + ANSI_RESET);
-		// String VoyageSnapshot1 = getPageText(selection.VoyageSnapshot1);
-		eWait(selection.VoyageSnapshot1);
-		System.out.println(ANSI_G + "Voyage Snapshot Load Successfully" + ANSI_RESET);
-		// ReadExcel.setData(0, row,2, "Voyage Snapshot Load Successfully");
-		String port = selection.port.getAttribute("title");
-		System.out.println(port);
+		if (getProperty("VoyageSnapshot").equalsIgnoreCase("Yes")) {
+			// Voyage Snapshot
+			selection = new NavigationPage(driver);
+			String VoyageSnapshot = eWaitText(selection.VoyageSnapshot);
+			System.out.println(ANSI_Y_BACKGROUND + VoyageSnapshot + ANSI_RESET);
+			// String VoyageSnapshot1 = getPageText(selection.VoyageSnapshot1);
+			eWait(selection.VoyageSnapshot1);
+			System.out.println(ANSI_G + "Voyage Snapshot Load Successfully" + ANSI_RESET);
+			// ReadExcel.setData(0, row,2, "Voyage Snapshot Load Successfully");
+			String port = selection.port.getAttribute("title");
+			System.out.println(port);
 
-		if (port.equalsIgnoreCase("In Port")) {
-			String portName = eWaitText(selection.portName);
-			String portOn = eWaitText(selection.portOn);
-			System.out.println("Vessel In Port: " + portName);
-			// ReadExcel.setData(0, row,4, portName);
-			System.out.println("Vessel port on: " + portOn);
-			// ReadExcel.setData(0, row,6, portOn);
-		} else if (port.equalsIgnoreCase("Last Port")) {
-			System.out.println("Last Port: " + eWaitText(selection.LastPort));
-			// ReadExcel.setData(0, row,3, getPageText(selection.LastPort));
-			System.out.println("Vessel port on: " + eWaitText(selection.LastPorton));
-			// ReadExcel.setData(0, row,6, portOn);
-			System.out.println("Next Port: " + eWaitText(selection.NextPort));
-			// ReadExcel.setData(0, row,5, getPageText(selection.NextPort));
-		} else {
-			System.out.println("Voyage Snapshot not Loading");
-			// ReadExcel.setData(0, row,2, "Voyage Snapshot Not Loading");
-		}
-		softAssert.assertTrue(true);
-		System.out.println(getProperty("MainContects"));
-	}
-	
-	else if(getProperty("MainContects").equalsIgnoreCase("Yes"))
-	{
-	
-		// Main Contects
-		selection = new NavigationPage(driver);
-		eWaitClick(selection.Contects);
-		System.out.println(ANSI_Y_BACKGROUND +eWaitText(selection.MainContect) + ANSI_RESET);
-		int count =driver.findElements(By.xpath("//*[@id='map']/div[4]/div/div[2]/div[2]/div")).size();
-		if(count==0)
-		{
-			System.out.println("No Contect deatils");
-		}
-		else {
-			IntStream.rangeClosed(1, count)
-            .forEach(i -> {
-			String contactName=driver.findElement(By.xpath("//*[@id='map']/div[4]/div/div[2]/div[2]/div["+i+"]/div[1]/div/div[1]")).getText();
-			String contactDesignation=driver.findElement(By.xpath("//*[@id='map']/div[4]/div/div[2]/div[2]/div["+i+"]/div[1]/div/div[2]")).getText();
-			System.out.print(ANSI_Y + "contact Name: " + ANSI_RESET + contactName);
-			System.out.print(ANSI_Y + "  contact Designation: " + ANSI_RESET + contactDesignation);
-			System.out.println();
-		});
-		}
-	}
-	else if(getProperty("CrewInfo").equalsIgnoreCase("Yes"))
-	{
-	// Crew Info
-		selection = new NavigationPage(driver);
-		eWait(selection.CrewInfo);
-		WebElement element = selection.CrewInfo;
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
-		Thread.sleep(500);
-		System.out.println(ANSI_Y_BACKGROUND + getPageText(selection.CrewInfo) + ANSI_RESET);
-		String CrewUpdateOn = eWaitText(selection.CrewUpdateOn);
+			if (port.equalsIgnoreCase("In Port")) {
+				String portName = eWaitText(selection.portName);
+				String portOn = eWaitText(selection.portOn);
+				System.out.println("Vessel In Port: " + portName);
+				// ReadExcel.setData(0, row,4, portName);
+				System.out.println("Vessel port on: " + portOn);
+				// ReadExcel.setData(0, row,6, portOn);
+			} else if (port.equalsIgnoreCase("Last Port")) {
+				System.out.println("Last Port: " + eWaitText(selection.LastPort));
+				// ReadExcel.setData(0, row,3, getPageText(selection.LastPort));
+				System.out.println("Vessel port on: " + eWaitText(selection.LastPorton));
+				// ReadExcel.setData(0, row,6, portOn);
+				System.out.println("Next Port: " + eWaitText(selection.NextPort));
+				// ReadExcel.setData(0, row,5, getPageText(selection.NextPort));
+			} else {
+				System.out.println("Voyage Snapshot not Loading");
+				// ReadExcel.setData(0, row,2, "Voyage Snapshot Not Loading");
+			}
+			softAssert.assertTrue(true);
+			System.out.println(getProperty("MainContects"));
 
-		if (CrewUpdateOn.isBlank()) {
-			System.out.println(ANSI_RED_BACKGROUND + "Crew Info Not Loading" + ANSI_RESET);
-		} else {
-			System.out.println(ANSI_G + "Crew Info Load Successfully" + ANSI_RESET);
 		}
-		softAssert.assertNotNull(CrewUpdateOn);
-		// h3[@title='Total Crew Onboard']
-		System.out.println("Crew update on: " + CrewUpdateOn);
-		System.out.println("Total Crew Onboard: " + getPageText(selection.TotalCrewOnboard));
-		System.out.println("Master Name:  " + getPageText(selection.ChiefEng));
-		System.out.println("ChiefEng Name:  " + getPageText(selection.Master));
+		if (getProperty("MainContects").equalsIgnoreCase("Yes")) {
 
-		eWaitClick(selection.Crew);
-		Thread.sleep(2000);
-		CrewTest.crewRecords();
-		softAssert.assertTrue(true);
-	}
-		else if(getProperty("Financial").equalsIgnoreCase("Yes"))
-		{
-		// Financial
-		selection = new NavigationPage(driver);
-		Thread.sleep(2000);
-		// String Financial =
-		// getPageText(By.xpath("//h3[text()='Financial']"));//h3[text()='Financial']/../div
-		WebElement element2 = selection.Financial;
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element2);
-		System.out.println(ANSI_Y_BACKGROUND + eWaitText(selection.Financial) + ANSI_RESET);
-		System.out.println("Currency " + eWaitText(selection.Currency));
-		System.out.println("Daily Running Cost: " + eWaitText(selection.DailyRunningCost));
-		if (getPageText(selection.DailyRunningCost).equals("-")) {
-			System.out.println(ANSI_RED_BACKGROUND + "Financial Not Loading" + ANSI_RESET);
-		} else {
-			System.out.println(ANSI_G + "Financial Load Successfully" + ANSI_RESET);
-			System.out.println("Update on " + eWaitText(selection.FinancialUpdateOn));
+			// Main Contects
+			selection = new NavigationPage(driver);
+			eWaitClick(selection.Contects);
+			System.out.println(ANSI_Y_BACKGROUND + eWaitText(selection.MainContect) + ANSI_RESET);
+			int count = driver.findElements(By.xpath("//*[@id='map']/div[4]/div/div[2]/div[2]/div")).size();
+			if (count == 0) {
+				System.out.println("No Contect deatils");
+			} else {
+				IntStream.rangeClosed(1, count).forEach(i -> {
+					String contactName = driver
+							.findElement(By
+									.xpath("//*[@id='map']/div[4]/div/div[2]/div[2]/div[" + i + "]/div[1]/div/div[1]"))
+							.getText();
+					String contactDesignation = driver
+							.findElement(By
+									.xpath("//*[@id='map']/div[4]/div/div[2]/div[2]/div[" + i + "]/div[1]/div/div[2]"))
+							.getText();
+					System.out.print(ANSI_Y + "contact Name: " + ANSI_RESET + contactName);
+					System.out.print(ANSI_Y + "  contact Designation: " + ANSI_RESET + contactDesignation);
+					System.out.println();
+				});
+			}
+		}
+		if (getProperty("CrewInfo").equalsIgnoreCase("Yes")) {
+			// Crew Info
+			selection = new NavigationPage(driver);
+			eWait(selection.CrewInfo);
+			WebElement element = selection.CrewInfo;
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
+			Thread.sleep(500);
+			System.out.println(ANSI_Y_BACKGROUND + getPageText(selection.CrewInfo) + ANSI_RESET);
+			String CrewUpdateOn = eWaitText(selection.CrewUpdateOn);
+
+			if (CrewUpdateOn.isBlank()) {
+				System.out.println(ANSI_RED_BACKGROUND + "Crew Info Not Loading" + ANSI_RESET);
+			} else {
+				System.out.println(ANSI_G + "Crew Info Load Successfully" + ANSI_RESET);
+			}
+			softAssert.assertNotNull(CrewUpdateOn);
+			// h3[@title='Total Crew Onboard']
+			System.out.println("Crew update on: " + CrewUpdateOn);
+			System.out.println("Total Crew Onboard: " + getPageText(selection.TotalCrewOnboard));
+			System.out.println("Master Name:  " + getPageText(selection.ChiefEng));
+			System.out.println("ChiefEng Name:  " + getPageText(selection.Master));
+
+			eWaitClick(selection.Crew);
+			Thread.sleep(2000);
+			CrewTest.crewRecords();
+			softAssert.assertTrue(true);
+		}
+		if (getProperty("Financial").equalsIgnoreCase("Yes")) {
+			// Financial
+			selection = new NavigationPage(driver);
+			Thread.sleep(2000);
+			// String Financial =
+			// getPageText(By.xpath("//h3[text()='Financial']"));//h3[text()='Financial']/../div
+			WebElement element2 = selection.Financial;
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element2);
+			System.out.println(ANSI_Y_BACKGROUND + eWaitText(selection.Financial) + ANSI_RESET);
+			System.out.println("Currency " + eWaitText(selection.Currency));
 			System.out.println("Daily Running Cost: " + eWaitText(selection.DailyRunningCost));
-			System.out.println("Daily Budget: " + eWaitText(selection.DailyBudget));
-			System.out.println("color is:  " + selection.color.getCssValue("color"));
+			if (getPageText(selection.DailyRunningCost).equals("-")) {
+				System.out.println(ANSI_RED_BACKGROUND + "Financial Not Loading" + ANSI_RESET);
+			} else {
+				System.out.println(ANSI_G + "Financial Load Successfully" + ANSI_RESET);
+				System.out.println("Update on " + eWaitText(selection.FinancialUpdateOn));
+				System.out.println("Daily Running Cost: " + eWaitText(selection.DailyRunningCost));
+				System.out.println("Daily Budget: " + eWaitText(selection.DailyBudget));
+				System.out.println("color is:  " + selection.color.getCssValue("color"));
 
-			String cssColorString = selection.color.getCssValue("color");
-			Color color = Color.fromString(cssColorString);
-			System.out.println(color.asHex());
-			System.out.println("Total Variance: " + eWaitText(selection.TotalVariance));
-			System.out.println("Total Budget Variance: " + eWaitText(selection.TotalBudget));
+				String cssColorString = selection.color.getCssValue("color");
+				Color color = Color.fromString(cssColorString);
+				System.out.println(color.asHex());
+				System.out.println("Total Variance: " + eWaitText(selection.TotalVariance));
+				System.out.println("Total Budget Variance: " + eWaitText(selection.TotalBudget));
+			}
+			// String FinancialCrcy =
+			// getPageText(By.xpath("//h3[text()='Financial']/../div"));
+			// System.out.println("Currency " + getPageText(selection.Currency));
+			eWaitClick(selection.dollarsign);
+			Thread.sleep(2000);
+			FinanceTest.FinanceRecords(vesselCode, VesselName);
+			softAssert.assertTrue(true);
 		}
-		// String FinancialCrcy =
-		// getPageText(By.xpath("//h3[text()='Financial']/../div"));
-		// System.out.println("Currency " + getPageText(selection.Currency));
-		eWaitClick(selection.dollarsign);
-		Thread.sleep(2000);
-		FinanceTest.FinanceRecords(vesselCode, VesselName);
-		softAssert.assertTrue(true);
+		if (getProperty("VesselParticulars").equalsIgnoreCase("Yes")) {
+			// Vessel Particulars
+			selection = new NavigationPage(driver);
+			Thread.sleep(2000);
+			WebElement element1 = selection.VesselParticulars;
+			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element1);
+			System.out.println(ANSI_Y_BACKGROUND + eWaitText(selection.VesselParticulars) + ANSI_RESET);
+			System.out.println("Flag:  " + eWaitText(selection.Flag));
+			System.out.println("Port of Registry:  " + eWaitText(selection.PortofRegistry));
+			System.out.println("Call Sign: " + eWaitText(selection.CallSign));
+			System.out.println("Official Number:  " + eWaitText(selection.OfficialNumber));
+			System.out.println("IMO Number:  " + eWaitText(selection.IMONumber));
+			System.out.println("Class:  " + eWaitText(selection.Class));
+			System.out.println("VSAT Tel:  " + eWaitText(selection.VSATTel));
+			softAssert.assertTrue(true);
+		}
+		if (getProperty("Certificates").equalsIgnoreCase("Yes")) {
+			// Certificates
+			selection = new NavigationPage(driver);
+			System.out.println(ANSI_Y_BACKGROUND + "Certificates" + ANSI_RESET);
+			Thread.sleep(500);
+			eWaitClick(selection.certificate);
+			Thread.sleep(500);
+			eWaitClick(selection.AllCertificates);
+			Thread.sleep(2000);
+			Cartificates.allCertificate();
+			softAssert.assertTrue(true);
+		}
+		if (getProperty("Reports").equalsIgnoreCase("Yes")) {
+			// Reports
+			selection = new NavigationPage(driver);
+			System.out.println(ANSI_Y_BACKGROUND + "Reports" + ANSI_RESET);
+			eWaitClick(selection.Reports);
+			Thread.sleep(2000);
+			Reports.reports();
+			softAssert.assertTrue(true);
+		}
+		if (getProperty("VesselDrawings").equalsIgnoreCase("Yes")) {
+			// Vessel Drawings / Shipyard Drawings
+			selection = new NavigationPage(driver);
+			System.out.println(ANSI_Y_BACKGROUND + "Vessel Drawings / Shipyard Drawings" + ANSI_RESET);
+			eWaitClick(selection.VesselDrawings);
+			Thread.sleep(2000);
+			ShipyardDrawings.shipyardDrawings();
+			softAssert.assertTrue(true);
+		}
+		if (getProperty("AEResources").equalsIgnoreCase("Yes")) {
+			// AE Resources
+			selection = new NavigationPage(driver);
+			System.out.println(ANSI_Y_BACKGROUND + "AE Resources" + ANSI_RESET);
+			eWaitClick(selection.compassdrafting);
+			Thread.sleep(2000);
+			AEResource.aeResources();
+			softAssert.assertTrue(true);
+		}
 	}
-	else if(getProperty("VesselParticulars").equalsIgnoreCase("Yes"))
-	{
-		// Vessel Particulars
-		selection = new NavigationPage(driver);
-		Thread.sleep(2000);
-		WebElement element1 = selection.VesselParticulars;
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element1);
-		System.out.println(ANSI_Y_BACKGROUND + eWaitText(selection.VesselParticulars) + ANSI_RESET);
-		System.out.println("Flag:  " + eWaitText(selection.Flag));
-		System.out.println("Port of Registry:  " + eWaitText(selection.PortofRegistry));
-		System.out.println("Call Sign: " + eWaitText(selection.CallSign));
-		System.out.println("Official Number:  " + eWaitText(selection.OfficialNumber));
-		System.out.println("IMO Number:  " + eWaitText(selection.IMONumber));
-		System.out.println("Class:  " + eWaitText(selection.Class));
-		System.out.println("VSAT Tel:  " + eWaitText(selection.VSATTel));
-		softAssert.assertTrue(true);
-	}
-	else if(getProperty("Certificates").equalsIgnoreCase("Yes"))
-	{
-		// Certificates
-		selection = new NavigationPage(driver);
-		System.out.println(ANSI_Y_BACKGROUND + "Certificates" + ANSI_RESET);
-		Thread.sleep(500);
-		eWaitClick(selection.certificate);
-		Thread.sleep(500);
-		eWaitClick(selection.AllCertificates);
-		Thread.sleep(2000);
-		Cartificates.allCertificate();
-		softAssert.assertTrue(true);
-	}
-	else if(getProperty("Reports").equalsIgnoreCase("Yes"))
-	{
-		// Reports
-		selection = new NavigationPage(driver);
-		System.out.println(ANSI_Y_BACKGROUND + "Reports" + ANSI_RESET);
-		eWaitClick(selection.Reports);
-		Thread.sleep(2000);
-		Reports.reports();
-		softAssert.assertTrue(true);
-	}
-	else if(getProperty("VesselDrawings").equalsIgnoreCase("Yes"))
-	{
-		// Vessel Drawings / Shipyard Drawings
-		selection = new NavigationPage(driver);
-		System.out.println(ANSI_Y_BACKGROUND + "Vessel Drawings / Shipyard Drawings" + ANSI_RESET);
-		eWaitClick(selection.VesselDrawings);
-		Thread.sleep(2000);
-		ShipyardDrawings.shipyardDrawings();
-		softAssert.assertTrue(true);
-	}
-	else if(getProperty("AEResources").equalsIgnoreCase("Yes"))
-	{
-		// AE Resources
-		selection = new NavigationPage(driver);
-		System.out.println(ANSI_Y_BACKGROUND + "AE Resources" + ANSI_RESET);
-		eWaitClick(selection.compassdrafting);
-		Thread.sleep(2000);
-		AEResource.aeResources();
-		softAssert.assertTrue(true);
-		
-	}
-	}
+
 	// DataProvider
 	@DataProvider(name = "Vesseldata")
 	public Object[][] testDataExample() throws IOException {

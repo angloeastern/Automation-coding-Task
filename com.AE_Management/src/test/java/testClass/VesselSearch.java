@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.IntStream;
+
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
@@ -18,6 +19,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
+
 import base.Base;
 import pages.NavigationPage;
 import utilities.ReadExcelFile;
@@ -34,13 +36,14 @@ public class VesselSearch extends Base {
 	static Logger log = LogManager.getLogger(VesselSearch.class.getName());
 	public static SoftAssert softAssert = new SoftAssert();
 	static NavigationPage selection ;
-	
+	public Object[] data;
+
 	@BeforeClass
 	public void ProgramStart() throws InterruptedException, IOException {
 		AELogin.Login();
 	}
 
-	@Test(priority = 0, dataProvider = "Vesseldata")
+	@Test(priority = 0,dataProvider = "Vesseldata")
 	public static void vesselSearch(String vesselCode, String VesselName) throws InterruptedException {
 
 try {
