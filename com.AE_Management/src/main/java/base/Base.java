@@ -9,6 +9,7 @@ import java.util.Properties;
 import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.log4j.PropertyConfigurator;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -30,9 +31,15 @@ public class Base {
 	public static void Initialize(String browser) throws IOException
 	{
 		
-	    props = new Properties();
+		
+		props = new Properties();
 		FileReader reader = new FileReader(System.getProperty("user.dir") + "/src/main/java/config/config.properties");
 		props.load(reader);
+
+		FileReader reader1 = new FileReader(System.getProperty("user.dir") + "/src/main/java/config/access.properties");
+		props.load(reader1);
+		
+		
 				
 		if (browser.equalsIgnoreCase("chrome"))
 		{
@@ -62,6 +69,15 @@ public class Base {
 	    FileUtils.copyFile(source, finalDestination);
 	    return destination;
 	}
+	public static String getScreenShotAs(String string,WebElement element) throws IOException {
+		  //  String dateName = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+		  // TakesScreenshot ts = (TakesScreenshot)driver;
+		    File source = element.getScreenshotAs(OutputType.FILE);
+		    String destination = string;
+		    File finalDestination = new File(destination);
+		    FileUtils.copyFile(source, finalDestination);
+		    return destination;
+		}
 	
 	public static String getDateTimeStamp() {
 		Date oDate;

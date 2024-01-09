@@ -58,24 +58,67 @@ public class CrewTest extends VesselSearchOLD {
 	    String Rank=driver.findElement(By.xpath("//div[@data-testid='crew-list']/table/tbody/tr[1]/td[1]/div/span[2]")).getText();
     	String StaffId=driver.findElement(By.xpath("//div[@data-testid='crew-list']/table/tbody/tr[1]/td[2]")).getText();
     	String fName=driver.findElement(By.xpath("//div[@data-testid='crew-list']/table/tbody/tr[1]/td[3]")).getText();
-    	String lName=driver.findElement(By.xpath("//div[@data-testid='crew-list']/table/tbody/tr[1]/td[3]")).getText();
-    	String Name=fName+lName;
-    	driver.findElement(By.xpath("//div[@data-testid='crew-list']/table/tbody/tr[1]/td[1]/div/span[2]")).click();
-	 
-    	String pRank=driver.findElement(By.xpath("//div[@data-testid='profile']/div/div[1]")).getText();
-    	String pStaff=driver.findElement(By.xpath("//div[@data-testid='profile']/div/div[3]")).getText();
-    	String pName=driver.findElement(By.xpath("//div[@data-testid='profile']/div/div[2]")).getText();
-        System.out.println("Rank: "+pRank);
-        System.out.println("Staff Id: "+pStaff);
-        System.out.println("Name: "+pName);
-	    softAssert.assertEquals(Rank,pRank);
-	    softAssert.assertEquals(StaffId,pStaff);
-	    softAssert.assertEquals(pName,Name);
-	    		
-	    
+    	String lName=driver.findElement(By.xpath("//div[@data-testid='crew-list']/table/tbody/tr[1]/td[4]")).getText();
+    	String Name=fName+" "+lName;
     	
-    	Thread.sleep(1000);
-	    selection.compass.click();
+    	System.out.println(Rank+""+StaffId+""+Name);
+    	
+    	driver.findElement(By.xpath("//div[@data-testid='crew-list']/table/tbody/tr[1]/td[1]/div/span[2]")).click();
+
+    	System.out.println("RANK: "+eWaitText(selection.pRank));
+    	System.out.println("NAME: "+eWaitText(selection.pName));
+    	System.out.println(eWaitText(selection.pStaff));
+    	String pstaff=eWaitText(selection.pStaff);
+    	String [] stf=pstaff.split(":");
+    	
+	    softAssert.assertEquals(Rank,eWaitText(selection.pRank));
+	    softAssert.assertEquals(StaffId,stf[1]);
+	    softAssert.assertEquals(Name,eWaitText(selection.pName));
+
+	  // eWaitClick(selection.CrewBio);
+	   System.out.println("Crew Bio : Personal Details");
+	   System.out.println("NATIONALITY: "+getPageText(selection.Nationality));
+	   System.out.println("AGE: "+getPageText(selection.Age));
+	   
+	   System.out.println("Crew Bio: Contract Information");
+	   System.out.println("LAST UPDATED ON: "+getPageText(selection.ContectUPDATE));
+	   
+	   System.out.println("Documents : License");
+	   eWaitClick(selection.Documents);
+	   Thread.sleep(2000);
+	   eWaitText(selection.License);
+	   eWaitClick(selection.License);
+	   Thread.sleep(8000);
+	   getPageText(selection.Text);
+	   softAssert.assertEquals(eWaitText(selection.License),getPageText(selection.Text));
+	   Thread.sleep(2000);
+	   eWaitClick(selection.download);
+	   Thread.sleep(3000);
+	   downlaodFileChecker(getPageText(selection.Text));	
+	   eWaitClick(selection.xmark);
+	   Thread.sleep(3000);
+	   
+	   System.out.println("Documents : Certificates");
+	   Thread.sleep(2000);
+	   eWaitText(selection.Certificates);
+	   eWaitClick(selection.Certificates);
+	   Thread.sleep(8000);
+	   getPageText(selection.Text);
+	   softAssert.assertEquals(eWaitText(selection.Certificates), getPageText(selection.Text));
+	   Thread.sleep(2000);
+	   eWaitClick(selection.download);
+	   Thread.sleep(3000);
+	   downlaodFileChecker(eWaitText(selection.Text));	
+	   eWaitClick(selection.xmark);
+	   
+	  
+	   eWaitClick(selection.PastExperience);
+	   System.out.println("PastExperience : Crew Experience Matrix");
+	   
+	   
+	   
+	   Thread.sleep(1000);
+	   selection.compass.click();
 	   softAssert.assertEquals(crewSize, crewListSize);
 	}
 

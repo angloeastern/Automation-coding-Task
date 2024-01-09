@@ -126,6 +126,5 @@ public class Reports extends VesselSearchOLD {
 				System.out.println();
 			}
 		}
-		// selection.compass.click();
 	}
 }

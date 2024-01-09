@@ -42,7 +42,7 @@ public class VesselSearchOLD extends Base {
 	@Test(priority = 0, dataProvider = "Vesseldata")
 	public static void vesselSearch(String vesselCode, String VesselName)
 			throws InterruptedException, ParseException, IOException {
-		try {
+	try {
 			// Vessel Selection
 			selection = new NavigationPage(driver);
 			iWait();
@@ -75,6 +75,8 @@ public class VesselSearchOLD extends Base {
 			log.error("Error in vessel Search" + n.getMessage());
 		}
 
+	if(getProperty("VoyageSnapshot").equalsIgnoreCase("Yes"))
+	{
 		// Voyage Snapshot
 		selection = new NavigationPage(driver);
 		String VoyageSnapshot = eWaitText(selection.VoyageSnapshot);
@@ -105,7 +107,12 @@ public class VesselSearchOLD extends Base {
 			// ReadExcel.setData(0, row,2, "Voyage Snapshot Not Loading");
 		}
 		softAssert.assertTrue(true);
-
+		System.out.println(getProperty("MainContects"));
+	}
+	
+	else if(getProperty("MainContects").equalsIgnoreCase("Yes"))
+	{
+	
 		// Main Contects
 		selection = new NavigationPage(driver);
 		eWaitClick(selection.Contects);
@@ -125,6 +132,9 @@ public class VesselSearchOLD extends Base {
 			System.out.println();
 		});
 		}
+	}
+	else if(getProperty("CrewInfo").equalsIgnoreCase("Yes"))
+	{
 	// Crew Info
 		selection = new NavigationPage(driver);
 		eWait(selection.CrewInfo);
@@ -150,7 +160,9 @@ public class VesselSearchOLD extends Base {
 		Thread.sleep(2000);
 		CrewTest.crewRecords();
 		softAssert.assertTrue(true);
-
+	}
+		else if(getProperty("Financial").equalsIgnoreCase("Yes"))
+		{
 		// Financial
 		selection = new NavigationPage(driver);
 		Thread.sleep(2000);
@@ -183,7 +195,9 @@ public class VesselSearchOLD extends Base {
 		Thread.sleep(2000);
 		FinanceTest.FinanceRecords(vesselCode, VesselName);
 		softAssert.assertTrue(true);
-
+	}
+	else if(getProperty("VesselParticulars").equalsIgnoreCase("Yes"))
+	{
 		// Vessel Particulars
 		selection = new NavigationPage(driver);
 		Thread.sleep(2000);
@@ -198,16 +212,22 @@ public class VesselSearchOLD extends Base {
 		System.out.println("Class:  " + eWaitText(selection.Class));
 		System.out.println("VSAT Tel:  " + eWaitText(selection.VSATTel));
 		softAssert.assertTrue(true);
-
+	}
+	else if(getProperty("Certificates").equalsIgnoreCase("Yes"))
+	{
 		// Certificates
 		selection = new NavigationPage(driver);
 		System.out.println(ANSI_Y_BACKGROUND + "Certificates" + ANSI_RESET);
+		Thread.sleep(500);
 		eWaitClick(selection.certificate);
+		Thread.sleep(500);
 		eWaitClick(selection.AllCertificates);
 		Thread.sleep(2000);
 		Cartificates.allCertificate();
 		softAssert.assertTrue(true);
-
+	}
+	else if(getProperty("Reports").equalsIgnoreCase("Yes"))
+	{
 		// Reports
 		selection = new NavigationPage(driver);
 		System.out.println(ANSI_Y_BACKGROUND + "Reports" + ANSI_RESET);
@@ -215,7 +235,9 @@ public class VesselSearchOLD extends Base {
 		Thread.sleep(2000);
 		Reports.reports();
 		softAssert.assertTrue(true);
-
+	}
+	else if(getProperty("VesselDrawings").equalsIgnoreCase("Yes"))
+	{
 		// Vessel Drawings / Shipyard Drawings
 		selection = new NavigationPage(driver);
 		System.out.println(ANSI_Y_BACKGROUND + "Vessel Drawings / Shipyard Drawings" + ANSI_RESET);
@@ -223,7 +245,9 @@ public class VesselSearchOLD extends Base {
 		Thread.sleep(2000);
 		ShipyardDrawings.shipyardDrawings();
 		softAssert.assertTrue(true);
-
+	}
+	else if(getProperty("AEResources").equalsIgnoreCase("Yes"))
+	{
 		// AE Resources
 		selection = new NavigationPage(driver);
 		System.out.println(ANSI_Y_BACKGROUND + "AE Resources" + ANSI_RESET);
@@ -231,8 +255,9 @@ public class VesselSearchOLD extends Base {
 		Thread.sleep(2000);
 		AEResource.aeResources();
 		softAssert.assertTrue(true);
+		
 	}
-
+	}
 	// DataProvider
 	@DataProvider(name = "Vesseldata")
 	public Object[][] testDataExample() throws IOException {

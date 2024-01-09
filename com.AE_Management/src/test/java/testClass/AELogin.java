@@ -13,9 +13,10 @@ public class AELogin extends Base {
 	public static final String ANSI_RESET = "\u001B[0m"; 
     public static final String ANSI_BACKGROUND = "\u001B[42m";
     static Logger log = LogManager.getLogger(AELogin.class.getName());
+    
 @Test
 	public static void Login() throws InterruptedException, IOException {
-	 PropertyConfigurator.configure("D:\\WorkInno\\Poonam\\Tasks\\AE Automation\\AE_Management\\src\\main\\java\\config\\log4j.properties");
+	PropertyConfigurator.configure("D:\\WorkInno\\Poonam\\Tasks\\AE Automation\\AE_Management\\src\\main\\java\\config\\log4j.properties");
 		Initialize("chrome");
 		driver.get(getProperty("URL"));
 		iWait();

@@ -49,11 +49,74 @@ public class CrewPage {
 	@FindBy(xpath="//div[@data-testid='crew-list']/table/tbody/tr[1]/td[1]/div/span[2]")
 	public WebElement crewStatus;
 	
+	@FindBy(xpath="//div[@data-testid='profile']/div/div[1]")
+	public WebElement pRank;
+	
+	@FindBy(xpath="//div[@data-testid='profile']/div/div[2]")
+	public WebElement pName;
+	
+	@FindBy(xpath="//div[@data-testid='profile']/div/div[3]")
+	public WebElement pStaff;
+	
 	@FindBy(xpath = "//*[@data-icon='compass']")
 	public
 	WebElement compass;
 	
+	
+	   
+		 
+		 
+		   
+		 
+		   
+	
+		
+	
 	//*[@data-icon='compass']
+	@FindBy(xpath = "//*[text()='Crew Bio']")
+	public
+	WebElement CrewBio;
+	
+	@FindBy(xpath = "//*[@data-testid='bio-tab']/div[1]/div[1]/div[2]")
+	public
+	WebElement Nationality;
+	
+	@FindBy(xpath = "//*[@data-testid='bio-tab']/div[1]/div[2]/div[2]")
+	public
+	WebElement Age;
+	
+	@FindBy(xpath = "//*[@data-testid='bio-tab']/div[2]/div[1]/div")
+	public
+	WebElement ContectUPDATE;
+	
+	@FindBy(xpath = "//li[@aria-label='Documents']/div[1]")
+	public
+	WebElement Documents;
+	//*[@id="view-body"]/div[5]/div[2]/div/div/div/div[1]/div/div[1]/div[2]/div[1]
+	@FindBy(xpath = "//*[@data-testid='doc-tab']/div[1]/div[2]/div[1]")
+	public
+	WebElement License;
+	
+	@FindBy(xpath = "//*[@id='view-body']/div[6]/div/div[1]/h3")
+	public
+	WebElement Text;
+	
+	@FindBy(xpath = "//*[@data-icon='download']")
+	public
+	WebElement download;
+	
+	@FindBy(xpath = "(//*[@data-icon='xmark'])[2]")
+	public
+	WebElement xmark;
+			
+			
+	@FindBy(xpath = "//*[@data-testid='doc-tab']/div[2]/div[2]/div[1]")
+	public
+	WebElement Certificates;
+	
+	@FindBy(xpath = " //li[@aria-label='Past Experience']/div[1]")
+	public
+	WebElement PastExperience;
 	
 	public CrewPage(WebDriver driver) {
 		this.driver = driver;

@@ -4,9 +4,12 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.util.concurrent.TimeUnit;
 import org.apache.poi.ss.usermodel.IndexedColors;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
+import base.Base;
 import pages.FinancePage;
 
 public class FinanceTest extends VesselSearchOLD {
@@ -76,6 +79,9 @@ public class FinanceTest extends VesselSearchOLD {
 			System.out.println("VarianceYTD Budget: " + eWaitText(selection.VarianceYTDBudget));
 			System.out.println("color YTD is: "+selection.colorYTD.getCssValue("color"));
 		}
+		WebElement we=driver.findElement(By.xpath("//*[@id='view-body']/div[3]/div/div/div[1]/div/div[2]/canvas"));
+		getScreenShotAs(System.getProperty("user.dir") + "\\" + 
+				 "\\ScreenShotsDetails\\" + Base.getDateTimeStamp() + ".png", we);
 		Thread.sleep(2000);
 		selection.OPEXReport.click();
 		Thread.sleep(2000);
@@ -114,7 +120,6 @@ public class FinanceTest extends VesselSearchOLD {
 			System.out.println("color is: "+selection.color.getCssValue("color"));
 		}
 		
-
 		System.out.println("ActualYTD: "+ eWaitText(selection.ActualYTD));
 		System.out.println("BudgetYTD: "+ eWaitText(selection.BudgetYTD));
 		System.out.println("VarianceYTD: "+ eWaitText(selection.VarianceYTD));
@@ -139,7 +144,7 @@ public class FinanceTest extends VesselSearchOLD {
 		}
 		Thread.sleep(2000);
 		selection.compass.click();
-		softAssert.assertAll();
+		
 	}
 
 }

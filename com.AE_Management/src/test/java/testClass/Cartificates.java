@@ -54,9 +54,4 @@ public class Cartificates extends VesselSearchOLD {
 		selection.compass.click();
 		softAssert.assertTrue(true);
   }
-  @AfterMethod
-  public void click() {
-		selection.compass.click();
-		softAssert.assertTrue(true);
-  }
 }
