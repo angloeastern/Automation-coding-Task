@@ -31,6 +31,22 @@ public class FinancePage {
 	public
 	WebElement OPEXReport;
 	
+	@FindBy(xpath = "//*[@aria-label='Other Reports (Vessels)']")
+	public
+	WebElement OtherReportsVessels;
+	
+	@FindBy(xpath = "//*[@aria-label='Other Reports (Fleet)']")
+	public
+	WebElement OtherReportsFleet;
+	
+	@FindBy(xpath = "//*[@id='view-body']/div[3]/div/div/div/div/div")
+	public
+	WebElement noRecords;
+
+	@FindBy(xpath = "//*[@id='view-body']/div[3]/div/div/div/table/tbody")
+	public
+	WebElement table;
+	
 	@FindBy(xpath = "//*[@id='view-body']/div[3]/div/div/div/div")
 	public
 	WebElement OperatingExpenses;
@@ -91,6 +107,18 @@ public class FinancePage {
 	@FindBy(xpath = "//input[@type='checkbox']/../div")
 	public
 	WebElement inculdecheckbox;
+	
+	@FindBy(xpath = "//*[@id='view-body']/div[3]/div/div/div[1]/div/div[2]/canvas")
+	public
+	WebElement BUDGETACTUALMONTH;
+	
+	@FindBy(xpath = "//*[@id='view-body']/div[3]/div/div/div[2]/div/div[2]/canvas")
+	public
+	WebElement AVERAGEDAILY;
+	
+	@FindBy(xpath = "//*[@id='view-body']/div[3]/div/div/div[3]/div/div[2]/canvas")
+	public
+	WebElement BUDGETACTUALYEAR;
 	
 	
 	@FindBy(xpath = "//*[@data-icon='compass']")

@@ -17,6 +17,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 import base.Base;
+import base.ConsoleColors;
 import pages.NavigationPage;
 import utilities.ReadExcelFile;
 
@@ -65,7 +66,7 @@ public class VesselSearchOLD extends Base {
 				eWaitClick(selection.vesseldropdown);
 				Assert.assertTrue(false, "vessel not founded in list");
 			}
-			System.out.println(ANSI_G + "Vessel Selection successful" + ANSI_RESET);
+			System.out.println(ConsoleColors.GREEN_BOLD+ "Vessel Selection successful" + ANSI_RESET);
 			log.info("Vessel Selection successfully");
 		} catch (NoSuchElementException n) {
 			// TODO: handle exception
@@ -114,7 +115,7 @@ public class VesselSearchOLD extends Base {
 			// Main Contects
 			selection = new NavigationPage(driver);
 			eWaitClick(selection.Contects);
-			System.out.println(ANSI_Y_BACKGROUND + eWaitText(selection.MainContect) + ANSI_RESET);
+			System.out.println(ConsoleColors.YELLOW_BOLD + eWaitText(selection.MainContect) + ANSI_RESET);
 			int count = driver.findElements(By.xpath("//*[@id='map']/div[4]/div/div[2]/div[2]/div")).size();
 			if (count == 0) {
 				System.out.println("No Contect deatils");

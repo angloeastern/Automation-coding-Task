@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
+import base.ConsoleColors;
 import pages.CertificatePage;
 
 public class Cartificates extends VesselSearchOLD {
@@ -11,6 +12,10 @@ public class Cartificates extends VesselSearchOLD {
   @Test
   public static void allCertificate() throws InterruptedException {
 	     selection = new CertificatePage(driver);
+	 
+	     int CertList= selection.CertificatesList.size();
+	     System.out.println(ConsoleColors.YELLOW_BOLD+"All Certificates :"+CertList+ANSI_RESET);
+
 	    eWaitClick(driver.findElement(By.xpath("(//div[@data-testid='collapse-content'])[1]/table/tbody/tr[2]/td[2]/span")));
 		eWait(driver.findElement(By.xpath("//*[@id='view-body']/div[2]/div/div[1]/h3")));
 		Thread.sleep(8000);

@@ -21,6 +21,10 @@ public class ReportPage {
 	public
 	WebElement InternalInspections;
 	
+	@FindBy(xpath = "//li[@aria-label='Dry-Dock']")
+	public
+	WebElement DryDock;
+	
 	@FindBy(xpath = "//li[@aria-label='Claims']")
 	public
 	WebElement Claims;
@@ -39,6 +43,10 @@ public class ReportPage {
 	
 	@FindBy(xpath = "//*[@id='view-body']/div/div/div/table/tbody")
 	public WebElement table;
+	
+	@FindBy(xpath = "//*[@id='view-body']/div/div/div/div/table/tbody")
+	public WebElement table1;
+	
 
 	@FindBy(xpath = "//*[@id='view-body']/div/div/div/div/div/div")
 	public List<String> NoRecord;

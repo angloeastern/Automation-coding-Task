@@ -5,11 +5,13 @@ import java.text.ParseException;
 import java.util.concurrent.TimeUnit;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import base.Base;
+import base.ConsoleColors;
 import pages.FinancePage;
 
 public class FinanceTest extends VesselSearchOLD {
@@ -79,9 +81,16 @@ public class FinanceTest extends VesselSearchOLD {
 			System.out.println("VarianceYTD Budget: " + eWaitText(selection.VarianceYTDBudget));
 			System.out.println("color YTD is: "+selection.colorYTD.getCssValue("color"));
 		}
-		WebElement we=driver.findElement(By.xpath("//*[@id='view-body']/div[3]/div/div/div[1]/div/div[2]/canvas"));
+		
+	/*	getScreenShotAs(System.getProperty("user.dir") + "\\" + 
+				 "\\ScreenShotsDetails\\" + Base.getDateTimeStamp() + ".png", selection.BUDGETACTUALMONTH);
+				 Thread.sleep(2000);
 		getScreenShotAs(System.getProperty("user.dir") + "\\" + 
-				 "\\ScreenShotsDetails\\" + Base.getDateTimeStamp() + ".png", we);
+				 "\\ScreenShotsDetails\\" + Base.getDateTimeStamp() + ".png", selection.AVERAGEDAILY);
+				 Thread.sleep(2000);
+		getScreenShotAs(System.getProperty("user.dir") + "\\" + 
+				 "\\ScreenShotsDetails\\" + Base.getDateTimeStamp() + ".png", selection.BUDGETACTUALYEAR);
+	*/	
 		Thread.sleep(2000);
 		selection.OPEXReport.click();
 		Thread.sleep(2000);
@@ -142,6 +151,60 @@ public class FinanceTest extends VesselSearchOLD {
 			softAssert.assertTrue(true, vasselCode + " " + vessel + " Opex Report published");
 			//ReadExcelFile.setData(0, row, 8, "Opex Report published",red);
 		}
+		Thread.sleep(2000);
+		// Other Reports (Vessels)
+		eWaitClick(selection.OtherReportsVessels);
+		System.out.println(ConsoleColors.YELLOW_BOLD+"Other Reports (Vessels)"+ANSI_RESET);
+		Thread.sleep(2000);
+		boolean RecordORV = driver.findElements(By.xpath("//*[text()='No record to display']")).size() != 0;
+		if (RecordORV) {
+			System.out.println(ANSI_RED+"Other Reports: " + eWaitText(selection.noRecords)+ANSI_RESET);
+		} 
+		else {
+
+			int ListSizeSII = selection.table.findElements(By.tagName("tr")).size();
+			System.out.println("Total Other Reports List: " + ListSizeSII);
+			for (int i = 1; i <= ListSizeSII; i++) {
+				String port = driver
+						.findElement(By.xpath("//*[@id='view-body']/div[3]/div/div/div/table/tbody/tr[" + i + "]/td[1]/span"))
+						.getText();
+				String type = driver
+						.findElement(By.xpath("//*[@id='view-body']/div[3]/div/div/div/table/tbody/tr[" + i + "]/td[4]"))
+						.getText();
+				System.out.print(ANSI_Y+"Name: "+ANSI_RESET + port);
+				System.out.print(ANSI_Y+"  Type: "+ANSI_RESET + type);
+				System.out.println();
+			}
+		}
+		
+		
+		Thread.sleep(2000);
+		// Other Reports (Fleet)
+				eWaitClick(selection.OtherReportsFleet);
+				System.out.println(ConsoleColors.YELLOW_BOLD+"Other Reports (Fleet)"+ANSI_RESET);
+				Thread.sleep(2000);
+				boolean RecordORF = driver.findElements(By.xpath("//*[text()='No record to display']")).size() != 0;
+				if (RecordORF) {
+					System.out.println(ANSI_RED+"Other Reports: " + eWaitText(selection.noRecords)+ANSI_RESET);
+				} 
+				else {
+
+					int ListSizeSII = selection.table.findElements(By.tagName("tr")).size();
+					System.out.println("Total Other Reports List: " + ListSizeSII);
+					for (int i = 1; i <= ListSizeSII; i++) {
+						String port = driver
+								.findElement(By.xpath("//*[@id='view-body']/div[3]/div/div/div/table/tbody/tr[" + i + "]/td[1]/span"))
+								.getText();
+						String type = driver
+								.findElement(By.xpath("//*[@id='view-body']/div[3]/div/div/div/table/tbody/tr[" + i + "]/td[4]"))
+								.getText();
+						System.out.print(ANSI_Y+"Name: "+ANSI_RESET + port);
+						System.out.print(ANSI_Y+"  Type: "+ANSI_RESET + type);
+						System.out.println();
+					}
+				}
+				
+		
 		Thread.sleep(2000);
 		selection.compass.click();
 		
