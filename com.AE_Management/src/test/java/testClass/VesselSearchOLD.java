@@ -107,11 +107,9 @@ public class VesselSearchOLD extends Base {
 				// ReadExcel.setData(0, row,2, "Voyage Snapshot Not Loading");
 			}
 			softAssert.assertTrue(true);
-			System.out.println(getProperty("MainContects"));
 
 		}
 		if (getProperty("MainContects").equalsIgnoreCase("Yes")) {
-
 			// Main Contects
 			selection = new NavigationPage(driver);
 			eWaitClick(selection.Contects);
@@ -143,20 +141,20 @@ public class VesselSearchOLD extends Base {
 			((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", element);
 			Thread.sleep(500);
 			System.out.println(ANSI_Y_BACKGROUND + getPageText(selection.CrewInfo) + ANSI_RESET);
-			String CrewUpdateOn = eWaitText(selection.CrewUpdateOn);
+	
 
-			if (CrewUpdateOn.isBlank()) {
+			if (selection.CrewUpdate.size()==0) {
 				System.out.println(ANSI_RED_BACKGROUND + "Crew Info Not Loading" + ANSI_RESET);
 			} else {
 				System.out.println(ANSI_G + "Crew Info Load Successfully" + ANSI_RESET);
-			}
-			softAssert.assertNotNull(CrewUpdateOn);
-			// h3[@title='Total Crew Onboard']
+				String CrewUpdateOn=eWaitText(selection.CrewUpdateOn);
+				softAssert.assertNotNull(CrewUpdateOn);
+				// h3[@title='Total Crew Onboard']
 			System.out.println("Crew update on: " + CrewUpdateOn);
 			System.out.println("Total Crew Onboard: " + getPageText(selection.TotalCrewOnboard));
 			System.out.println("Master Name:  " + getPageText(selection.ChiefEng));
 			System.out.println("ChiefEng Name:  " + getPageText(selection.Master));
-
+			}
 			eWaitClick(selection.Crew);
 			Thread.sleep(2000);
 			CrewTest.crewRecords();

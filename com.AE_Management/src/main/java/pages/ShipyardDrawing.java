@@ -30,9 +30,12 @@ WebDriver driver;
 	@FindBy(xpath = "//*[@id='view-body']/div/div/div/div/div/div")
 	public WebElement NoRecords;
 	
+	@FindBy(xpath = "//button[text()='OK']")
+	public WebElement OK;
 	
 	
 	
+	//*[@id="root"]/div/div/div[1]/div/div[1]/text()[2]
 	
 	public ShipyardDrawing(WebDriver driver) {
 		this.driver = driver;

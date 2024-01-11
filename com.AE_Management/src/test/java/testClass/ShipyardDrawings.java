@@ -42,6 +42,12 @@ public class ShipyardDrawings extends VesselSearchOLD {
 				}
 				driver.findElement(By.xpath("//*[@title='navigation']/li[" + ListSize + "]")).click();
 			}
+			driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div[1]/table/tbody/tr[1]/td[5]/div")).click();
+			
+			eWait(selection.OK);
+			
+		    System.out.println(ANSI_Y+ "You will receive an e-mail with a download link shortly"+ANSI_RESET);
+			eWaitClick(selection.OK);
 		}
 		else {
 			int ListSizeS = selection.list.findElements(By.tagName("tr")).size();
@@ -59,13 +65,19 @@ public class ShipyardDrawings extends VesselSearchOLD {
 				System.out.print(ANSI_Y+"  Type: " +ANSI_RESET+ type);
 				System.out.println();
 			}
+			driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div[1]/table/tbody/tr[1]/td[5]/div")).click();
+			
+			eWait(selection.OK);
+			
+		    System.out.println(ANSI_Y+ "You will receive an e-mail with a download link shortly"+ANSI_RESET);
+			eWaitClick(selection.OK);
 		}
+
 		eWaitClick(selection.InstructionManuals);
 		Thread.sleep(1000);
 		boolean RecordIM = driver.findElements(By.xpath("//*[text()='No record to display']")).size() != 0;
 		Thread.sleep(500);
 		boolean RecordIMPages= driver.findElements(By.xpath("//*[@title='navigation']")).size() != 0;
-		
 	
 		if (RecordIM) {
 			System.out.println(ANSI_RED+"Instruction Manuals: " + eWaitText(selection.NoRecords)+ANSI_RESET);

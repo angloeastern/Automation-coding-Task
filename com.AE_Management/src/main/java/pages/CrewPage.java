@@ -61,17 +61,7 @@ public class CrewPage {
 	@FindBy(xpath = "//*[@data-icon='compass']")
 	public
 	WebElement compass;
-	
-	
-	   
-		 
-		 
-		   
-		 
-		   
-	
 		
-	
 	//*[@data-icon='compass']
 	@FindBy(xpath = "//*[text()='Crew Bio']")
 	public
@@ -89,10 +79,18 @@ public class CrewPage {
 	public
 	WebElement ContectUPDATE;
 	
+	@FindBy(xpath = "//*[@data-testid='bio-tab']/div[2]/div[2]/div[2]")
+	public
+	WebElement Status;
+	
+	@FindBy(xpath = "//*[@data-testid='bio-tab']/div[2]/div[3]/div[2]")
+	public
+	WebElement SignOnDate;
+	
 	@FindBy(xpath = "//li[@aria-label='Documents']/div[1]")
 	public
 	WebElement Documents;
-	//*[@id="view-body"]/div[5]/div[2]/div/div/div/div[1]/div/div[1]/div[2]/div[1]
+	
 	@FindBy(xpath = "//*[@data-testid='doc-tab']/div[1]/div[2]/div[1]")
 	public
 	WebElement License;
@@ -117,6 +115,10 @@ public class CrewPage {
 	@FindBy(xpath = " //li[@aria-label='Past Experience']/div[1]")
 	public
 	WebElement PastExperience;
+	
+	@FindBy(xpath = "//*[@id='view-body']/div[4]/div/div")
+	public
+	WebElement NoRecords;
 	
 	public CrewPage(WebDriver driver) {
 		this.driver = driver;

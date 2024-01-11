@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
-import pages.AEResources;
+import pages.AEResourcesPage;
 
 public class AEResource extends VesselSearchOLD {
 	static int ListSize;
@@ -14,7 +14,7 @@ public class AEResource extends VesselSearchOLD {
 	@Test
 	public static void aeResources() throws InterruptedException {
 		iWait();
-		AEResources selection = new AEResources(driver);
+		AEResourcesPage selection = new AEResourcesPage(driver);
 		eWaitClick(selection.Lookout);
 		System.out.println("Lookout");
 		Thread.sleep(1000);
@@ -137,5 +137,7 @@ public class AEResource extends VesselSearchOLD {
 				System.out.println();
 			}
 		}
+		   Thread.sleep(1000);
+		   selection.compass.click();
 	}
 }

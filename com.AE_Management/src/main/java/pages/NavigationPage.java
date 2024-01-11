@@ -1,5 +1,7 @@
 package pages;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -64,6 +66,9 @@ public class NavigationPage {
 	@FindBy(xpath = "//h3[text()='Crew Info']")
 	public WebElement CrewInfo;
 
+	@FindBy(xpath = "//h3[text()='Crew Info']/../../div[2]")
+	public List<WebElement> CrewUpdate;
+	
 	@FindBy(xpath = "//h3[text()='Crew Info']/../../div[2]")
 	public WebElement CrewUpdateOn;
 
