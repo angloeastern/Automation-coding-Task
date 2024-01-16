@@ -2,21 +2,25 @@ package testClass;
 
 import static org.testng.Assert.assertEquals;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.IntStream;
 
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.openqa.selenium.By;
+import org.openqa.selenium.support.Color;
 import org.testng.annotations.Test;
 
 import pages.CrewPage;
+import utilities.ReadExcelFile;
 
 public class CrewTest extends VesselSearchOLD {
 	static int count = 0;
 	static int crewSize = 0;
 
 	@Test
-	public static void crewRecords() throws InterruptedException {
+	public static void crewRecords() throws InterruptedException, IOException {
 
 		iWait();
 		CrewPage selection = new CrewPage(driver);
@@ -24,15 +28,19 @@ public class CrewTest extends VesselSearchOLD {
 		System.out.println("Last Crew Change: " + eWaitText(selection.LastCrewChange));
 		if (eWaitText(selection.LastCrewChange).equals("-")) {
 			System.out.println("Last Crew Change is Empty");
+			ReadExcelFile.setData(1, row,2, "Last Crew Change is Empty",IndexedColors.RED.getIndex());
 		} else {
 			System.out.println("Last Crew Change Date: " + eWaitText(selection.LastCrewChangeDate));
+			ReadExcelFile.setData(1, row,2, eWaitText(selection.LastCrewChangeDate),IndexedColors.GREEN.getIndex());
 		}
 		System.out.println("Total Crew Onboard: " + eWaitText(selection.TotalCrewOnboard));
 		if (eWaitText(selection.TotalCrewOnboard).equals("-")) {
 			System.out.println("Total Crew Onboard is Empty");
+			ReadExcelFile.setData(1, row,3, "Not Loading",IndexedColors.RED.getIndex());
 		} else {
 			crewSize = Integer.parseInt(eWaitText(selection.TotalCrewOnboard));
-			System.out.println("compared to budgeted: " + eWaitText(selection.comparedtobudgeted));
+			ReadExcelFile.setData(1, row,3,"Loading",IndexedColors.GREEN.getIndex());
+			//System.out.println("compared to budgeted: " + eWaitText(selection.comparedtobudgeted));
 			System.out.println("Planned OffSigners: " + eWaitText(selection.PlannedOffSigners));
 			System.out.println("Overdue Crew: " + eWaitText(selection.OverdueCrew));
 		}
@@ -47,8 +55,10 @@ public class CrewTest extends VesselSearchOLD {
 		boolean crewRecord = driver.findElements(By.xpath("//*[text()='No record to display']")).size() != 0;
 		if (crewRecord) {
 			System.out.println(ANSI_RED + "crewRecord: " + eWaitText(selection.NoRecords) + ANSI_RESET);
+			ReadExcelFile.setData(1, row,4, "No record to display",IndexedColors.RED.getIndex());
 		} else {
 			int crewListSize = selection.crewlist.size();
+			ReadExcelFile.setData(1, row,5, eWaitText(selection.TotalCrewOnboard),IndexedColors.GREEN.getIndex());
 			System.out.println("Total crew List: " + crewListSize);
 			softAssert.assertEquals(crewSize, crewListSize);
 			IntStream.rangeClosed(1, crewListSize).forEach(i -> {
@@ -74,6 +84,8 @@ public class CrewTest extends VesselSearchOLD {
 					count++;
 				}
 			});
+		//	String Plannoff=eWaitText(selection.PlannedOffSigners);
+		//	Integer.parseInt(Plannoff)
 			softAssert.assertEquals(count, eWaitText(selection.PlannedOffSigners), "PlannedOff Matched");
 			// eWaitClick(selection.crewStatus);
 
@@ -91,7 +103,7 @@ public class CrewTest extends VesselSearchOLD {
 			System.out.println(Rank + "" + StaffId + "" + Name);
 
 			driver.findElement(By.xpath("//div[@data-testid='crew-list']/table/tbody/tr[1]/td[1]/div/span[2]")).click();
-
+			ReadExcelFile.setData(1, row,6,"Opend",IndexedColors.GREEN.getIndex());
 			System.out.println("RANK: " + eWaitText(selection.pRank));
 			System.out.println("NAME: " + eWaitText(selection.pName));
 			System.out.println(eWaitText(selection.pStaff));
@@ -112,23 +124,36 @@ public class CrewTest extends VesselSearchOLD {
 			System.out.println("LAST UPDATED ON: " + getPageText(selection.Status));
 			System.out.println("LAST UPDATED ON: " + getPageText(selection.SignOnDate));
 
-			System.out.println("Documents : License");
+			
 			eWaitClick(selection.Documents);
+			System.out.println("Documents : License");
 			Thread.sleep(2000);
-			eWaitText(selection.License);
-			eWaitClick(selection.License);
-			Thread.sleep(8000);
-			getPageText(selection.Text);
-			softAssert.assertEquals(eWaitText(selection.License), getPageText(selection.Text));
-			Thread.sleep(2000);
-			eWaitClick(selection.download);
-			Thread.sleep(3000);
-			downlaodFileChecker(getPageText(selection.Text));
-			eWaitClick(selection.xmark);
-			Thread.sleep(3000);
+			String cssColorString = selection.License.getCssValue("color");
+			Color color = Color.fromString(cssColorString);
+			System.out.println(color.asHex());
+			if(color.asHex().equalsIgnoreCase("#00b2ba"))
+			{
+				eWaitText(selection.License);
+				eWaitClick(selection.License);
+				Thread.sleep(8000);
+				getPageText(selection.Text);
+				softAssert.assertEquals(eWaitText(selection.License), getPageText(selection.Text));
+				Thread.sleep(2000);
+				eWaitClick(selection.download);
+				Thread.sleep(3000);
+				downlaodFileChecker(getPageText(selection.Text));
+				eWaitClick(selection.xmark);
+				Thread.sleep(3000);
+			}
+			
 
 			System.out.println("Documents : Certificates");
 			Thread.sleep(2000);
+			String cssColorString1 = selection.Certificates.getCssValue("color");
+			Color color1 = Color.fromString(cssColorString1);
+			System.out.println(color.asHex());
+			if(color1.asHex().equalsIgnoreCase("#00b2ba"))
+			{
 			eWaitText(selection.Certificates);
 			eWaitClick(selection.Certificates);
 			Thread.sleep(8000);
@@ -139,7 +164,8 @@ public class CrewTest extends VesselSearchOLD {
 			Thread.sleep(3000);
 			downlaodFileChecker(eWaitText(selection.Text));
 			eWaitClick(selection.xmark);
-
+			}
+			ReadExcelFile.setData(1, row,7,"Loading",IndexedColors.GREEN.getIndex());
 			eWaitClick(selection.PastExperience);
 			System.out.println("PastExperience : Crew Experience Matrix");
 			

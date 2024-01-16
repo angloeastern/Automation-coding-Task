@@ -131,7 +131,7 @@ try {
 	}
 
 	@Test(priority = 2)
-	public static void crewInfo() throws InterruptedException {
+	public static void crewInfo() throws InterruptedException, IOException {
 		// Crew Info
 
 		selection = new NavigationPage(driver);

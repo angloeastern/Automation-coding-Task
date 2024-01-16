@@ -1,5 +1,8 @@
 package testClass;
 
+import java.io.IOException;
+
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
@@ -7,12 +10,13 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
 import pages.AEResourcesPage;
+import utilities.ReadExcelFile;
 
 public class AEResource extends VesselSearchOLD {
 	static int ListSize;
 
 	@Test
-	public static void aeResources() throws InterruptedException {
+	public static void aeResources() throws InterruptedException, IOException {
 		iWait();
 		AEResourcesPage selection = new AEResourcesPage(driver);
 		eWaitClick(selection.Lookout);
@@ -23,7 +27,9 @@ public class AEResource extends VesselSearchOLD {
 		boolean RecordLookoutPages = driver.findElements(By.xpath("//*[@title='navigation']")).size() != 0;
 		if (RecordLookout) {
 			System.out.println(ANSI_RED + "Lookout: " + eWaitText(selection.NoRecords) + ANSI_RESET);
+			ReadExcelFile.setData(6, row,2, "No record to display",IndexedColors.RED.getIndex());
 		} else if (RecordLookoutPages) {
+			ReadExcelFile.setData(6, row,2, "record display",IndexedColors.GREEN.getIndex());
 			WebElement wb = driver.findElement(By.xpath("//*[@title='navigation']"));
 			ListSize = wb.findElements(By.tagName("li")).size();
 			System.out.println("Pages : " + ListSize);
@@ -53,6 +59,7 @@ public class AEResource extends VesselSearchOLD {
 				Thread.sleep(500);
 			}
 		} else {
+			ReadExcelFile.setData(6, row,2, "record display",IndexedColors.GREEN.getIndex());
 			int ListSizeI = driver.findElements(By.xpath("//*[@id='view-body']/div/div/div/div[1]/div/div")).size();
 			System.out.println("Total Shipyard Drawing List: " + ListSizeI);
 			for (int i = 1; i <= ListSizeI; i++) {
@@ -87,7 +94,9 @@ public class AEResource extends VesselSearchOLD {
 		boolean RecordPSCPages = driver.findElements(By.xpath("//*[@title='navigation']")).size() != 0;
 		if (RecordPSC) {
 			System.out.println(ANSI_RED + "PSC: " + eWaitText(selection.NoRecords) + ANSI_RESET);
+			ReadExcelFile.setData(6, row,3, "No record to display",IndexedColors.RED.getIndex());
 		} else if (RecordPSCPages) {
+			ReadExcelFile.setData(6, row,3, "record display",IndexedColors.GREEN.getIndex());
 			WebElement wb = driver.findElement(By.xpath("//*[@title='navigation']"));
 			ListSize = wb.findElements(By.tagName("li")).size();
 			System.out.println("Pages : " + ListSize);
@@ -117,6 +126,7 @@ public class AEResource extends VesselSearchOLD {
 				Thread.sleep(500);
 			}
 		} else {
+			ReadExcelFile.setData(6, row,3, "record display",IndexedColors.GREEN.getIndex());
 			int ListSizeI = driver.findElements(By.xpath("//*[@id='view-body']/div/div/div/div[1]/div/div")).size();
 			System.out.println("Total Shipyard Drawing List: " + ListSizeI);
 			for (int i = 1; i <= ListSizeI; i++) {

@@ -13,6 +13,7 @@ import org.testng.asserts.SoftAssert;
 import base.Base;
 import base.ConsoleColors;
 import pages.FinancePage;
+import utilities.ReadExcelFile;
 
 public class FinanceTest extends VesselSearchOLD {
 	public static final String ANSI_RESET = "\u001B[0m";
@@ -25,6 +26,7 @@ public class FinanceTest extends VesselSearchOLD {
 	static final short red= IndexedColors.RED.getIndex();
 	static final short black= IndexedColors.BLACK.getIndex();
 	static final short green= IndexedColors.GREEN.getIndex();
+	static String type;
 	@Test
 	public static void FinanceRecords( String vasselCode, String vessel)
 			throws InterruptedException, ParseException, IOException {
@@ -44,7 +46,7 @@ public class FinanceTest extends VesselSearchOLD {
 
 		String myAEmonth = getPageText(selection.FinancialMonth);
 		System.out.println("Financial Month: " + eWaitText(selection.FinancialMonth));
-		//ReadExcelFile.setData(0, row, 3, myAEmonth,black);
+		ReadExcelFile.setData(2, row, 4, myAEmonth,black);
 
 		//if (month.equalsIgnoreCase(myAEmonth)) {
 		//ReadExcelFile.setData(0, row, 4, "Matched",red);
@@ -56,10 +58,10 @@ public class FinanceTest extends VesselSearchOLD {
 
 		if (getPageText(selection.TotalBudget).equals("-")) {
 			softAssert.assertTrue(false, vasselCode + " " + vessel + " Financial Header Not Load");
-			//ReadExcelFile.setData(0, row, 5, "Financial Header Not Loading",red);
+			ReadExcelFile.setData(2, row, 6, "Financial Header Not Loading",red);
 		} else {
 			softAssert.assertTrue(true, vasselCode + " " + vessel + "Financial Load");
-			//ReadExcelFile.setData(0, row, 5, "Financial Header Load",red);
+			ReadExcelFile.setData(2, row, 6, "Financial Header Load",green);
 		}
 		System.out.println("Total Budget: " + eWaitText(selection.TotalBudget));
 		System.out.println("Actual: "+ eWaitText(selection.Actual));
@@ -99,10 +101,10 @@ public class FinanceTest extends VesselSearchOLD {
 
 		if (getPageText(selection.OperatingExpenses).contains("is not yet published")) {
 			softAssert.assertTrue(false, vasselCode + " " + vessel + " Opex Report is not yet published");
-			//ReadExcelFile.setData(0, row, 6, "Opex Report is not yet published",red);
+			ReadExcelFile.setData(2, row, 8, "Opex Report is not yet published",red);
 		} else {
 			softAssert.assertTrue(true, vasselCode + " " + vessel + " Opex Report published");
-			//ReadExcelFile.setData(0, row, 6, "Opex Report published",red);
+			ReadExcelFile.setData(2, row, 8, "Opex Report published",green);
 		}
 
 		Thread.sleep(2000);
@@ -111,10 +113,10 @@ public class FinanceTest extends VesselSearchOLD {
 
 		if (eWaitText(selection.TotalBudget).equals("-")) {
 			softAssert.assertTrue(false, vasselCode + " " + vessel + " Financial Header Not Load");
-			//ReadExcelFile.setData(0, row, 7, "Financial Header Not Loading",red);
+		ReadExcelFile.setData(2, row, 7, "Financial Header Not Loading",red);
 		} else {
 			softAssert.assertTrue(true, vasselCode + " " + vessel + "Financial Load");
-			//ReadExcelFile.setData(0, row, 7, "Financial Header Load",red);
+			ReadExcelFile.setData(2, row, 7, "Financial Header Load",green);
 		}
 		System.out.println("Total Budget: " + eWaitText(selection.TotalBudget));
 		System.out.println("Actual: "+ eWaitText(selection.Actual));
@@ -146,10 +148,10 @@ public class FinanceTest extends VesselSearchOLD {
 
 		if (getPageText(selection.OperatingExpenses).contains("is not yet published")) {
 			softAssert.assertTrue(false, vasselCode + " " + vessel + " Opex Report is not yet published");
-			//ReadExcelFile.setData(0, row, 8, "Opex Report is not yet published",red);
+			ReadExcelFile.setData(2, row, 9, "Opex Report is not yet published",red);
 		} else {
 			softAssert.assertTrue(true, vasselCode + " " + vessel + " Opex Report published");
-			//ReadExcelFile.setData(0, row, 8, "Opex Report published",red);
+			ReadExcelFile.setData(2, row, 9, "Opex Report published",green);
 		}
 		Thread.sleep(2000);
 		// Other Reports (Vessels)
@@ -159,22 +161,37 @@ public class FinanceTest extends VesselSearchOLD {
 		boolean RecordORV = driver.findElements(By.xpath("//*[text()='No record to display']")).size() != 0;
 		if (RecordORV) {
 			System.out.println(ANSI_RED+"Other Reports: " + eWaitText(selection.noRecords)+ANSI_RESET);
+			ReadExcelFile.setData(2, row, 10, "No record to display",red);
 		} 
 		else {
-
+			ReadExcelFile.setData(2, row, 10, "record display",green);
 			int ListSizeSII = selection.table.findElements(By.tagName("tr")).size();
 			System.out.println("Total Other Reports List: " + ListSizeSII);
 			for (int i = 1; i <= ListSizeSII; i++) {
 				String port = driver
 						.findElement(By.xpath("//*[@id='view-body']/div[3]/div/div/div/table/tbody/tr[" + i + "]/td[1]/span"))
 						.getText();
-				String type = driver
+				 type = driver
 						.findElement(By.xpath("//*[@id='view-body']/div[3]/div/div/div/table/tbody/tr[" + i + "]/td[4]"))
 						.getText();
 				System.out.print(ANSI_Y+"Name: "+ANSI_RESET + port);
 				System.out.print(ANSI_Y+"  Type: "+ANSI_RESET + type);
 				System.out.println();
 			}
+			
+			if(type.equalsIgnoreCase("Folder")) {
+				driver.findElement(By.xpath("//*[@id='view-body']/div[3]/div/div/div/table/tbody/tr[1]/td[5]/div")).click();
+				eWait(selection.OK);
+			    System.out.println(ANSI_Y+ "You will receive an e-mail with a download link shortly"+ANSI_RESET);
+				eWaitClick(selection.OK);
+				}
+				else
+				{
+					
+					String text=driver.findElement(By.xpath("//*[@id='view-body']/div[3]/div/div/div/table/tbody/tr[1]/td[1]/span")).getText();
+					driver.findElement(By.xpath("//*[text()='"+text+"']/../../td[5]/div")).click();
+					downlaodFileCheckerType(text);
+				}
 		}
 		
 		
@@ -186,22 +203,36 @@ public class FinanceTest extends VesselSearchOLD {
 				boolean RecordORF = driver.findElements(By.xpath("//*[text()='No record to display']")).size() != 0;
 				if (RecordORF) {
 					System.out.println(ANSI_RED+"Other Reports: " + eWaitText(selection.noRecords)+ANSI_RESET);
+					ReadExcelFile.setData(2, row, 11, "No record to display",red);
 				} 
 				else {
-
+					ReadExcelFile.setData(2, row, 11, "record display",green);
 					int ListSizeSII = selection.table.findElements(By.tagName("tr")).size();
 					System.out.println("Total Other Reports List: " + ListSizeSII);
 					for (int i = 1; i <= ListSizeSII; i++) {
 						String port = driver
 								.findElement(By.xpath("//*[@id='view-body']/div[3]/div/div/div/table/tbody/tr[" + i + "]/td[1]/span"))
 								.getText();
-						String type = driver
+						 type = driver
 								.findElement(By.xpath("//*[@id='view-body']/div[3]/div/div/div/table/tbody/tr[" + i + "]/td[4]"))
 								.getText();
 						System.out.print(ANSI_Y+"Name: "+ANSI_RESET + port);
 						System.out.print(ANSI_Y+"  Type: "+ANSI_RESET + type);
 						System.out.println();
 					}
+					if(type.equalsIgnoreCase("Folder")) {
+						driver.findElement(By.xpath("//*[@id='view-body']/div[3]/div/div/div/table/tbody/tr[1]/td[5]/div")).click();
+						eWait(selection.OK);
+					    System.out.println(ANSI_Y+ "You will receive an e-mail with a download link shortly"+ANSI_RESET);
+						eWaitClick(selection.OK);
+						}
+						else
+						{
+							
+							String text=driver.findElement(By.xpath("//*[@id='view-body']/div[3]/div/div/div/table/tbody/tr[1]/td[1]/span")).getText();
+							driver.findElement(By.xpath("//*[text()='"+text+"']/../../td[5]/div")).click();
+							downlaodFileCheckerType(text);
+						}
 				}
 				
 		

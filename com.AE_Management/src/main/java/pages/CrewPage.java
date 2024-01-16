@@ -91,7 +91,7 @@ public class CrewPage {
 	public
 	WebElement Documents;
 	
-	@FindBy(xpath = "//*[@data-testid='doc-tab']/div[1]/div[2]/div[1]")
+	@FindBy(xpath = "//*[@data-testid='doc-tab']/div[1]/div[3]/div[1]")
 	public
 	WebElement License;
 	

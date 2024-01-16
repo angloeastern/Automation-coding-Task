@@ -54,6 +54,9 @@ public class ReportPage {
 	@FindBy(xpath = "//*[@id='view-body']/div/div/div/div/div/div")
 	public WebElement NoRecords;
 	
+	@FindBy(xpath = "//button[text()='OK']")
+	public WebElement OK;
+	
 	public ReportPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);

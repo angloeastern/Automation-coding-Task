@@ -33,8 +33,6 @@ WebDriver driver;
 	@FindBy(xpath = "//button[text()='OK']")
 	public WebElement OK;
 	
-	
-	
 	//*[@id="root"]/div/div/div[1]/div/div[1]/text()[2]
 	
 	public ShipyardDrawing(WebDriver driver) {

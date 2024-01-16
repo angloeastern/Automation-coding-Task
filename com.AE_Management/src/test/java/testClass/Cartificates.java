@@ -1,21 +1,27 @@
 package testClass;
 
+import java.io.IOException;
+
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
 import base.ConsoleColors;
 import pages.CertificatePage;
+import utilities.ReadExcelFile;
 
 public class Cartificates extends VesselSearchOLD {
 	static CertificatePage selection ;
   @Test
-  public static void allCertificate() throws InterruptedException {
+  public static void allCertificate() throws InterruptedException, IOException {
 	     selection = new CertificatePage(driver);
 	 
-	     int CertList= selection.CertificatesList.size();
-	     System.out.println(ConsoleColors.YELLOW_BOLD+"All Certificates :"+CertList+ANSI_RESET);
-
+	     int certList= selection.CertificatesList.size();
+	    String s=String.valueOf(certList);
+	     if(certList!=0){
+	     System.out.println(ConsoleColors.YELLOW_BOLD+"All Certificates :"+certList+ANSI_RESET);
+	     ReadExcelFile.setData(3, row,2,s,IndexedColors.GREEN.getIndex());
 	    eWaitClick(driver.findElement(By.xpath("(//div[@data-testid='collapse-content'])[1]/table/tbody/tr[2]/td[2]/span")));
 		eWait(driver.findElement(By.xpath("//*[@id='view-body']/div[2]/div/div[1]/h3")));
 		Thread.sleep(8000);
@@ -27,7 +33,7 @@ public class Cartificates extends VesselSearchOLD {
 		eWait(wb2);
 		Thread.sleep(500);
 		wb2.click();
-		downlaodFileChecker(fileName);	
+		downlaodFileChecker1(fileName,3,row,4);	
 		Thread.sleep(500);	
 		WebElement wb3=driver.findElement(By.xpath("(//*[@id='view-body']/div[2]/div/div[1]/div[2]/div/*)[2]"));
 		eWait(wb3);
@@ -57,5 +63,12 @@ public class Cartificates extends VesselSearchOLD {
 	*/	Thread.sleep(1000);	
 		selection.compass.click();
 		softAssert.assertTrue(true);
+	
+	     }
+	     else {
+	    	 System.out.println(ConsoleColors.YELLOW_BOLD+"Certificates List is empty"+certList+ANSI_RESET);
+	    	 ReadExcelFile.setData(3, row,2, "Certificates List is empty: "+s,IndexedColors.RED.getIndex());
+	     }
+
   }
 }

@@ -121,6 +121,10 @@ public class FinancePage {
 	WebElement BUDGETACTUALYEAR;
 	
 	
+	@FindBy(xpath = "//button[text()='OK']")
+	public WebElement OK;
+	
+	
 	@FindBy(xpath = "//*[@data-icon='compass']")
 	public
 	WebElement compass;

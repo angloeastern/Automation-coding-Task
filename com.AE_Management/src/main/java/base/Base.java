@@ -10,6 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.PropertyConfigurator;
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -23,11 +24,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
+import utilities.ReadExcelFile;
+
 public class Base {
 
 	static Properties props;
 	protected static WebDriver driver;
-
+	static File file ;
 	public static void Initialize(String browser) throws IOException
 	{
 		
@@ -177,27 +180,60 @@ public class Base {
 		System.out.println(file + " is not present");
 	}
     }
-
-	public static void downlaodFileChecker1(String file) {
-		File folder = new File(System.getProperty("user.dir"));
-		// List the files on that folder
-		File[] listOfFiles = folder.listFiles();
-		boolean found = false;
-		File f = null;
-		// Look for the file in the files
-		// You should write smart REGEX according to the filename
-		for (File listOfFile : listOfFiles) {
-			if (listOfFile.isFile()) {
-				String fileName = listOfFile.getName();
-				System.out.println("File " + listOfFile.getName());
-				if (fileName.matches(file)) {
-					f = new File(fileName);
-					found = true;
-				}
-			}
-		}
-		Assert.assertTrue(found, "Downloaded document is not found");
-		f.deleteOnExit();
-	}
+    public static void downlaodFileCheckerType(String fileName) {
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+    	String tmpFolderPath = System.getProperty("java.io.tmpdir");
+    	//String tmpFolderPath = "C:\\Users\\Poonam\\AppData\\Local\\Temp\\";
+    	String expectedFileName = fileName;
+    		file = new File(tmpFolderPath + expectedFileName);
+    	System.out.println(file);
+    	wait.until((ExpectedCondition<Boolean>) webDriver -> file.exists());
+    	if (file.exists())
+    	{
+    		System.out.println(file + " is present");
+    	}
+    	else
+    	{
+    		System.out.println(file + " is not present");
+    	}
+        }
+    public static void downlaodFileChecker1(String fileName,int Sheet,int row,int cell) throws IOException {
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+    	String tmpFolderPath = System.getProperty("java.io.tmpdir");
+    	//String tmpFolderPath = "C:\\Users\\Poonam\\AppData\\Local\\Temp\\";
+    	String expectedFileName = fileName;
+    	file = new File(tmpFolderPath + expectedFileName+ ".pdf");
+    	System.out.println(file);
+    	wait.until((ExpectedCondition<Boolean>) webDriver -> file.exists());
+    	if (file.exists())
+    	{
+    		System.out.println(file + " is present");
+    		ReadExcelFile.setData(Sheet, row,cell, "Download Successfully",IndexedColors.GREEN.getIndex());
+    	}
+    	else
+    	{
+    		System.out.println(file + " is not present");
+    		ReadExcelFile.setData(Sheet, row,cell, "Download Failed",IndexedColors.RED.getIndex());
+    	}
+        }
+    public static void downlaodFileChecker2(String fileName,int Sheet,int row,int cell) throws IOException {
+        WebDriverWait wait = new WebDriverWait(driver, 30);
+    	String tmpFolderPath = System.getProperty("java.io.tmpdir");
+    	//String tmpFolderPath = "C:\\Users\\Poonam\\AppData\\Local\\Temp\\";
+    	String expectedFileName = fileName;	
+    	file = new File(tmpFolderPath + expectedFileName);
+    	System.out.println(file);
+    	wait.until((ExpectedCondition<Boolean>) webDriver -> file.exists());
+    	if (file.exists())
+    	{
+    		System.out.println(file + " is present");
+    		ReadExcelFile.setData(Sheet, row,cell, "Download Successfully",IndexedColors.GREEN.getIndex());
+    	}
+    	else
+    	{
+    		System.out.println(file + " is not present");
+    		ReadExcelFile.setData(Sheet, row,cell, "Download Failed",IndexedColors.RED.getIndex());
+    	}
+        }
 	
 }

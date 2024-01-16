@@ -53,7 +53,7 @@ public class ReadExcelFile{
 		cell.setCellValue(value);
 		cell.setCellStyle(style);
 		//To write into Excel File
-		FileOutputStream outputStream = new FileOutputStream(System.getProperty("user.dir") + "/src/main/resources/Data/Login.xlsx");
+		FileOutputStream outputStream = new FileOutputStream(System.getProperty("user.dir") + "/src/main/resources/Data/Regrassion.xlsx");
 		//FileOutputStream outputStream = new FileOutputStream("D:\\WorkInno\\Poonam\\New folder\\QaExceptionReport.xls");
 		work_book.write(outputStream);
 		outputStream.close();
