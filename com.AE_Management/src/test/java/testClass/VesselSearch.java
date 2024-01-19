@@ -43,7 +43,7 @@ public class VesselSearch extends Base {
 		AELogin.Login();
 	}
 
-	@Test(priority = 0,dataProvider = "Vesseldata")
+	@Test(priority = 0,dataProvider = "Vesseldata", dataProviderClass = DataProviderClass.class)
 	public static void vesselSearch(String vesselCode, String VesselName) throws InterruptedException {
 
 try {
@@ -86,7 +86,7 @@ try {
 }
 	}
 
-	@Test(priority = 1)
+	@Test(priority = 1,dataProvider = "voyageSnapshot", dataProviderClass = DataProviderClass.class)
 	public static void voyageSnapshot() throws InterruptedException {
 		// Voyage Snapshot
 
@@ -130,7 +130,7 @@ try {
 
 	}
 
-	@Test(priority = 2)
+	@Test(priority = 2,dataProvider = "crewInfo", dataProviderClass = DataProviderClass.class)
 	public static void crewInfo() throws InterruptedException, IOException {
 		// Crew Info
 
@@ -163,7 +163,7 @@ try {
 
 	}
 
-	@Test(priority = 3)
+	@Test(priority = 3,dataProvider = "financialData", dataProviderClass = DataProviderClass.class)
 	public static void financialData(String vesselCode, String VesselName) throws InterruptedException, ParseException, IOException {
 		// Financial
 
@@ -208,7 +208,7 @@ try {
 
 	}
 
-	@Test(priority = 4)
+	@Test(priority = 4,dataProvider = "vesselParticulars", dataProviderClass = DataProviderClass.class)
 	public static void vesselParticulars() throws InterruptedException {
 		// Vessel Particulars
 
@@ -229,7 +229,7 @@ try {
 		System.out.println("VSAT Tel:  " + getPageText(selection.VSATTel));
 		softAssert.assertTrue(true);
 	}
-	@Test(priority = 5)
+	/*@Test(priority = 5,dataProvider = "Certificates")
 	public static void Certificates() throws InterruptedException {
 		
 		// Certificates
@@ -278,7 +278,7 @@ try {
 					.forEach(j -> signin_credentials[i][j] = configuration.getData(0, i + 1, j)));
 			return signin_credentials;
 		}
-
+*/
 	@AfterClass
 	public void endTest() {
 		softAssert.assertAll();

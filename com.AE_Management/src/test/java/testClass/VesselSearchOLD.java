@@ -43,8 +43,8 @@ public class VesselSearchOLD extends Base {
 	}
 
 	@Test(priority = 0, dataProvider = "Vesseldata")
-	public static void vesselSearch(String vesselCode, String VesselName,String data1,String data2,String data3,String data4,String data5)
-	//public static void vesselSearch(String vesselCode, String VesselName)
+	//public static void vesselSearch(String vesselCode, String VesselName, String DocumentName,String data1,String data2,String data3,String data4,String data5)
+	public static void vesselSearch(String vesselCode, String VesselName,String DocumentName)
 			throws InterruptedException, ParseException, IOException {
 		try {
 			// Vessel Selection
@@ -59,7 +59,9 @@ public class VesselSearchOLD extends Base {
 			boolean exists = driver.findElements(By.xpath("//div[text()='" + VesselName + "']")).size() != 0;
 			if (exists) {
 				WebElement vessels = driver.findElement(By.xpath("//div[text()='" + VesselName + "']"));
+				System.out.println(VesselName);
 				eWaitClick(vessels);
+				
 
 			} else {
 				System.out.println("Error in vessel Search");
@@ -241,6 +243,15 @@ public class VesselSearchOLD extends Base {
 			Reports.reports();
 			softAssert.assertTrue(true);
 		}
+		if (getProperty("Document").equalsIgnoreCase("Yes")) {
+			// Documents
+			selection = new NavigationPage(driver);
+			System.out.println(ANSI_Y_BACKGROUND + "Documents" + ANSI_RESET);
+			eWaitClick(selection.Document);
+			Thread.sleep(2000);
+			Document.document(DocumentName);
+			softAssert.assertTrue(true);
+		}
 		if (getProperty("VesselDrawings").equalsIgnoreCase("Yes")) {
 			// Vessel Drawings / Shipyard Drawings
 			selection = new NavigationPage(driver);
@@ -265,6 +276,7 @@ public class VesselSearchOLD extends Base {
 		row++;
 		softAssert.assertTrue(true);
 	}
+
 	// DataProvider
 	@DataProvider(name = "Vesseldata")
 	public Object[][] testDataExample() throws IOException {

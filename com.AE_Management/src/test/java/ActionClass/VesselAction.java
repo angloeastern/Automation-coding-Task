@@ -36,7 +36,7 @@ public class VesselAction extends Base {
 		VesselSearch.crewInfo();
 		VesselSearch.financialData(vesselcode, VesselName);
 		VesselSearch.vesselParticulars();
-		VesselSearch.Certificates();
+		//VesselSearch.Certificates();
 	}
 
 	@DataProvider(name = "Vesseldata")

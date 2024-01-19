@@ -165,11 +165,21 @@ public class Reports extends VesselSearchOLD {
 			}
 			if(type.equalsIgnoreCase("Folder")) {
 				eWait(driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[5]/div")));
-				driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[5]/div")).click();
+				driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[5]/div")).click();			
 				eWait(selection.OK);
+				Boolean popup= selection.OKKk.size() != 0;
+				if (popup) {
 			    System.out.println(ANSI_Y+ "You will receive an e-mail with a download link shortly"+ANSI_RESET);
-			    ReadExcelFile.setData(4, row,5, "Download",IndexedColors.GREEN.getIndex());
+			    ReadExcelFile.setData(4, row,7, "Download",IndexedColors.GREEN.getIndex());
 				eWaitClick(selection.OK);
+				}
+				else
+				{
+					System.out.println(ANSI_Y+ "Download Popup Not shown"+ANSI_RESET);
+				    ReadExcelFile.setData(4, row,7, "Download Popup Not shown",IndexedColors.RED.getIndex());
+				    eWaitClick(selection.OK);
+				}
+			   
 				}
 				else
 				{
@@ -212,9 +222,18 @@ public class Reports extends VesselSearchOLD {
 				eWait(driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[5]/div")));
 				driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[5]/div")).click();
 				eWait(selection.OK);
+				Boolean popup= selection.OKKk.size() != 0;
+				if (popup) {
 			    System.out.println(ANSI_Y+ "You will receive an e-mail with a download link shortly"+ANSI_RESET);
 			    ReadExcelFile.setData(4, row,7, "Download",IndexedColors.GREEN.getIndex());
 				eWaitClick(selection.OK);
+				}
+				else
+				{
+					System.out.println(ANSI_Y+ "Download Popup Not shown"+ANSI_RESET);
+				    ReadExcelFile.setData(4, row,7, "Download Popup Not shown",IndexedColors.RED.getIndex());
+				    eWaitClick(selection.OK);
+				}
 				}
 				else
 				{
@@ -252,9 +271,19 @@ public class Reports extends VesselSearchOLD {
 				eWait(driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[5]/div")));
 				driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[5]/div")).click();
 				eWait(selection.OK);
+				Boolean popup= selection.OKKk.size() != 0;
+				if (popup) {
 			    System.out.println(ANSI_Y+ "You will receive an e-mail with a download link shortly"+ANSI_RESET);
-			    ReadExcelFile.setData(4, row,9, "Download",IndexedColors.GREEN.getIndex());
+			    ReadExcelFile.setData(4, row,7, "Download",IndexedColors.GREEN.getIndex());
 				eWaitClick(selection.OK);
+				}
+				else
+				{
+					System.out.println(ANSI_Y+ "Download Popup Not shown"+ANSI_RESET);
+				    ReadExcelFile.setData(4, row,7, "Download Popup Not shown",IndexedColors.RED.getIndex());
+				    eWaitClick(selection.OK);
+				}
+			    
 				}
 				else
 				{
@@ -275,7 +304,7 @@ public class Reports extends VesselSearchOLD {
 		} 
 		else {
 			ReadExcelFile.setData(4, row,10, "record display",IndexedColors.GREEN.getIndex());
-			int ListSizeSII = driver.findElements(By.xpath("//*[@id='view-body']/div/div/div/div/div/div[1]/div/div[2]")).size();
+			int ListSizeSII = driver.findElements(By.xpath("//*[@id='view-body']/div/div/div/div/div/div[1]/div/div[2]")).size();//*[@id="view-body"]/div/div/div/div/div/div[1]/div[1]/div
 			System.out.println("Total Gallery List: " + ListSizeSII);
 			for (int i = 1; i <= ListSizeSII; i++) {
 				 port = driver
@@ -311,20 +340,27 @@ public class Reports extends VesselSearchOLD {
 				System.out.println();
 			}
 		}
-		if(type.equalsIgnoreCase("Folder")) {
+		if (type.equalsIgnoreCase("Folder")) {
 			eWait(driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[5]/div")));
 			driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[5]/div")).click();
-			eWait(selection.OK);
-		    System.out.println(ANSI_Y+ "You will receive an e-mail with a download link shortly"+ANSI_RESET);
-		    ReadExcelFile.setData(4, row,12, "Download",IndexedColors.GREEN.getIndex());
-			eWaitClick(selection.OK);
+			Thread.sleep(2000);
+			Boolean popup= selection.OKKk.size() != 0;
+			if (popup) {
+				System.out.println(ANSI_Y + "You will receive an e-mail with a download link shortly" + ANSI_RESET);
+				ReadExcelFile.setData(4, row, 7, "Download", IndexedColors.GREEN.getIndex());
+				eWaitClick(selection.OK);
+			} else {
+				System.out.println(ANSI_Y + "Download Popup Not shown" + ANSI_RESET);
+				ReadExcelFile.setData(4, row, 7, "Download Popup Not shown", IndexedColors.RED.getIndex());
+				eWaitClick(selection.OK);
 			}
-			else
-			{
-				eWait(driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[1]/span")));
-				//String text=driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[1]/span")).getText();
-				driver.findElement(By.xpath("//*[text()='"+port+"']/../../td[5]/div")).click();
-				downlaodFileChecker2(port,4,row,12);
-			}
+
+		} else {
+			eWait(driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[1]/span")));
+			// String
+			// text=driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[1]/span")).getText();
+			driver.findElement(By.xpath("//*[text()='" + port + "']/../../td[5]/div")).click();
+			downlaodFileChecker2(port, 4, row, 12);
+		}
 	}
 }

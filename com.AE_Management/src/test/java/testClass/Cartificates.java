@@ -38,6 +38,11 @@ public class Cartificates extends VesselSearchOLD {
 		WebElement wb3=driver.findElement(By.xpath("(//*[@id='view-body']/div[2]/div/div[1]/div[2]/div/*)[2]"));
 		eWait(wb3);
 		wb3.click();
+		
+		eWaitClick(selection.BulkCertificates);
+	//	eWaitClick(selection.OK);
+		driver.findElement(By.xpath("//*[@class='sc-ddCuvZ ekpXcI']/div/div[2]/button")).click();
+		System.out.println(ANSI_Y+ "You will receive an e-mail with a download link shortly"+ANSI_RESET);
 /*		WebElement wb4=driver.findElement(By.xpath("(//div[@data-testid='collapse-toggle'])[2]"));
 		eWait(wb4);
 		wb4.click();
@@ -60,15 +65,18 @@ public class Cartificates extends VesselSearchOLD {
 		WebElement wb8=driver.findElement(By.xpath("(//*[@id='view-body']/div[2]/div/div[1]/div[2]/div/*)[2]"));
 		eWait(wb8);
 		wb8.click();
-	*/	Thread.sleep(1000);	
-		selection.compass.click();
-		softAssert.assertTrue(true);
+	*/	
 	
 	     }
 	     else {
 	    	 System.out.println(ConsoleColors.YELLOW_BOLD+"Certificates List is empty"+certList+ANSI_RESET);
 	    	 ReadExcelFile.setData(3, row,2, "Certificates List is empty: "+s,IndexedColors.RED.getIndex());
 	     }
+	     
+	        Thread.sleep(1000);	
+			selection.compass.click();
+			softAssert.assertTrue(true);
 
   }
+ 
 }

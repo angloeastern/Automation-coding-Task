@@ -1,5 +1,7 @@
 package pages;
 
+import java.util.List;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -68,17 +70,42 @@ public class FinancePage {
 	public
 	WebElement Actual;
 	
+	@FindBy(xpath = "//*[@id='view-body']/div[3]/div/table/tbody/tr[1]/td[2]/span")
+	public
+	WebElement TableActual;
+	
+	@FindBy(xpath = "//*[@id='view-body']/div[3]/div/table/tfoot/tr/th[2]")
+	public
+	WebElement TotalActual;
+	
 	@FindBy(xpath = "//H3[@title='Budget ($)' or @title='Budget (-)' or @title='Budget (₹)' or @title='Budget (€)']/following-sibling::*[1]")
 	public
 	WebElement Budget;
+	
+	@FindBy(xpath = "//*[@id='view-body']/div[3]/div/table/tbody/tr[1]/td[3]/span")
+	public
+	WebElement TableBudget;
+	
+	@FindBy(xpath = "//*[@id='view-body']/div[3]/div/table/tfoot/tr/th[3]")
+	public
+	WebElement TotalBudgett;
 	
 	@FindBy(xpath = "//H3[@title='Variance ($)' or @title='Variance (-)' or @title='Variance (₹)' or @title='Variance (€)']/following-sibling::*[1]")
 	public
 	WebElement Variance;
 	
+	@FindBy(xpath = "//*[@id='view-body']/div[3]/div/table/tbody/tr[1]/td[4]/span")
+	public
+	WebElement TableVariance;
+	
+	@FindBy(xpath = "//*[@id='view-body']/div[3]/div/table/tfoot/tr/th[4]")
+	public
+	WebElement TotalVariance;
+	
 	@FindBy(xpath = "//h3[@title='Variance ($)' or @title='Variance (-)' or @title='Variance (₹)' or @title='Variance (€)' or @title='Variance (CA$)']/../div[2]/div/div")
 	public
 	WebElement VarianceBudget;
+	
 
 	@FindBy(xpath = "//*[@title='Variance ($)' or @title='Variance (-)' or @title='Variance (₹)' or @title='Variance (€)']/../div[2]/div/div/span")
 	public
@@ -88,13 +115,37 @@ public class FinancePage {
 	public
 	WebElement ActualYTD;
 	
+	@FindBy(xpath = "//*[@id='view-body']/div[3]/div/table/tbody/tr[1]/td[5]/span")
+	public
+	WebElement TableActualYTD;
+	
+	@FindBy(xpath = "//*[@id='view-body']/div[3]/div/table/tfoot/tr/th[5]")
+	public
+	WebElement TotalActualYTD;
+	
 	@FindBy(xpath = "//H3[@title='Budget YTD ($)' or @title='Budget YTD (-)' or @title='Budget YTD (₹)' or @title='Budget YTD (€)']/following-sibling::*[1]")
 	public
 	WebElement BudgetYTD;
 	
+	@FindBy(xpath = "//*[@id='view-body']/div[3]/div/table/tbody/tr[1]/td[6]/span")
+	public
+	WebElement TableBudgetYTD;
+	
+	@FindBy(xpath = "//*[@id='view-body']/div[3]/div/table/tfoot/tr/th[6]")
+	public
+	WebElement TotalBudgetYTD;
+	
 	@FindBy(xpath = "//H3[@title='Variance YTD ($)' or @title='Variance YTD (-)' or @title='Variance YTD (₹)' or @title='Variance YTD (€)' or @title='Variance YTD (CA$)']/following-sibling::*[1]")
 	public
 	WebElement VarianceYTD;
+	
+	@FindBy(xpath = "//*[@id='view-body']/div[3]/div/table/tbody/tr[1]/td[7]/span")
+	public
+	WebElement TableVarianceYTD;
+	
+	@FindBy(xpath = "//*[@id='view-body']/div[3]/div/table/tfoot/tr/th[7]")
+	public
+	WebElement TotalVarianceYTD;
 	
 	@FindBy(xpath = "//H3[@title='Variance YTD ($)' or @title='Variance YTD (-)' or @title='Variance YTD (₹)' or @title='Variance YTD (€)']/../div[2]/div/div")
 	public
@@ -120,9 +171,14 @@ public class FinancePage {
 	public
 	WebElement BUDGETACTUALYEAR;
 	
-	
 	@FindBy(xpath = "//button[text()='OK']")
 	public WebElement OK;
+		
+	@FindBy(xpath = "//div[@class='sc-hRnpUl hMOnCD']/div/div[2]/button")
+	public WebElement OKK;
+	
+	@FindBy(xpath = "//div[@class='sc-hRnpUl hMOnCD']")
+	public List<WebElement> OKKk;
 	
 	
 	@FindBy(xpath = "//*[@data-icon='compass']")

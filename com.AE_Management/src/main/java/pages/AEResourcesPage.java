@@ -43,7 +43,22 @@ WebDriver driver;
 		public
 		WebElement PSCList;
 	
-	
+	  @FindBy(xpath = "//*[@id='view-body']/div/div/div/div[1]/div/div[1]/div[2]/div[1]")
+		public
+		WebElement LD;
+	  
+	  @FindBy(xpath = "//*[@id='view-body']/div/div/div/div[3]/div/div[1]/h3")
+		public
+		WebElement Text;
+		
+		@FindBy(xpath = "//*[@data-icon='download']")
+		public
+		WebElement download;
+		
+		@FindBy(xpath = "(//*[@data-icon='xmark'])[2]")
+		public
+		WebElement xmark;
+				
 	
 	public AEResourcesPage(WebDriver driver) {
 		this.driver = driver;

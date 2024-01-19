@@ -147,6 +147,10 @@ public class NavigationPage {
 	// Reports
 	@FindBy(xpath = "//*[@data-icon='file-chart-pie']")
 	public WebElement Reports;
+	
+	// Documents
+		@FindBy(xpath = "//*[@data-icon='file-lines']")
+		public WebElement Document;
 
 	// Vessel Drawings / Shipyard Drawings
 	@FindBy(xpath = "//*[@data-icon='compass-drafting']")

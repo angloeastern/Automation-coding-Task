@@ -17,6 +17,13 @@ WebDriver driver;
 	public
 	List<WebElement> CertificatesList;
 	
+	@FindBy(xpath = "(//*[text()='Download all certificates'])[1]")
+	public
+	WebElement BulkCertificates;
+	
+	@FindBy(xpath = "//button[text()='OK']")
+	public WebElement OK;
+	
 	public CertificatePage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);

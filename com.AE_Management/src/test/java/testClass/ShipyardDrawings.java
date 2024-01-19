@@ -53,13 +53,13 @@ public class ShipyardDrawings extends VesselSearchOLD {
 				driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div[1]/table/tbody/tr[1]/td[5]/div")).click();
 				eWait(selection.OK);
 			    System.out.println(ANSI_Y+ "You will receive an e-mail with a download link shortly"+ANSI_RESET);
-			    ReadExcelFile.setData(5, row,3, "record display",IndexedColors.GREEN.getIndex());
+			    ReadExcelFile.setData(5, row,3, "record download",IndexedColors.GREEN.getIndex());
 				eWaitClick(selection.OK);
 				}
 				else
 				{
 					
-					String text=driver.findElement(By.xpath("//*[@id=\"view-body\"]/div/div/div/div/table/tbody/tr[1]/td[1]/span")).getText();
+					String text=driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[1]/span")).getText();
 					driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div[1]/table/tbody/tr[1]/td[5]/div")).click();
 					downlaodFileChecker2(text,5,row,3);
 				}
@@ -86,7 +86,7 @@ public class ShipyardDrawings extends VesselSearchOLD {
 			driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div[1]/table/tbody/tr[1]/td[5]/div")).click();
 			eWait(selection.OK);
 		    System.out.println(ANSI_Y+ "You will receive an e-mail with a download link shortly"+ANSI_RESET);
-		    ReadExcelFile.setData(5, row,3, "record display",IndexedColors.GREEN.getIndex());
+		    ReadExcelFile.setData(5, row,3, "record download",IndexedColors.GREEN.getIndex());
 			eWaitClick(selection.OK);
 			}
 			else

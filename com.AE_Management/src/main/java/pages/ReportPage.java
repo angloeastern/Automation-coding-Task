@@ -56,6 +56,12 @@ public class ReportPage {
 	
 	@FindBy(xpath = "//button[text()='OK']")
 	public WebElement OK;
+		
+	@FindBy(xpath = "//div[@class='sc-hRnpUl hMOnCD']/div/div[2]/button")
+	public WebElement OKK;
+	
+	@FindBy(xpath = "//div[@class='sc-hRnpUl hMOnCD']/div/div[2]/button")
+	public List<WebElement> OKKk;
 	
 	public ReportPage(WebDriver driver) {
 		this.driver = driver;

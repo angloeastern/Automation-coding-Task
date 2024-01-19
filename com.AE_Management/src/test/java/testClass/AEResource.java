@@ -14,7 +14,7 @@ import utilities.ReadExcelFile;
 
 public class AEResource extends VesselSearchOLD {
 	static int ListSize;
-
+	
 	@Test
 	public static void aeResources() throws InterruptedException, IOException {
 		iWait();
@@ -29,6 +29,8 @@ public class AEResource extends VesselSearchOLD {
 			System.out.println(ANSI_RED + "Lookout: " + eWaitText(selection.NoRecords) + ANSI_RESET);
 			ReadExcelFile.setData(6, row,2, "No record to display",IndexedColors.RED.getIndex());
 		} else if (RecordLookoutPages) {
+		int count=0;
+		String type = null ;
 			ReadExcelFile.setData(6, row,2, "record display",IndexedColors.GREEN.getIndex());
 			WebElement wb = driver.findElement(By.xpath("//*[@title='navigation']"));
 			ListSize = wb.findElements(By.tagName("li")).size();
@@ -43,22 +45,35 @@ public class AEResource extends VesselSearchOLD {
 							.findElement(
 									By.xpath("//*[@id='view-body']/div/div/div/div[1]/div/div[" + i + "]/div[2]/h3"))
 							.getText();
-					String type = driver
+					 type = driver
 							.findElement(By
 									.xpath("//*[@id='view-body']/div/div/div/div[1]/div/div[" + i + "]/div[2]/div[1]"))
 							.getText();
 					String updateOn = driver.findElement(By
-							.xpath("//*[@id=\"view-body\"]/div/div/div/div[1]/div/div[" + i + "]/div[2]/div[2]/div[1]"))
+							.xpath("//*[@id='view-body']/div/div/div/div[1]/div/div[" + i + "]/div[2]/div[2]/div[1]"))
 							.getText();
 					System.out.print(ANSI_Y + "Name: " + ANSI_RESET + name);
 					System.out.print(ANSI_Y + "  Type: " + ANSI_RESET + type);
 					System.out.print(ANSI_Y + "  updateOn: " + ANSI_RESET + updateOn);
 					System.out.println();
+					count++;
 				}
 				driver.findElement(By.xpath("//*[@title='navigation']/li[" + ListSize + "]")).click();
 				Thread.sleep(500);
 			}
+			System.out.println("Total Lookout Records: "+count);
+
+			eWaitClick(selection.LD);
+			Thread.sleep(8000);
+			getPageText(selection.Text);
+			softAssert.assertEquals(eWaitText(selection.LD), getPageText(selection.Text));
+			Thread.sleep(2000);
+			eWaitClick(selection.download);
+			Thread.sleep(3000);
+			downlaodFileCheckerType(eWaitText(selection.Text));
+			eWaitClick(selection.xmark);
 		} else {
+			int count=0;
 			ReadExcelFile.setData(6, row,2, "record display",IndexedColors.GREEN.getIndex());
 			int ListSizeI = driver.findElements(By.xpath("//*[@id='view-body']/div/div/div/div[1]/div/div")).size();
 			System.out.println("Total Shipyard Drawing List: " + ListSizeI);
@@ -78,7 +93,18 @@ public class AEResource extends VesselSearchOLD {
 				System.out.print(ANSI_Y + "  Type: " + ANSI_RESET + type);
 				System.out.print(ANSI_Y + "  updateOn: " + ANSI_RESET + updateOn);
 				System.out.println();
+				count++;
 			}
+			System.out.println("Total Lookout Records: "+count);
+			eWaitClick(selection.LD);
+			Thread.sleep(8000);
+			getPageText(selection.Text);
+			softAssert.assertEquals(eWaitText(selection.LD), getPageText(selection.Text));
+			Thread.sleep(2000);
+			eWaitClick(selection.download);
+			Thread.sleep(3000);
+			downlaodFileCheckerType(eWaitText(selection.Text));
+			eWaitClick(selection.xmark);
 		}
 
 		eWaitClick(selection.filelines);
@@ -96,6 +122,7 @@ public class AEResource extends VesselSearchOLD {
 			System.out.println(ANSI_RED + "PSC: " + eWaitText(selection.NoRecords) + ANSI_RESET);
 			ReadExcelFile.setData(6, row,3, "No record to display",IndexedColors.RED.getIndex());
 		} else if (RecordPSCPages) {
+			int count=0;
 			ReadExcelFile.setData(6, row,3, "record display",IndexedColors.GREEN.getIndex());
 			WebElement wb = driver.findElement(By.xpath("//*[@title='navigation']"));
 			ListSize = wb.findElements(By.tagName("li")).size();
@@ -121,11 +148,24 @@ public class AEResource extends VesselSearchOLD {
 					System.out.print(ANSI_Y + "  Type: " + ANSI_RESET + type);
 					System.out.print(ANSI_Y + "  updateOn: " + ANSI_RESET + updateOn);
 					System.out.println();
+					count++;
 				}
 				driver.findElement(By.xpath("//*[@title='navigation']/li[" + ListSize + "]")).click();
 				Thread.sleep(500);
 			}
+			System.out.println("Total PSC Records: "+count);
+			eWaitClick(selection.LD);
+			Thread.sleep(8000);
+			getPageText(selection.Text);
+			softAssert.assertEquals(eWaitText(selection.LD), getPageText(selection.Text));
+			Thread.sleep(2000);
+			eWaitClick(selection.download);
+			Thread.sleep(3000);
+			downlaodFileCheckerType(eWaitText(selection.Text));
+			eWaitClick(selection.xmark);
+			
 		} else {
+			int count=0;
 			ReadExcelFile.setData(6, row,3, "record display",IndexedColors.GREEN.getIndex());
 			int ListSizeI = driver.findElements(By.xpath("//*[@id='view-body']/div/div/div/div[1]/div/div")).size();
 			System.out.println("Total Shipyard Drawing List: " + ListSizeI);
@@ -145,7 +185,18 @@ public class AEResource extends VesselSearchOLD {
 				System.out.print(ANSI_Y + "  Type: " + ANSI_RESET + type);
 				System.out.print(ANSI_Y + "  updateOn: " + ANSI_RESET + updateOn);
 				System.out.println();
+				count++;
 			}
+			System.out.println("Total PSC Records: "+count);
+			eWaitClick(selection.LD);
+			Thread.sleep(8000);
+			getPageText(selection.Text);
+			softAssert.assertEquals(eWaitText(selection.LD), getPageText(selection.Text));
+			Thread.sleep(2000);
+			eWaitClick(selection.download);
+			Thread.sleep(3000);
+			downlaodFileCheckerType(eWaitText(selection.Text));
+			eWaitClick(selection.xmark);
 		}
 		   Thread.sleep(1000);
 		   selection.compass.click();

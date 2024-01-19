@@ -84,9 +84,9 @@ public class CrewTest extends VesselSearchOLD {
 					count++;
 				}
 			});
-		//	String Plannoff=eWaitText(selection.PlannedOffSigners);
-		//	Integer.parseInt(Plannoff)
-			softAssert.assertEquals(count, eWaitText(selection.PlannedOffSigners), "PlannedOff Matched");
+			String Plannoff=eWaitText(selection.PlannedOffSigners);
+			int PlannedOffSigners=Integer.parseInt(Plannoff);
+			softAssert.assertEquals(count, PlannedOffSigners, "PlannedOff Matched");
 			// eWaitClick(selection.crewStatus);
 
 			String Rank = driver
@@ -111,7 +111,7 @@ public class CrewTest extends VesselSearchOLD {
 			String[] stf = pstaff.split(":");
 
 			softAssert.assertEquals(Rank, eWaitText(selection.pRank));
-			softAssert.assertEquals(StaffId, stf[1]);
+			softAssert.assertEquals(StaffId.trim(), stf[1].trim());
 			softAssert.assertEquals(Name, eWaitText(selection.pName));
 
 			// eWaitClick(selection.CrewBio);
@@ -145,8 +145,6 @@ public class CrewTest extends VesselSearchOLD {
 				eWaitClick(selection.xmark);
 				Thread.sleep(3000);
 			}
-			
-
 			System.out.println("Documents : Certificates");
 			Thread.sleep(2000);
 			String cssColorString1 = selection.Certificates.getCssValue("color");
