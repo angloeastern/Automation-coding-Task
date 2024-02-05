@@ -43,8 +43,8 @@ public class VesselSearchOLD extends Base {
 	}
 
 	@Test(priority = 0, dataProvider = "Vesseldata")
-	//public static void vesselSearch(String vesselCode, String VesselName, String DocumentName,String data1,String data2,String data3,String data4,String data5)
-	public static void vesselSearch(String vesselCode, String VesselName,String DocumentName)
+	public static void vesselSearch(String vesselCode, String VesselName, String DocumentName,String data1,String data2,String data3,String data4)
+	//public static void vesselSearch(String vesselCode, String VesselName,String DocumentName)
 			throws InterruptedException, ParseException, IOException {
 		try {
 			// Vessel Selection

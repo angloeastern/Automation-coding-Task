@@ -32,12 +32,12 @@ public class Document extends VesselSearchOLD {
 			System.out.println(documentName);
 			eWaitClick(document);
 		} else {
-			System.out.println("Error in vessel Search");
-			log.error("Error in vessel Search");
+			System.out.println("Error in ORG Search");
+			log.error("Error in ORG Search");
 			eWaitClear(selection.orgclear);
 			Thread.sleep(1000);
 			eWaitClick(selection.orgDropdown);
-			Assert.assertTrue(false, "vessel not founded in list");
+			Assert.assertTrue(false, "ORG not founded in list");
 		}
 		
 		Thread.sleep(2000);
@@ -129,6 +129,9 @@ public class Document extends VesselSearchOLD {
 				driver.findElement(By.xpath("//*[@id='view-body']/div/div/table/tbody/tr[1]/td[5]/div")).click();
 				downlaodFileChecker2(text,7,row,3);
 			}
+			
+			
+			//div[@role='button']/button
 		}
 		Thread.sleep(2000);
 		selection.compass.click();

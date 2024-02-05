@@ -174,12 +174,12 @@ public class FinancePage {
 	@FindBy(xpath = "//button[text()='OK']")
 	public WebElement OK;
 		
-	@FindBy(xpath = "//div[@class='sc-hRnpUl hMOnCD']/div/div[2]/button")
+	@FindBy(xpath = "//div[@class='sc-ddCuvZ ekpXcI']/div/div[2]/button")
 	public WebElement OKK;
 	
-	@FindBy(xpath = "//div[@class='sc-hRnpUl hMOnCD']")
+	@FindBy(xpath = "//div[@class='sc-ddCuvZ ekpXcI']")
 	public List<WebElement> OKKk;
-	
+	//div[@class='sc-ddCuvZ ekpXcI']/div/div[2]/button
 	
 	@FindBy(xpath = "//*[@data-icon='compass']")
 	public

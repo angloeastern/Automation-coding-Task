@@ -5,12 +5,9 @@ import java.text.ParseException;
 import java.util.concurrent.TimeUnit;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import base.Base;
 import base.ConsoleColors;
 import pages.FinancePage;
 import utilities.ReadExcelFile;
@@ -30,7 +27,7 @@ public class FinanceTest extends VesselSearchOLD {
 
 	@Test
 	public static void FinanceRecords(String vasselCode, String vessel)
-			throws InterruptedException, ParseException, IOException {
+		throws InterruptedException, ParseException, IOException {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		FinancePage selection = new FinancePage(driver);
 		Thread.sleep(2000);
@@ -276,9 +273,11 @@ public class FinanceTest extends VesselSearchOLD {
 			}
 		}
 
+		//driver.findElement(By.xpath("//div[@role='button']/button"));
+		//eWaitClick(selection.OK);
+		
 		Thread.sleep(2000);
 		selection.compass.click();
-
 	}
 
 }
