@@ -43,8 +43,8 @@ public class VesselSearchOLD extends Base {
 	}
 
 	@Test(priority = 0, dataProvider = "Vesseldata")
-	public static void vesselSearch(String vesselCode, String VesselName, String DocumentName,String data1,String data2,String data3,String data4)
-	//public static void vesselSearch(String vesselCode, String VesselName,String DocumentName)
+	//public static void vesselSearch(String vesselCode, String VesselName, String DocumentName,String data1,String data2,String data3,String data4)
+	public static void vesselSearch(String vesselCode, String VesselName,String DocumentName)
 			throws InterruptedException, ParseException, IOException {
 		try {
 			// Vessel Selection
@@ -89,7 +89,7 @@ public class VesselSearchOLD extends Base {
 			// String VoyageSnapshot1 = getPageText(selection.VoyageSnapshot1);
 			eWait(selection.VoyageSnapshot1);
 			System.out.println(ANSI_G + "Voyage Snapshot Load Successfully" + ANSI_RESET);
-			ReadExcelFile.setData(0, row,2, "Voyage Snapshot Load Successfully",IndexedColors.GREEN.getIndex());
+			ReadExcelFile.setData(0, row,3, "Voyage Snapshot Load Successfully",IndexedColors.GREEN.getIndex());
 			String port = selection.port.getAttribute("title");
 			System.out.println(port);
 
@@ -109,7 +109,7 @@ public class VesselSearchOLD extends Base {
 				// ReadExcel.setData(0, row,5, getPageText(selection.NextPort));
 			} else {
 				System.out.println("Voyage Snapshot not Loading");
-				ReadExcelFile.setData(0, row,2, "Voyage Snapshot Not Loading",IndexedColors.RED.getIndex());
+				ReadExcelFile.setData(0, row,3, "Voyage Snapshot Not Loading",IndexedColors.RED.getIndex());
 			}
 			softAssert.assertTrue(true);
 
@@ -122,7 +122,7 @@ public class VesselSearchOLD extends Base {
 			int count = driver.findElements(By.xpath("//*[@id='map']/div[4]/div/div[2]/div[2]/div")).size();
 			if (count == 0) {
 				System.out.println("No Contect deatils");
-				ReadExcelFile.setData(0, row,6, "No Contect deatils",IndexedColors.RED.getIndex());
+				ReadExcelFile.setData(0, row,7, "No Contect deatils",IndexedColors.RED.getIndex());
 			} else {
 				IntStream.rangeClosed(1, count).forEach(i -> {
 					String contactName = driver
@@ -137,7 +137,7 @@ public class VesselSearchOLD extends Base {
 					System.out.print(ANSI_Y + "  contact Designation: " + ANSI_RESET + contactDesignation);
 					System.out.println();
 				});
-				ReadExcelFile.setData(0, row,6, "Contect deatils loading",IndexedColors.GREEN.getIndex());
+				ReadExcelFile.setData(0, row,7, "Contect deatils loading",IndexedColors.GREEN.getIndex());
 			}
 		}
 		if (getProperty("CrewInfo").equalsIgnoreCase("Yes")) {
@@ -152,10 +152,10 @@ public class VesselSearchOLD extends Base {
 
 			if (selection.CrewUpdate.size()==0) {
 				System.out.println(ANSI_RED_BACKGROUND + "Crew Info Not Loading" + ANSI_RESET);
-				ReadExcelFile.setData(0, row,3, "Crew Info Not Loading",IndexedColors.RED.getIndex());
+				ReadExcelFile.setData(0, row,4, "Crew Info Not Loading",IndexedColors.RED.getIndex());
 			} else {
 				System.out.println(ANSI_G + "Crew Info Load Successfully" + ANSI_RESET);
-				ReadExcelFile.setData(0, row,3, "Crew Info Load Successfully",IndexedColors.GREEN.getIndex());
+				ReadExcelFile.setData(0, row,4, "Crew Info Load Successfully",IndexedColors.GREEN.getIndex());
 				String CrewUpdateOn=eWaitText(selection.CrewUpdateOn);
 				softAssert.assertNotNull(CrewUpdateOn);
 				// h3[@title='Total Crew Onboard']
@@ -182,10 +182,10 @@ public class VesselSearchOLD extends Base {
 			System.out.println("Daily Running Cost: " + eWaitText(selection.DailyRunningCost));
 			if (getPageText(selection.DailyRunningCost).equals("-")) {
 				System.out.println(ANSI_RED_BACKGROUND + "Financial Not Loading" + ANSI_RESET);
-				ReadExcelFile.setData(0, row,4, "Financial Not Loading",IndexedColors.RED.getIndex());
+				ReadExcelFile.setData(0, row,5, "Financial Not Loading",IndexedColors.RED.getIndex());
 			} else {
 				System.out.println(ANSI_G + "Financial Load Successfully" + ANSI_RESET);
-				ReadExcelFile.setData(0, row,4, "Financial Load Successfully",IndexedColors.GREEN.getIndex());
+				ReadExcelFile.setData(0, row,5, "Financial Load Successfully",IndexedColors.GREEN.getIndex());
 				System.out.println("Update on " + eWaitText(selection.FinancialUpdateOn));
 				System.out.println("Daily Running Cost: " + eWaitText(selection.DailyRunningCost));
 				System.out.println("Daily Budget: " + eWaitText(selection.DailyBudget));
@@ -220,7 +220,7 @@ public class VesselSearchOLD extends Base {
 			System.out.println("Class:  " + eWaitText(selection.Class));
 			System.out.println("VSAT Tel:  " + eWaitText(selection.VSATTel));
 			softAssert.assertTrue(true);
-			ReadExcelFile.setData(0, row,5, "Vessel Particulars Loading",IndexedColors.GREEN.getIndex());
+			ReadExcelFile.setData(0, row,6, "Vessel Particulars Loading",IndexedColors.GREEN.getIndex());
 		}
 		if (getProperty("Certificates").equalsIgnoreCase("Yes")) {
 			// Certificates

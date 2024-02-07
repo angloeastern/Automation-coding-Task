@@ -23,7 +23,7 @@ public class Reports extends VesselSearchOLD {
 		Thread.sleep(2000);
 		boolean RecordE = driver.findElements(By.xpath("//*[text()='No record to display']")).size() != 0;
 		boolean RecordEMPages= driver.findElements(By.xpath("//*[@title='navigation']")).size() != 0;
-	/*	if (RecordE) {
+		if (RecordE) {
 			System.out.println(ANSI_RED+"External Inspections: " + eWaitText(selection.NoRecords)+ANSI_RESET);
 			ReadExcelFile.setData(4, row,2, "No record to display",IndexedColors.RED.getIndex());
 		} 
@@ -136,7 +136,7 @@ public class Reports extends VesselSearchOLD {
 				System.out.println();
 			}
 		}
-		*/
+		
 		// Dry-Dock
 		eWaitClick(selection.DryDock);
 		System.out.println(ConsoleColors.YELLOW_BOLD+"Dry-Dock"+ANSI_RESET);
