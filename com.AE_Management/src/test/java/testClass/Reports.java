@@ -339,7 +339,7 @@ public class Reports extends VesselSearchOLD {
 				System.out.print(ANSI_Y+"  Type: "+ANSI_RESET + type);
 				System.out.println();
 			}
-		}
+		
 		if (type.equalsIgnoreCase("Folder")) {
 			eWait(driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[5]/div")));
 			driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[5]/div")).click();
@@ -361,6 +361,7 @@ public class Reports extends VesselSearchOLD {
 			// text=driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[1]/span")).getText();
 			driver.findElement(By.xpath("//*[text()='" + port + "']/../../td[5]/div")).click();
 			downlaodFileChecker2(port, 4, row, 12);
+		}
 		}
 	}
 }

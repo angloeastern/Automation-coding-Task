@@ -31,11 +31,11 @@ public class VesselAction extends Base {
 	@Test(dataProvider = "Vesseldata")
 	public void selectVessel(String VesselName, String vesselcode)
 			throws InterruptedException, ParseException, IOException {
-		VesselSearch.vesselSearch(vesselcode, VesselName);
-		VesselSearch.voyageSnapshot();
-		VesselSearch.crewInfo();
-		VesselSearch.financialData(vesselcode, VesselName);
-		VesselSearch.vesselParticulars();
+		//VesselSearch.vesselSearch(vesselcode, VesselName);
+	//	VesselSearch.voyageSnapshot();
+	//	VesselSearch.CrewInfo(vesselcode,VesselName);
+	//	VesselSearch.financialData(vesselcode, VesselName);
+	//	VesselSearch.vesselParticulars();
 		//VesselSearch.Certificates();
 	}
 

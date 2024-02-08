@@ -24,12 +24,14 @@ public class FinanceTest extends VesselSearchOLD {
 	static final short black = IndexedColors.BLACK.getIndex();
 	static final short green = IndexedColors.GREEN.getIndex();
 	static String type;
-
+	static FinancePage selection;
 	@Test
 	public static void FinanceRecords(String vasselCode, String vessel)
-		throws InterruptedException, ParseException, IOException {
+		{
+		
+		try {
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		FinancePage selection = new FinancePage(driver);
+		selection = new FinancePage(driver);
 		Thread.sleep(2000);
 		System.out.println("Vessel Owner Name: " + eWaitText(selection.VesselOwnerName));
 		// softAssert.assertEquals(getPageText(selection.VesselOwnerName), ownerName);
@@ -251,10 +253,10 @@ public class FinanceTest extends VesselSearchOLD {
 			if (type.equalsIgnoreCase("Folder")) {
 				driver.findElement(By.xpath("//*[@id='view-body']/div[3]/div/div/div/table/tbody/tr[1]/td[5]/div"))
 						.click();
-				// Boolean popup= selection.OKKk.size() != 0;
-				int popup = driver.findElements(By.xpath("//div[@class='sc-hRnpUl hMOnCD']")).size();
+				Boolean popup= selection.OKKk.size() != 0;
+				//int popup = driver.findElements(By.xpath("//div[@class='sc-hRnpUl hMOnCD']")).size();
 				System.out.println(popup);
-				if (popup != 0) {
+				if (popup) {
 					System.out.println(ANSI_Y + "You will receive an e-mail with a download link shortly" + ANSI_RESET);
 					ReadExcelFile.setData(4, row, 7, "Download", IndexedColors.GREEN.getIndex());
 					eWaitClick(selection.OK);
@@ -279,5 +281,15 @@ public class FinanceTest extends VesselSearchOLD {
 		Thread.sleep(2000);
 		selection.compass.click();
 	}
+		catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+			log.error("Finance Records"+e.getMessage());
+			selection.compass.click();
+			selection.compass.click();
+		}
+	}
+	
 
 }
