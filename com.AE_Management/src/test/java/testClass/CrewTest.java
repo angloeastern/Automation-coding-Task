@@ -107,6 +107,7 @@ public class CrewTest extends VesselSearchOLD {
 				driver.findElement(By.xpath("//div[@data-testid='crew-list']/table/tbody/tr[1]/td[1]/div/span[2]"))
 						.click();
 				ReadExcelFile.setData(1, row, 6, "Opend", IndexedColors.GREEN.getIndex());
+		
 				System.out.println("RANK: " + eWaitText(selection.pRank));
 				System.out.println("NAME: " + eWaitText(selection.pName));
 				System.out.println(eWaitText(selection.pStaff));
