@@ -5,6 +5,7 @@ import java.text.ParseException;
 import java.util.concurrent.TimeUnit;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
@@ -179,7 +180,10 @@ public class FinanceTest extends VesselSearchOLD {
 		eWaitClick(selection.OtherReportsVessels);
 		System.out.println(ConsoleColors.YELLOW_BOLD + "Other Reports (Vessels)" + ANSI_RESET);
 		Thread.sleep(2000);
-		boolean RecordORV = driver.findElements(By.xpath("//*[text()='No record to display']")).size() != 0;
+
+		boolean RecordORV = (boolean) ((JavascriptExecutor) driver).executeScript(
+                "return document.evaluate(\"//div[contains(text(),'No record to display')]\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
+
 		if (RecordORV) {
 			System.out.println(ANSI_RED + "Other Reports: " + eWaitText(selection.noRecords) + ANSI_RESET);
 			ReadExcelFile.setData(2, row, 10, "No record to display", red);
@@ -229,7 +233,8 @@ public class FinanceTest extends VesselSearchOLD {
 		eWaitClick(selection.OtherReportsFleet);
 		System.out.println(ConsoleColors.YELLOW_BOLD + "Other Reports (Fleet)" + ANSI_RESET);
 		Thread.sleep(2000);
-		boolean RecordORF = driver.findElements(By.xpath("//*[text()='No record to display']")).size() != 0;
+		boolean RecordORF = (boolean) ((JavascriptExecutor) driver).executeScript(
+                "return document.evaluate(\"//div[contains(text(),'No record to display')]\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
 		if (RecordORF) {
 			System.out.println(ANSI_RED + "Other Reports: " + eWaitText(selection.noRecords) + ANSI_RESET);
 			ReadExcelFile.setData(2, row, 11, "No record to display", red);

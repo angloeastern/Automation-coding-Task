@@ -23,8 +23,12 @@ public class AEResource extends VesselSearchOLD {
 		System.out.println("Lookout");
 		Thread.sleep(1000);
 
-		boolean RecordLookout = driver.findElements(By.xpath("//*[text()='No record to display']")).size() != 0;
-		boolean RecordLookoutPages = driver.findElements(By.xpath("//*[@title='navigation']")).size() != 0;
+		boolean RecordLookout = (boolean) ((JavascriptExecutor) driver).executeScript(
+                "return document.evaluate(\"//div[contains(text(),'No record to display')]\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
+	 
+	  boolean RecordLookoutPages = (boolean) ((JavascriptExecutor) driver).executeScript(
+                "return document.evaluate(\"//*[@title='navigation']\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
+       
 		if (RecordLookout) {
 			System.out.println(ANSI_RED + "Lookout: " + eWaitText(selection.NoRecords) + ANSI_RESET);
 			ReadExcelFile.setData(6, row,2, "No record to display",IndexedColors.RED.getIndex());
@@ -115,9 +119,12 @@ public class AEResource extends VesselSearchOLD {
 		eWaitClick(selection.PSC);
 		System.out.println("PSC");
 		Thread.sleep(1000);
+		boolean RecordPSC = (boolean) ((JavascriptExecutor) driver).executeScript(
+                "return document.evaluate(\"//div[contains(text(),'No record to display')]\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
+	 
+	  boolean RecordPSCPages = (boolean) ((JavascriptExecutor) driver).executeScript(
+                "return document.evaluate(\"//*[@title='navigation']\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
 
-		boolean RecordPSC = driver.findElements(By.xpath("//*[text()='No record to display']")).size() != 0;
-		boolean RecordPSCPages = driver.findElements(By.xpath("//*[@title='navigation']")).size() != 0;
 		if (RecordPSC) {
 			System.out.println(ANSI_RED + "PSC: " + eWaitText(selection.NoRecords) + ANSI_RESET);
 			ReadExcelFile.setData(6, row,3, "No record to display",IndexedColors.RED.getIndex());

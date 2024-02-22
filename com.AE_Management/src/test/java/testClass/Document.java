@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -26,7 +27,11 @@ public class Document extends VesselSearchOLD {
 		eWaitClick(selection.orgclear);
 		eWait(selection.orgclear);
 		selection.orgclear.sendKeys(documentName);
-		boolean exists = driver.findElements(By.xpath("//div[text()='" + documentName + "']")).size() != 0;
+	//	boolean exists = driver.findElements(By.xpath("//div[text()='" + documentName + "']")).size() != 0;
+		
+		boolean exists = (boolean) ((JavascriptExecutor) driver).executeScript(
+                "return document.evaluate(\"//div[text()='" + documentName + "']\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
+
 		if (exists) {
 			WebElement document = driver.findElement(By.xpath("//div[text()='" + documentName + "']"));
 			System.out.println(documentName);
@@ -41,8 +46,13 @@ public class Document extends VesselSearchOLD {
 		}
 		
 		Thread.sleep(2000);
-		boolean RecordDD = driver.findElements(By.xpath("//*[text()='No record to display']")).size() != 0;
-		boolean RecordSDPages= driver.findElements(By.xpath("//*[@title='navigation']")).size() != 0;
+
+		boolean RecordDD = (boolean) ((JavascriptExecutor) driver).executeScript(
+                "return document.evaluate(\"//div[contains(text(),'No record to display')]\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
+	 
+	  boolean RecordSDPages = (boolean) ((JavascriptExecutor) driver).executeScript(
+                "return document.evaluate(\"//*[@title='navigation']\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
+		
 		String type = null;
 		String port =null;
 		if (RecordDD) {

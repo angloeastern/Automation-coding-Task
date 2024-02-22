@@ -3,6 +3,7 @@ import java.io.IOException;
 
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
@@ -19,8 +20,13 @@ public class ShipyardDrawings extends VesselSearchOLD {
 		ShipyardDrawing selection = new ShipyardDrawing(driver);
 		eWaitClick(selection.ShipyardDrawing);
 		Thread.sleep(2000);
-		boolean Record = driver.findElements(By.xpath("//*[text()='No record to display']")).size() != 0;
-		boolean RecordSDPages= driver.findElements(By.xpath("//*[@title='navigation']")).size() != 0;
+		
+		boolean Record = (boolean) ((JavascriptExecutor) driver).executeScript(
+                "return document.evaluate(\"//div[contains(text(),'No record to display')]\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
+	 
+	  boolean RecordSDPages = (boolean) ((JavascriptExecutor) driver).executeScript(
+                "return document.evaluate(\"//*[@title='navigation']\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
+
 		if (Record) {
 			System.out.println(ANSI_RED+"Shipyard Drawing: " + eWaitText(selection.NoRecords)+ANSI_RESET);
 			ReadExcelFile.setData(5, row,2, "No record to display",IndexedColors.RED.getIndex());
@@ -100,10 +106,12 @@ public class ShipyardDrawings extends VesselSearchOLD {
 
 		eWaitClick(selection.InstructionManuals);
 		Thread.sleep(1000);
-		boolean RecordIM = driver.findElements(By.xpath("//*[text()='No record to display']")).size() != 0;
+		boolean RecordIM = (boolean) ((JavascriptExecutor) driver).executeScript(
+                "return document.evaluate(\"//div[contains(text(),'No record to display')]\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
 		Thread.sleep(500);
-		boolean RecordIMPages= driver.findElements(By.xpath("//*[@title='navigation']")).size() != 0;
-	
+	  boolean RecordIMPages = (boolean) ((JavascriptExecutor) driver).executeScript(
+                "return document.evaluate(\"//*[@title='navigation']\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
+
 		if (RecordIM) {
 			System.out.println(ANSI_RED+"Instruction Manuals: " + eWaitText(selection.NoRecords)+ANSI_RESET);
 			ReadExcelFile.setData(5, row,4, "No record to display",IndexedColors.RED.getIndex());

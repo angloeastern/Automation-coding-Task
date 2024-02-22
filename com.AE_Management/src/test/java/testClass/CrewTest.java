@@ -4,6 +4,7 @@ import java.util.stream.IntStream;
 
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.support.Color;
 import org.testng.annotations.Test;
 
@@ -51,7 +52,9 @@ public class CrewTest extends VesselSearchOLD {
 				System.out.println("Crew Variance Budget: " + eWaitText(selection.CrewVarianceBudget));
 			}
 
-			boolean crewRecord = driver.findElements(By.xpath("//*[text()='No record to display']")).size() != 0;
+			boolean crewRecord = (boolean) ((JavascriptExecutor) driver).executeScript(
+	                "return document.evaluate(\"//div[contains(text(),'No record to display')]\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
+  
 			if (crewRecord) {
 				System.out.println(ANSI_RED + "crewRecord: " + eWaitText(selection.NoRecords) + ANSI_RESET);
 				ReadExcelFile.setData(1, row, 4, "No record to display", IndexedColors.RED.getIndex());
