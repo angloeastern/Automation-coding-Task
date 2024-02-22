@@ -60,7 +60,10 @@ public class VesselSearch extends Base {
 				eWaitClick(selection.Vesselclear);
 				eWait(selection.Vesselclear);
 				selection.Vesselclear.sendKeys(VesselName);
-				boolean exists = driver.findElements(By.xpath("//div[text()='" + VesselName + "']")).size() != 0;
+			//	boolean exists = driver.findElements(By.xpath("//div[text()='" + VesselName + "']")).size() != 0;
+				 boolean exists = (boolean) ((JavascriptExecutor) driver).executeScript(
+			                "return document.evaluate(\"//div[text()='" + VesselName + "']\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
+				 
 				if (exists) {
 					WebElement vessels = driver.findElement(By.xpath("//div[text()='" + VesselName + "']"));
 					System.out.println(VesselName);
