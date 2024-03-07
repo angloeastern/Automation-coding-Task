@@ -66,20 +66,20 @@ public class CrewTest extends VesselSearchOLD {
 				IntStream.rangeClosed(1, crewListSize).forEach(i -> {
 					String Rank = driver
 							.findElement(By.xpath(
-									"//div[@data-testid='crew-list']/table/tbody/tr[" + i + "]/td[1]/div/span[2]"))
+									"//div[@data-testid='crew-list' or @aria-label='crew-list']/table/tbody/tr[" + i + "]/td[1]/div/span[2]"))
 							.getText();
 					String StaffId = driver
-							.findElement(By.xpath("//div[@data-testid='crew-list']/table/tbody/tr[" + i + "]/td[2]"))
+							.findElement(By.xpath("//div[@data-testid='crew-list' or @aria-label='crew-list']/table/tbody/tr[" + i + "]/td[2]"))
 							.getText();
 					String fName = driver
-							.findElement(By.xpath("//div[@data-testid='crew-list']/table/tbody/tr[" + i + "]/td[3]"))
+							.findElement(By.xpath("//div[@data-testid='crew-list' or @aria-label='crew-list']/table/tbody/tr[" + i + "]/td[3]"))
 							.getText();
 					String lName = driver
-							.findElement(By.xpath("//div[@data-testid='crew-list']/table/tbody/tr[" + i + "]/td[3]"))
+							.findElement(By.xpath("//div[@data-testid='crew-list' or @aria-label='crew-list']/table/tbody/tr[" + i + "]/td[3]"))
 							.getText();
 					String status = driver
 							.findElement(By
-									.xpath("//div[@data-testid='crew-list']/table/tbody/tr[" + i + "]/td[9]/div/span"))
+									.xpath("//div[@data-testid='crew-list' or @aria-label='crew-list']/table/tbody/tr[" + i + "]/td[9]/div/span"))
 							.getText();
 
 					if (status.equalsIgnoreCase("Relief Due")) {
@@ -95,19 +95,19 @@ public class CrewTest extends VesselSearchOLD {
 					// eWaitClick(selection.crewStatus);
 				}
 				String Rank = driver
-						.findElement(By.xpath("//div[@data-testid='crew-list']/table/tbody/tr[1]/td[1]/div/span[2]"))
+						.findElement(By.xpath("//div[@data-testid='crew-list' or @aria-label='crew-list']/table/tbody/tr[1]/td[1]/div/span[2]"))
 						.getText();
-				String StaffId = driver.findElement(By.xpath("//div[@data-testid='crew-list']/table/tbody/tr[1]/td[2]"))
+				String StaffId = driver.findElement(By.xpath("//div[@data-testid='crew-list' or @aria-label='crew-list']/table/tbody/tr[1]/td[2]"))
 						.getText();
-				String fName = driver.findElement(By.xpath("//div[@data-testid='crew-list']/table/tbody/tr[1]/td[3]"))
+				String fName = driver.findElement(By.xpath("//div[@data-testid='crew-list' or @aria-label='crew-list']/table/tbody/tr[1]/td[3]"))
 						.getText();
-				String lName = driver.findElement(By.xpath("//div[@data-testid='crew-list']/table/tbody/tr[1]/td[4]"))
+				String lName = driver.findElement(By.xpath("//div[@data-testid='crew-list' or @aria-label='crew-list']/table/tbody/tr[1]/td[4]"))
 						.getText();
 				String Name = fName + " " + lName;
 
 				System.out.println(Rank + "" + StaffId + "" + Name);
 
-				driver.findElement(By.xpath("//div[@data-testid='crew-list']/table/tbody/tr[1]/td[1]/div/span[2]"))
+				driver.findElement(By.xpath("//div[@data-testid='crew-list' or @aria-label='crew-list']/table/tbody/tr[1]/td[1]/div/span[2]"))
 						.click();
 				ReadExcelFile.setData(1, row, 6, "Opend", IndexedColors.GREEN.getIndex());
 		

@@ -81,9 +81,11 @@ public class VesselSearchOLD extends Base {
 			System.out.println("Error in vessel Search" + n.getMessage());
 			log.error("Error in vessel Search" + n.getMessage());
 		}
+		
 		try {
 			if (getProperty("VoyageSnapshot").equalsIgnoreCase("Yes")) {
 				// Voyage Snapshot
+				Thread.sleep(500);
 				selection = new NavigationPage(driver);
 				String VoyageSnapshot = eWaitText(selection.VoyageSnapshot);
 				System.out.println(ANSI_Y_BACKGROUND + VoyageSnapshot + ANSI_RESET);
@@ -124,6 +126,7 @@ public class VesselSearchOLD extends Base {
 		try {
 			if (getProperty("MainContects").equalsIgnoreCase("Yes")) {
 				// Main Contects
+				Thread.sleep(500);
 				selection = new NavigationPage(driver);
 				eWaitClick(selection.Contects);
 				System.out.println(ConsoleColors.YELLOW_BOLD + eWaitText(selection.MainContect) + ANSI_RESET);
@@ -158,6 +161,7 @@ public class VesselSearchOLD extends Base {
 		try {
 			if (getProperty("CrewInfo").equalsIgnoreCase("Yes")) {
 				// Crew Info
+				Thread.sleep(500);
 				selection = new NavigationPage(driver);
 				eWait(selection.CrewInfo);
 				WebElement element = selection.CrewInfo;
@@ -189,11 +193,14 @@ public class VesselSearchOLD extends Base {
 			System.out.println(e.getMessage());
 			e.printStackTrace();
 			log.error("Crew Info" + e.getMessage());
-		}
+			
 
+		}
+		
 		try {
 			if (getProperty("Financial").equalsIgnoreCase("Yes")) {
 				// Financial
+				Thread.sleep(500);
 				selection = new NavigationPage(driver);
 				Thread.sleep(2000);
 				// String Financial =
@@ -238,6 +245,7 @@ public class VesselSearchOLD extends Base {
 		try {
 			if (getProperty("VesselParticulars").equalsIgnoreCase("Yes")) {
 				// Vessel Particulars
+				Thread.sleep(500);
 				selection = new NavigationPage(driver);
 				Thread.sleep(2000);
 				WebElement element1 = selection.VesselParticulars;
@@ -264,6 +272,7 @@ public class VesselSearchOLD extends Base {
 		try {
 			if (getProperty("Certificates").equalsIgnoreCase("Yes")) {
 				// Certificates
+				Thread.sleep(500);
 				selection = new NavigationPage(driver);
 				System.out.println(ANSI_Y_BACKGROUND + "Certificates" + ANSI_RESET);
 				Thread.sleep(500);
@@ -301,6 +310,7 @@ public class VesselSearchOLD extends Base {
 		try {
 			if (getProperty("Document").equalsIgnoreCase("Yes")) {
 				// Documents
+				Thread.sleep(500);
 				selection = new NavigationPage(driver);
 				System.out.println(ANSI_Y_BACKGROUND + "Documents" + ANSI_RESET);
 				eWaitClick(selection.Document);
@@ -317,6 +327,7 @@ public class VesselSearchOLD extends Base {
 		try {
 			if (getProperty("VesselDrawings").equalsIgnoreCase("Yes")) {
 				// Vessel Drawings / Shipyard Drawings
+				Thread.sleep(500);
 				selection = new NavigationPage(driver);
 				System.out.println(ANSI_Y_BACKGROUND + "Vessel Drawings / Shipyard Drawings" + ANSI_RESET);
 				eWaitClick(selection.VesselDrawings);
@@ -333,6 +344,7 @@ public class VesselSearchOLD extends Base {
 		try {
 			if (getProperty("AEResources").equalsIgnoreCase("Yes")) {
 				// AE Resources
+				Thread.sleep(500);
 				selection = new NavigationPage(driver);
 				System.out.println(ANSI_Y_BACKGROUND + "AE Resources" + ANSI_RESET);
 				eWaitClick(selection.compassdrafting);
@@ -346,6 +358,7 @@ public class VesselSearchOLD extends Base {
 			e.printStackTrace();
 			log.error("AEResources" + e.getMessage());
 		}
+		softAssert.assertAll();
 	}
 
 	@AfterMethod

@@ -24,15 +24,16 @@ public class AELogin extends Base {
 		LoginPage page= new LoginPage(driver);
 		page.clickUM();
 		LoginPage.MyAELogin(getProperty("UserName"), getProperty("Password"));
-	eWait(page.SelectVessel);
+	    eWait(page.SelectVessel);
 	//	Thread.sleep(5000);
 		// driver.manage().timeouts().pageLoadTimeout(50, TimeUnit.SECONDS);
 		// System.out.println(driver.getTitle());
 		String text = eWaitText(page.SelectVessel);
 		softAssert.assertEquals("Select Vessel", text);
+		softAssert.assertAll();
 		System.out.println(ANSI_BACKGROUND+"Login successful"+ANSI_RESET);
 		log.info("Login successful");
-		softAssert.assertAll();
+		
 		
 		
 	}

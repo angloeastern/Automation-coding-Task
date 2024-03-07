@@ -106,7 +106,7 @@ public class Document extends VesselSearchOLD {
 		else {
 			ReadExcelFile.setData(7, row,1, "record display",IndexedColors.GREEN.getIndex());
 			int ListSizeS = selection.table.findElements(By.tagName("tr")).size();
-			System.out.println("Total Shipyard Drawing List: " + ListSizeS);
+			System.out.println("Total List: " + ListSizeS);
 			int count=0;
 			for (int i = 1; i <= ListSizeS; i++) {
 				String name = driver

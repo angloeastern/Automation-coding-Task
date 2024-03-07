@@ -60,7 +60,7 @@ public class ReportPage {
 	@FindBy(xpath = "//div[@class='sc-ddCuvZ ekpXcI']/div/div[2]/button")
 	public WebElement OKK;
 	
-	@FindBy(xpath = "//div[@class='sc-ddCuvZ ekpXcI']/div/div[2]/button")
+	@FindBy(xpath = "//button[text()='OK']")
 	public List<WebElement> OKKk;
 	
 	public ReportPage(WebDriver driver) {

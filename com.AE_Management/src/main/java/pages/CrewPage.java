@@ -43,19 +43,19 @@ public class CrewPage {
 	public
 	WebElement CrewVarianceBudget;
 	
-	@FindBy(xpath="//div[@data-testid='crew-list']/table/tbody/tr")
+	@FindBy(xpath="//div[@data-testid='crew-list' or @aria-label='crew-list']/table/tbody/tr")
 	public List<WebElement> crewlist;
 
-	@FindBy(xpath="//div[@data-testid='crew-list']/table/tbody/tr[1]/td[1]/div/span[2]")
+	@FindBy(xpath="//div[@data-testid='crew-list' or @aria-label='crew-list']/table/tbody/tr[1]/td[1]/div/span[2]")
 	public WebElement crewStatus;
 	
-	@FindBy(xpath="//div[@data-testid='profile']/div/div[1]")
+	@FindBy(xpath="//div[@data-testid='profile' or @aria-label='profile']/div/div[1]")
 	public WebElement pRank;
 	
-	@FindBy(xpath="//div[@data-testid='profile']/div/div[2]")
+	@FindBy(xpath="//div[@data-testid='profile' or @aria-label='profile']/div/div[2]")
 	public WebElement pName;
 	
-	@FindBy(xpath="//div[@data-testid='profile']/div/div[3]")
+	@FindBy(xpath="//div[@data-testid='profile' or @aria-label='profile']/div/div[3]")
 	public WebElement pStaff;
 	
 	@FindBy(xpath = "//*[@data-icon='compass']")
@@ -67,23 +67,23 @@ public class CrewPage {
 	public
 	WebElement CrewBio;
 	
-	@FindBy(xpath = "//*[@data-testid='bio-tab']/div[1]/div[1]/div[2]")
+	@FindBy(xpath = "//*[@data-testid='bio-tab' or @aria-label='bio-tab']/div[1]/div[1]/div[2]")
 	public
 	WebElement Nationality;
 	
-	@FindBy(xpath = "//*[@data-testid='bio-tab']/div[1]/div[2]/div[2]")
+	@FindBy(xpath = "//*[@data-testid='bio-tab' or @aria-label='bio-tab']/div[1]/div[2]/div[2]")
 	public
 	WebElement Age;
 	
-	@FindBy(xpath = "//*[@data-testid='bio-tab']/div[2]/div[1]/div")
+	@FindBy(xpath = "//*[@data-testid='bio-tab' or @aria-label='bio-tab']/div[2]/div[1]/div")
 	public
 	WebElement ContectUPDATE;
 	
-	@FindBy(xpath = "//*[@data-testid='bio-tab']/div[2]/div[2]/div[2]")
+	@FindBy(xpath = "//*[@data-testid='bio-tab' or @aria-label='bio-tab']/div[2]/div[2]/div[2]")
 	public
 	WebElement Status;
 	
-	@FindBy(xpath = "//*[@data-testid='bio-tab']/div[2]/div[3]/div[2]")
+	@FindBy(xpath = "//*[@data-testid='bio-tab' or @aria-label='bio-tab']/div[2]/div[3]/div[2]")
 	public
 	WebElement SignOnDate;
 	
@@ -91,7 +91,7 @@ public class CrewPage {
 	public
 	WebElement Documents;
 	
-	@FindBy(xpath = "//*[@data-testid='doc-tab']/div[1]/div[3]/div[1]")
+	@FindBy(xpath = "//*[@data-testid='doc-tab' or @aria-label='doc-tab']/div[1]/div[3]/div[1]")
 	public
 	WebElement License;
 	
@@ -108,7 +108,7 @@ public class CrewPage {
 	WebElement xmark;
 			
 			
-	@FindBy(xpath = "//*[@data-testid='doc-tab']/div[2]/div[2]/div[1]")
+	@FindBy(xpath = "//*[@data-testid='doc-tab' or @aria-label='doc-tab']/div[2]/div[2]/div[1]")
 	public
 	WebElement Certificates;
 	

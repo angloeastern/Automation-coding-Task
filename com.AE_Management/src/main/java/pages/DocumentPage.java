@@ -15,16 +15,16 @@ public class DocumentPage {
 	
 	//div[@data-testid='vessel-dropdown']/div/div[1]/div[2]
 	
-	@FindBy(xpath = "//div[@data-testid='vessel-dropdown']/div/div[1]/div[2]")
+	@FindBy(xpath = "//div[@aria-label='vessel-dropdown' or @data-testid='vessel-dropdown']/div/div[1]/div[2]")
 	public WebElement orgDropdown;
 
-	@FindBy(xpath = "//div[@data-testid='vessel-dropdown']/div/div[2]/div/div/input")
+	@FindBy(xpath = "//div[@aria-label='vessel-dropdown' or @data-testid='vessel-dropdown']/div/div[2]/div/div/input")
 	public WebElement orgclear;
 
-	@FindBy(xpath = "//div[@data-testid='map-sidebox']/div/div/h4")
+	@FindBy(xpath = "//div[@aria-label='map-sidebox' or @data-testid='map-sidebox']/div/div/h4")
 	public WebElement OwnerName;
 
-	@FindBy(xpath = "//div[@data-testid='map-sidebox']/div/div/h3")
+	@FindBy(xpath = "//div[@aria-label='map-sidebox' or @data-testid='map-sidebox']/div/div/h3")
 	public WebElement vesselName;
 	
 	@FindBy(xpath = "//*[@id='view-body']/div/div/div/div")

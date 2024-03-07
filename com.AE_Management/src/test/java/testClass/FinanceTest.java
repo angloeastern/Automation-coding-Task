@@ -208,7 +208,10 @@ public class FinanceTest extends VesselSearchOLD {
 			if (type.equalsIgnoreCase("Folder")) {
 				driver.findElement(By.xpath("//*[@id='view-body']/div[3]/div/div/div/table/tbody/tr[1]/td[5]/div"))
 						.click();
-				Boolean popup = selection.OKKk.size() != 0;
+				boolean popup = (boolean) ((JavascriptExecutor) driver).executeScript(
+		                "return document.evaluate(\"//button[text()='OK']\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
+			 
+				//Boolean popup= selection.OKKk.size() != 0;
 				if (popup) {
 					System.out.println(ANSI_Y + "You will receive an e-mail with a download link shortly" + ANSI_RESET);
 					ReadExcelFile.setData(4, row, 7, "Download", IndexedColors.GREEN.getIndex());
@@ -258,7 +261,10 @@ public class FinanceTest extends VesselSearchOLD {
 			if (type.equalsIgnoreCase("Folder")) {
 				driver.findElement(By.xpath("//*[@id='view-body']/div[3]/div/div/div/table/tbody/tr[1]/td[5]/div"))
 						.click();
-				Boolean popup= selection.OKKk.size() != 0;
+				boolean popup = (boolean) ((JavascriptExecutor) driver).executeScript(
+		                "return document.evaluate(\"//button[text()='OK']\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
+			 
+				//Boolean popup= selection.OKKk.size() != 0;
 				//int popup = driver.findElements(By.xpath("//div[@class='sc-hRnpUl hMOnCD']")).size();
 				System.out.println(popup);
 				if (popup) {

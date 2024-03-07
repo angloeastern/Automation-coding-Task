@@ -236,7 +236,10 @@ public class Reports extends VesselSearchOLD {
 				eWait(driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[5]/div")));
 				driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[5]/div")).click();			
 				eWait(selection.OK);
-				Boolean popup= selection.OKKk.size() != 0;
+				boolean popup = (boolean) ((JavascriptExecutor) driver).executeScript(
+		                "return document.evaluate(\"//button[text()='OK']\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
+			 
+				//Boolean popup= selection.OKKk.size() != 0;
 				if (popup) {
 			    System.out.println(ANSI_Y+ "You will receive an e-mail with a download link shortly"+ANSI_RESET);
 			    ReadExcelFile.setData(4, row,7, "Download",IndexedColors.GREEN.getIndex());
@@ -294,7 +297,10 @@ public class Reports extends VesselSearchOLD {
 				eWait(driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[5]/div")));
 				driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[5]/div")).click();
 				eWait(selection.OK);
-				Boolean popup= selection.OKKk.size() != 0;
+				boolean popup = (boolean) ((JavascriptExecutor) driver).executeScript(
+		                "return document.evaluate(\"//button[text()='OK']\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
+			 
+				//Boolean popup= selection.OKKk.size() != 0;
 				if (popup) {
 			    System.out.println(ANSI_Y+ "You will receive an e-mail with a download link shortly"+ANSI_RESET);
 			    ReadExcelFile.setData(4, row,7, "Download",IndexedColors.GREEN.getIndex());
@@ -345,7 +351,10 @@ public class Reports extends VesselSearchOLD {
 				eWait(driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[5]/div")));
 				driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[5]/div")).click();
 				eWait(selection.OK);
-				Boolean popup= selection.OKKk.size() != 0;
+				boolean popup = (boolean) ((JavascriptExecutor) driver).executeScript(
+		                "return document.evaluate(\"//button[text()='OK']\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
+			 
+				//Boolean popup= selection.OKKk.size() != 0;
 				if (popup) {
 			    System.out.println(ANSI_Y+ "You will receive an e-mail with a download link shortly"+ANSI_RESET);
 			    ReadExcelFile.setData(4, row,7, "Download",IndexedColors.GREEN.getIndex());
@@ -422,7 +431,10 @@ public class Reports extends VesselSearchOLD {
 			eWait(driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[5]/div")));
 			driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[5]/div")).click();
 			Thread.sleep(2000);
-			Boolean popup= selection.OKKk.size() != 0;
+			boolean popup = (boolean) ((JavascriptExecutor) driver).executeScript(
+	                "return document.evaluate(\"//button[text()='OK']\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
+		 
+			//Boolean popup= selection.OKKk.size() != 0;
 			if (popup) {
 				System.out.println(ANSI_Y + "You will receive an e-mail with a download link shortly" + ANSI_RESET);
 				ReadExcelFile.setData(4, row, 7, "Download", IndexedColors.GREEN.getIndex());

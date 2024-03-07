@@ -11,7 +11,7 @@ public class NavigationPage {
 
 	// Vessel Selection
 	WebDriver driver;
-	@FindBy(xpath = "//*[@data-testid='vessel-dropdown']")
+	@FindBy(xpath = "//div[@aria-label='vessel-dropdown' or @data-testid='vessel-dropdown']")
 	public WebElement vesseldropdown;
 
 	@FindBy(xpath = "//div[text()='Select Vessel']")

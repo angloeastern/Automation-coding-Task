@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>1/0/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>0/8/0</td>
 </tr><tr>
-<td>Started on:</td><td>Thu Feb 22 17:15:31 IST 2024</td>
+<td>Started on:</td><td>Thu Mar 07 13:12:27 IST 2024</td>
 </tr>
-<tr><td>Total time:</td><td>328 seconds (328318 ms)</td>
+<tr><td>Total time:</td><td>1918 seconds (1918244 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,47 +76,44 @@ function toggleAllBoxes() {
 </tr>
 <tr>
 <td title='testClass.VesselSearchOLD.endTest()'><b>endTest</b><br>Test class: testClass.VesselSearchOLD</td>
-<td><div><pre>org.openqa.selenium.WebDriverException: disconnected: not connected to DevTools
-  (failed to check if window was closed: disconnected: not connected to DevTools)
-  (Session info: chrome=121.0.6167.185)
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;INNOL-019&apos;, ip: &apos;192.168.137.1&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 121.0.6167.185, chrome: {chromedriverVersion: 121.0.6167.85 (3f98d690ad7e..., userDataDir: C:\Users\Poonam\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56763}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 12d873a6c786a9aadf8a01a33cf81ee2
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:609)
-	at org.openqa.selenium.remote.RemoteWebDriver.close(RemoteWebDriver.java:442)
-	at testClass.VesselSearchOLD.endTest(VesselSearchOLD.java:375)
+<td><div><pre>java.lang.AssertionError: The following asserts failed:
+	expected [Lookout 2023-04.pdf] but found [Lookout 2023-04],
+	expected [PSC Newsletter 2023-03.pdf] but found [PSC Newsletter 2023-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	PlannedOff Matched expected [2] but found [4],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03]
+	at testClass.VesselSearchOLD.endTest(VesselSearchOLD.java:387)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 30 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1046956206", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1046956206'><pre>org.openqa.selenium.WebDriverException: disconnected: not connected to DevTools
-  (failed to check if window was closed: disconnected: not connected to DevTools)
-  (Session info: chrome=121.0.6167.185)
-Build info: version: &apos;3.141.59&apos;, revision: &apos;e82be7d358&apos;, time: &apos;2018-11-14T08:17:03&apos;
-System info: host: &apos;INNOL-019&apos;, ip: &apos;192.168.137.1&apos;, os.name: &apos;Windows 11&apos;, os.arch: &apos;amd64&apos;, os.version: &apos;10.0&apos;, java.version: &apos;17.0.5&apos;
-Driver info: org.openqa.selenium.chrome.ChromeDriver
-Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 121.0.6167.185, chrome: {chromedriverVersion: 121.0.6167.85 (3f98d690ad7e..., userDataDir: C:\Users\Poonam\AppData\Loc...}, fedcm:accounts: true, goog:chromeOptions: {debuggerAddress: localhost:56763}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
-Session ID: 12d873a6c786a9aadf8a01a33cf81ee2
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
-	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
-	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
-	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
-	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.createException(W3CHttpResponseCodec.java:187)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:122)
-	at org.openqa.selenium.remote.http.W3CHttpResponseCodec.decode(W3CHttpResponseCodec.java:49)
-	at org.openqa.selenium.remote.HttpCommandExecutor.execute(HttpCommandExecutor.java:158)
-	at org.openqa.selenium.remote.service.DriverCommandExecutor.execute(DriverCommandExecutor.java:83)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:552)
-	at org.openqa.selenium.remote.RemoteWebDriver.execute(RemoteWebDriver.java:609)
-	at org.openqa.selenium.remote.RemoteWebDriver.close(RemoteWebDriver.java:442)
-	at testClass.VesselSearchOLD.endTest(VesselSearchOLD.java:375)
+... Removed 27 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace609313", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace609313'><pre>java.lang.AssertionError: The following asserts failed:
+	expected [Lookout 2023-04.pdf] but found [Lookout 2023-04],
+	expected [PSC Newsletter 2023-03.pdf] but found [PSC Newsletter 2023-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	PlannedOff Matched expected [2] but found [4],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03]
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:47)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:31)
+	at testClass.VesselSearchOLD.endTest(VesselSearchOLD.java:387)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -147,17 +144,461 @@ Session ID: 12d873a6c786a9aadf8a01a33cf81ee2
 <td>0</td>
 <td>testClass.VesselSearchOLD@48aca48b</td></tr>
 </table><p>
-<table width='100%' border='1' class='invocation-passed'>
-<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
 <tr><td><b>Test method</b></td>
 <td width="30%"><b>Exception</b></td>
 <td width="10%"><b>Time (seconds)</b></td>
 <td><b>Instance</b></td>
 </tr>
 <tr>
+<td title='testClass.VesselSearchOLD.vesselSearch()'><b>vesselSearch</b><br>Test class: testClass.VesselSearchOLD<br>Parameters: FCMJ, Federal Champlain, AMNS Shipping and Logistics Private Ltd., Voyage Snapshot Load Successfully, Crew Info Load Successfully, Financial Load Successfully, Vessel Particulars Loading, Contect deatils loading</td>
+<td><div><pre>java.lang.AssertionError: The following asserts failed:
+	expected [Lookout 2023-04.pdf] but found [Lookout 2023-04],
+	expected [PSC Newsletter 2023-03.pdf] but found [PSC Newsletter 2023-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03]
+	at testClass.VesselSearchOLD.vesselSearch(VesselSearchOLD.java:361)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1385823609", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1385823609'><pre>java.lang.AssertionError: The following asserts failed:
+	expected [Lookout 2023-04.pdf] but found [Lookout 2023-04],
+	expected [PSC Newsletter 2023-03.pdf] but found [PSC Newsletter 2023-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03]
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:47)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:31)
+	at testClass.VesselSearchOLD.vesselSearch(VesselSearchOLD.java:361)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>223</td>
+<td>testClass.VesselSearchOLD@48aca48b</td></tr>
+<tr>
+<td title='testClass.VesselSearchOLD.vesselSearch()'><b>vesselSearch</b><br>Test class: testClass.VesselSearchOLD<br>Parameters: FYSJ, Federal Yoshino, AMNS Shipping and Logistics Private Ltd., Voyage Snapshot Load Successfully, Crew Info Load Successfully, Financial Load Successfully, Vessel Particulars Loading, Contect deatils loading</td>
+<td><div><pre>java.lang.AssertionError: The following asserts failed:
+	expected [Lookout 2023-04.pdf] but found [Lookout 2023-04],
+	expected [PSC Newsletter 2023-03.pdf] but found [PSC Newsletter 2023-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	PlannedOff Matched expected [2] but found [4],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03]
+	at testClass.VesselSearchOLD.vesselSearch(VesselSearchOLD.java:361)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1959640524", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1959640524'><pre>java.lang.AssertionError: The following asserts failed:
+	expected [Lookout 2023-04.pdf] but found [Lookout 2023-04],
+	expected [PSC Newsletter 2023-03.pdf] but found [PSC Newsletter 2023-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	PlannedOff Matched expected [2] but found [4],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03]
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:47)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:31)
+	at testClass.VesselSearchOLD.vesselSearch(VesselSearchOLD.java:361)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>228</td>
+<td>testClass.VesselSearchOLD@48aca48b</td></tr>
+<tr>
+<td title='testClass.VesselSearchOLD.vesselSearch()'><b>vesselSearch</b><br>Test class: testClass.VesselSearchOLD<br>Parameters: FBLJ, Federal Baltic, AVIC International Leasing., Voyage Snapshot Load Successfully, Crew Info Load Successfully, Financial Load Successfully, Vessel Particulars Loading, Contect deatils loading</td>
+<td><div><pre>java.lang.AssertionError: The following asserts failed:
+	expected [Lookout 2023-04.pdf] but found [Lookout 2023-04],
+	expected [PSC Newsletter 2023-03.pdf] but found [PSC Newsletter 2023-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03]
+	at testClass.VesselSearchOLD.vesselSearch(VesselSearchOLD.java:361)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace996414823", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace996414823'><pre>java.lang.AssertionError: The following asserts failed:
+	expected [Lookout 2023-04.pdf] but found [Lookout 2023-04],
+	expected [PSC Newsletter 2023-03.pdf] but found [PSC Newsletter 2023-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03]
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:47)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:31)
+	at testClass.VesselSearchOLD.vesselSearch(VesselSearchOLD.java:361)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>361</td>
+<td>testClass.VesselSearchOLD@48aca48b</td></tr>
+<tr>
+<td title='testClass.VesselSearchOLD.vesselSearch()'><b>vesselSearch</b><br>Test class: testClass.VesselSearchOLD<br>Parameters: FCUJ, Federal Churchill, AMNS Shipping and Logistics Private Ltd., Voyage Snapshot Load Successfully, Crew Info Load Successfully, Financial Load Successfully, Vessel Particulars Loading, Contect deatils loading</td>
+<td><div><pre>java.lang.AssertionError: The following asserts failed:
+	expected [Lookout 2023-04.pdf] but found [Lookout 2023-04],
+	expected [PSC Newsletter 2023-03.pdf] but found [PSC Newsletter 2023-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	PlannedOff Matched expected [2] but found [4],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03]
+	at testClass.VesselSearchOLD.vesselSearch(VesselSearchOLD.java:361)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace975347430", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace975347430'><pre>java.lang.AssertionError: The following asserts failed:
+	expected [Lookout 2023-04.pdf] but found [Lookout 2023-04],
+	expected [PSC Newsletter 2023-03.pdf] but found [PSC Newsletter 2023-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	PlannedOff Matched expected [2] but found [4],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03]
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:47)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:31)
+	at testClass.VesselSearchOLD.vesselSearch(VesselSearchOLD.java:361)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>234</td>
+<td>testClass.VesselSearchOLD@48aca48b</td></tr>
+<tr>
 <td title='testClass.VesselSearchOLD.vesselSearch()'><b>vesselSearch</b><br>Test class: testClass.VesselSearchOLD<br>Parameters: AANJ, AM Annaba, AMNS Shipping and Logistics Private Ltd., Voyage Snapshot Load Successfully, Crew Info Load Successfully, Financial Load Successfully, Vessel Particulars Loading, Contect deatils loading</td>
-<td></td>
-<td>240</td>
+<td><div><pre>java.lang.AssertionError: The following asserts failed:
+	expected [Lookout 2023-04.pdf] but found [Lookout 2023-04],
+	expected [PSC Newsletter 2023-03.pdf] but found [PSC Newsletter 2023-03]
+	at testClass.VesselSearchOLD.vesselSearch(VesselSearchOLD.java:361)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1539258473", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1539258473'><pre>java.lang.AssertionError: The following asserts failed:
+	expected [Lookout 2023-04.pdf] but found [Lookout 2023-04],
+	expected [PSC Newsletter 2023-03.pdf] but found [PSC Newsletter 2023-03]
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:47)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:31)
+	at testClass.VesselSearchOLD.vesselSearch(VesselSearchOLD.java:361)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>295</td>
+<td>testClass.VesselSearchOLD@48aca48b</td></tr>
+<tr>
+<td title='testClass.VesselSearchOLD.vesselSearch()'><b>vesselSearch</b><br>Test class: testClass.VesselSearchOLD<br>Parameters: FRDJ, Federal Delta, AVIC International Leasing., Voyage Snapshot Load Successfully, Crew Info Load Successfully, Financial Load Successfully, Vessel Particulars Loading, Contect deatils loading</td>
+<td><div><pre>java.lang.AssertionError: The following asserts failed:
+	expected [Lookout 2023-04.pdf] but found [Lookout 2023-04],
+	expected [PSC Newsletter 2023-03.pdf] but found [PSC Newsletter 2023-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	PlannedOff Matched expected [2] but found [4],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03]
+	at testClass.VesselSearchOLD.vesselSearch(VesselSearchOLD.java:361)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace743207467", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace743207467'><pre>java.lang.AssertionError: The following asserts failed:
+	expected [Lookout 2023-04.pdf] but found [Lookout 2023-04],
+	expected [PSC Newsletter 2023-03.pdf] but found [PSC Newsletter 2023-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	PlannedOff Matched expected [2] but found [4],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03]
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:47)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:31)
+	at testClass.VesselSearchOLD.vesselSearch(VesselSearchOLD.java:361)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>256</td>
+<td>testClass.VesselSearchOLD@48aca48b</td></tr>
+<tr>
+<td title='testClass.VesselSearchOLD.vesselSearch()'><b>vesselSearch</b><br>Test class: testClass.VesselSearchOLD<br>Parameters: FHSJ, Federal Hudson, AMNS Shipping and Logistics Private Ltd., Voyage Snapshot Load Successfully, Crew Info Load Successfully, Financial Load Successfully, Vessel Particulars Loading, Contect deatils loading</td>
+<td><div><pre>java.lang.AssertionError: The following asserts failed:
+	expected [Lookout 2023-04.pdf] but found [Lookout 2023-04],
+	expected [PSC Newsletter 2023-03.pdf] but found [PSC Newsletter 2023-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	PlannedOff Matched expected [2] but found [4],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03]
+	at testClass.VesselSearchOLD.vesselSearch(VesselSearchOLD.java:361)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 29 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace538082744", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace538082744'><pre>java.lang.AssertionError: The following asserts failed:
+	expected [Lookout 2023-04.pdf] but found [Lookout 2023-04],
+	expected [PSC Newsletter 2023-03.pdf] but found [PSC Newsletter 2023-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	PlannedOff Matched expected [2] but found [4],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03],
+	expected [Lookout 2017-04.pdf] but found [Lookout 2017-04],
+	expected [PSC Newsletter 2017-03.pdf] but found [PSC Newsletter 2017-03]
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:47)
+	at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:31)
+	at testClass.VesselSearchOLD.vesselSearch(VesselSearchOLD.java:361)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>239</td>
+<td>testClass.VesselSearchOLD@48aca48b</td></tr>
+<tr>
+<td title='testClass.VesselSearchOLD.vesselSearch()'><b>vesselSearch</b><br>Test class: testClass.VesselSearchOLD<br>Parameters: FTBJ, Federal Thunder Bay, AVIC International Leasing., Voyage Snapshot Load Successfully, Crew Info Load Successfully, Financial Not Loading, Vessel Particulars Loading, Contect deatils loading</td>
+<td><div><pre>java.lang.AssertionError: vessel not founded in list expected [true] but found [false]
+	at testClass.VesselSearchOLD.vesselSearch(VesselSearchOLD.java:73)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+... Removed 30 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1028086925", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1028086925'><pre>java.lang.AssertionError: vessel not founded in list expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:99)
+	at org.testng.Assert.failNotEquals(Assert.java:1037)
+	at org.testng.Assert.assertTrue(Assert.java:45)
+	at testClass.VesselSearchOLD.vesselSearch(VesselSearchOLD.java:73)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:133)
+	at org.testng.internal.TestInvoker.invokeMethod(TestInvoker.java:598)
+	at org.testng.internal.TestInvoker.invokeTestMethod(TestInvoker.java:173)
+	at org.testng.internal.MethodRunner.runInSequence(MethodRunner.java:46)
+	at org.testng.internal.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:824)
+	at org.testng.internal.TestInvoker.invokeTestMethods(TestInvoker.java:146)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:146)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:128)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at org.testng.TestRunner.privateRun(TestRunner.java:794)
+	at org.testng.TestRunner.run(TestRunner.java:596)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:377)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:371)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:332)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:276)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:53)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:96)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1212)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1134)
+	at org.testng.TestNG.runSuites(TestNG.java:1063)
+	at org.testng.TestNG.run(TestNG.java:1031)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+</pre></div></td>
+<td>32</td>
 <td>testClass.VesselSearchOLD@48aca48b</td></tr>
 </table><p>
 </body>
