@@ -1,4 +1,4 @@
-package testClass;
+package myAE_testClass;
 
 import java.io.IOException;
 
@@ -37,12 +37,13 @@ public class Document extends VesselSearchOLD {
 			System.out.println(documentName);
 			eWaitClick(document);
 		} else {
-			System.out.println("Error in ORG Search");
+			System.out.println("ORG not founded in list");
 			log.error("Error in ORG Search");
-			eWaitClear(selection.orgclear);
+			selection.compass.click();
+			//eWaitClear(selection.orgclear);
 			Thread.sleep(1000);
-			eWaitClick(selection.orgDropdown);
-			Assert.assertTrue(false, "ORG not founded in list");
+			//eWaitClick(selection.orgDropdown);
+			Assert.assertTrue(false, "ORG not founded in list");	
 		}
 		
 		Thread.sleep(2000);

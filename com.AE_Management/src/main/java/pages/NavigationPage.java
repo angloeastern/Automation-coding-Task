@@ -94,19 +94,19 @@ public class NavigationPage {
 	@FindBy(xpath = "//h3[text()='Financial']/../div")
 	public WebElement Currency;
 
-	@FindBy(xpath = "//h3[@title='Daily Running Cost ($)' or @title='Daily Running Cost (-)']/../div[1]")
+	@FindBy(xpath = "//h3[@title='Daily Running Cost ($)' or @title='Daily Running Cost (-)' or @title='Daily Running Cost (₹)' or @title='Daily Running Cost (€)' or @title='Daily Running Cost (CA$)']/../div[1]")
 	public WebElement DailyRunningCost;
 
-	@FindBy(xpath = "//*[@title='Daily Running Cost ($)' or @title='Daily Running Cost (-)']/../div[2]/div/div")
+	@FindBy(xpath = "//*[@title='Daily Running Cost ($)' or @title='Daily Running Cost (-)' or @title='Daily Running Cost (₹)' or @title='Daily Running Cost (€)' or @title='Daily Running Cost (CA$)']/../div[2]/div/div")
 	public WebElement DailyBudget;
 
-	@FindBy(xpath = "//*[@title='Daily Running Cost ($)' or @title='Daily Running Cost (-)']/../div[2]/div/div/span")
+	@FindBy(xpath = "//*[@title='Daily Running Cost ($)' or @title='Daily Running Cost (-)' or @title='Daily Running Cost (₹)' or @title='Daily Running Cost (€)' or @title='Daily Running Cost (CA$)']/../div[2]/div/div/span")
 	public WebElement color;
 
-	@FindBy(xpath = "//h3[@title='Total Variance ($)' or @title='Total Variance (-)']/../div[1]")
+	@FindBy(xpath = "//h3[@title='Total Variance ($)' or @title='Total Variance (-)' or @title='Total Variance (₹)' or @title='Total Variance (€)' or @title='Total Variance (CA$)']/../div[1]")
 	public WebElement TotalVariance;
 
-	@FindBy(xpath = "//*[@title='Daily Running Cost ($)' or @title='Daily Running Cost (-)']/../div[2]/div/div")
+	@FindBy(xpath = "//*[@title='Daily Running Cost ($)' or @title='Daily Running Cost (-)' or @title='Daily Running Cost (₹)' or @title='Daily Running Cost (€)' or @title='Daily Running Cost (CA$)']/../div[2]/div/div")
 	public WebElement TotalBudget;
 
 	@FindBy(xpath = "//*[@data-icon='dollar-sign']")

@@ -13,8 +13,8 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 
 import base.Base;
-import testClass.AELogin;
-import testClass.VesselSearch;
+import myAE_testClass.AELogin;
+import myAE_testClass.VesselSearch;
 import utilities.ReadExcelFile;
 
 public class VesselAction extends Base {

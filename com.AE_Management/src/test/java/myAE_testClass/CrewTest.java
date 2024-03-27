@@ -1,4 +1,4 @@
-package testClass;
+package myAE_testClass;
 
 import java.util.stream.IntStream;
 

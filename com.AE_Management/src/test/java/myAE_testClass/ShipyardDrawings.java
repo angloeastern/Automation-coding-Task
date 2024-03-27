@@ -1,4 +1,4 @@
-package testClass;
+package myAE_testClass;
 import java.io.IOException;
 
 import org.apache.poi.ss.usermodel.IndexedColors;
@@ -18,21 +18,23 @@ public class ShipyardDrawings extends VesselSearchOLD {
 	public static void shipyardDrawings() throws InterruptedException, IOException {
 		iWait();
 		ShipyardDrawing selection = new ShipyardDrawing(driver);
+		//ShipyardDrawing
 		eWaitClick(selection.ShipyardDrawing);
 		Thread.sleep(2000);
-		
+		try {
 		boolean Record = (boolean) ((JavascriptExecutor) driver).executeScript(
                 "return document.evaluate(\"//div[contains(text(),'No record to display')]\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
 	 
-	  boolean RecordSDPages = (boolean) ((JavascriptExecutor) driver).executeScript(
-                "return document.evaluate(\"//*[@title='navigation']\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
+	//  boolean RecordSDPages = (boolean) ((JavascriptExecutor) driver).executeScript(
+    //           "return document.evaluate(\"//*[@title='navigation']\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
 
 		if (Record) {
 			System.out.println(ANSI_RED+"Shipyard Drawing: " + eWaitText(selection.NoRecords)+ANSI_RESET);
-			ReadExcelFile.setData(5, row,2, "No record to display",IndexedColors.RED.getIndex());
+			ReadExcelFile.setData(5, row,2,"No record to display",IndexedColors.RED.getIndex());
 		} 
-		else if (RecordSDPages) {
-			ReadExcelFile.setData(5, row,2, "record display",IndexedColors.GREEN.getIndex());
+		else if ((boolean) ((JavascriptExecutor) driver).executeScript(
+                "return document.evaluate(\"//*[@title='navigation']\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;")) {
+			ReadExcelFile.setData(5, row,2,"record display",IndexedColors.GREEN.getIndex());
 			WebElement wb = driver.findElement(By.xpath("//*[@title='navigation']"));
 			 ListSize = wb.findElements(By.tagName("li")).size();
 			System.out.println("Pages : " + ListSize);
@@ -68,6 +70,7 @@ public class ShipyardDrawings extends VesselSearchOLD {
 					String text=driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[1]/span")).getText();
 					driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div[1]/table/tbody/tr[1]/td[5]/div")).click();
 					downlaodFileChecker2(text,5,row,3);
+					eWaitClick(selection.OK);
 				}
 		}
 		else {
@@ -87,13 +90,13 @@ public class ShipyardDrawings extends VesselSearchOLD {
 				System.out.print(ANSI_Y+"  Type: " +ANSI_RESET+ type);
 				System.out.println();
 			}
-			
+		
 			if(type.equalsIgnoreCase("Folder")) {
 			driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div[1]/table/tbody/tr[1]/td[5]/div")).click();
-			eWait(selection.OK);
+			eWaitClick(selection.OK);
 		    System.out.println(ANSI_Y+ "You will receive an e-mail with a download link shortly"+ANSI_RESET);
 		    ReadExcelFile.setData(5, row,3, "record download",IndexedColors.GREEN.getIndex());
-			eWaitClick(selection.OK);
+			
 			}
 			else
 			{
@@ -101,23 +104,32 @@ public class ShipyardDrawings extends VesselSearchOLD {
 				String text=driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div/table/tbody/tr[1]/td[1]/span")).getText();
 				driver.findElement(By.xpath("//*[@id='view-body']/div/div/div/div[1]/table/tbody/tr[1]/td[5]/div")).click();
 				downlaodFileChecker2(text,5,row,3);
+				eWaitClick(selection.OK);
 			}
+			
 		}
-
+		}catch(Exception e)
+		{
+			e.getStackTrace();
+			selection.compass.click();
+		}
+		
+        //InstructionManuals
 		eWaitClick(selection.InstructionManuals);
 		Thread.sleep(1000);
 		boolean RecordIM = (boolean) ((JavascriptExecutor) driver).executeScript(
                 "return document.evaluate(\"//div[contains(text(),'No record to display')]\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
 		Thread.sleep(500);
-	  boolean RecordIMPages = (boolean) ((JavascriptExecutor) driver).executeScript(
-                "return document.evaluate(\"//*[@title='navigation']\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
-
+	//  boolean RecordIMPages = (boolean) ((JavascriptExecutor) driver).executeScript(
+    //            "return document.evaluate(\"//*[@title='navigation']\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
+try {
 		if (RecordIM) {
 			System.out.println(ANSI_RED+"Instruction Manuals: " + eWaitText(selection.NoRecords)+ANSI_RESET);
 			ReadExcelFile.setData(5, row,4, "No record to display",IndexedColors.RED.getIndex());
 		}
 
-		else if (RecordIMPages) {
+		else if ((boolean) ((JavascriptExecutor) driver).executeScript(
+                "return document.evaluate(\"//*[@title='navigation']\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;")) {
 			ReadExcelFile.setData(5, row,4, "record display",IndexedColors.GREEN.getIndex());
 			WebElement wb = driver.findElement(By.xpath("//*[@title='navigation']"));
 			 ListSize = wb.findElements(By.tagName("li")).size();
@@ -162,7 +174,13 @@ public class ShipyardDrawings extends VesselSearchOLD {
 			}
 		}
 		Thread.sleep(500);
-		//selection.compass.click();
-
+		
+		selection.compass.click();
+	}
+	catch(Exception e)
+	{
+		e.getStackTrace();
+		selection.compass.click();
+	}
 	}
 }

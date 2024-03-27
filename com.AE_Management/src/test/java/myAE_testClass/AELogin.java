@@ -1,4 +1,4 @@
-package testClass;
+package myAE_testClass;
 import java.io.IOException;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;

@@ -1,4 +1,4 @@
-package testClass;
+package myAE_testClass;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -42,7 +42,7 @@ public class FinanceTest extends VesselSearchOLD {
 
 		softAssert.assertEquals(vc[1].trim(), vasselCode.trim(), vessel + " Vessel Code Not Matched");
 
-		System.out.println("Financial Overview: " + eWaitText(selection.FinancialOverview));
+	    System.out.println("Financial Overview: " + eWaitText(selection.FinancialOverview));
 		Thread.sleep(2000);
 
 		String myAEmonth = getPageText(selection.FinancialMonth);
@@ -175,12 +175,13 @@ public class FinanceTest extends VesselSearchOLD {
 			softAssert.assertEquals(eWaitText(selection.VarianceYTD), eWaitText(selection.TotalVarianceYTD));
 
 		}
-		Thread.sleep(2000);
+		
+     	Thread.sleep(2000);
 		// Other Reports (Vessels)
 		eWaitClick(selection.OtherReportsVessels);
 		System.out.println(ConsoleColors.YELLOW_BOLD + "Other Reports (Vessels)" + ANSI_RESET);
 		Thread.sleep(2000);
-
+		
 		boolean RecordORV = (boolean) ((JavascriptExecutor) driver).executeScript(
                 "return document.evaluate(\"//div[contains(text(),'No record to display')]\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
 
@@ -188,6 +189,12 @@ public class FinanceTest extends VesselSearchOLD {
 			System.out.println(ANSI_RED + "Other Reports: " + eWaitText(selection.noRecords) + ANSI_RESET);
 			ReadExcelFile.setData(2, row, 10, "No record to display", red);
 		} else {
+			if(!(boolean) ((JavascriptExecutor) driver).executeScript(
+	                "return document.evaluate(\"//*[@id='view-body']/div[3]/div/div/div/table/tbody\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;")) {
+				System.out.println(ANSI_RED+"Other Reports: No record to display"+ANSI_RESET);
+				ReadExcelFile.setData(2, row, 10, "No record to display", red);
+			}
+			else{
 			ReadExcelFile.setData(2, row, 10, "record display", green);
 			int ListSizeSII = selection.table.findElements(By.tagName("tr")).size();
 			System.out.println("Total Other Reports List: " + ListSizeSII);
@@ -229,19 +236,27 @@ public class FinanceTest extends VesselSearchOLD {
 				driver.findElement(By.xpath("//*[text()='" + text + "']/../../td[5]/div")).click();
 				downlaodFileCheckerType(text);
 			}
-		}
+		}}
 
 		Thread.sleep(2000);
 		// Other Reports (Fleet)
 		eWaitClick(selection.OtherReportsFleet);
 		System.out.println(ConsoleColors.YELLOW_BOLD + "Other Reports (Fleet)" + ANSI_RESET);
+		
 		Thread.sleep(2000);
 		boolean RecordORF = (boolean) ((JavascriptExecutor) driver).executeScript(
                 "return document.evaluate(\"//div[contains(text(),'No record to display')]\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
+
 		if (RecordORF) {
 			System.out.println(ANSI_RED + "Other Reports: " + eWaitText(selection.noRecords) + ANSI_RESET);
 			ReadExcelFile.setData(2, row, 11, "No record to display", red);
 		} else {
+			if(!(boolean) ((JavascriptExecutor) driver).executeScript(
+	                "return document.evaluate(\"//*[@id='view-body']/div[3]/div/div/div/table/tbody\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;")) {
+				System.out.println(ANSI_RED+"Other Reports: No record to display"+ANSI_RESET);
+				ReadExcelFile.setData(2, row, 11, "No record to display", red);
+			}
+			else{
 			ReadExcelFile.setData(2, row, 11, "record display", green);
 			int ListSizeSII = selection.table.findElements(By.tagName("tr")).size();
 			System.out.println("Total Other Reports List: " + ListSizeSII);
@@ -284,7 +299,8 @@ public class FinanceTest extends VesselSearchOLD {
 				driver.findElement(By.xpath("//*[text()='" + text + "']/../../td[5]/div")).click();
 				downlaodFileCheckerType(text);
 			}
-		}
+			
+		}}
 
 		//driver.findElement(By.xpath("//div[@role='button']/button"));
 		//eWaitClick(selection.OK);
@@ -298,7 +314,7 @@ public class FinanceTest extends VesselSearchOLD {
 			e.printStackTrace();
 			log.error("Finance Records"+e.getMessage());
 			selection.compass.click();
-			selection.compass.click();
+			
 		}
 	}
 	

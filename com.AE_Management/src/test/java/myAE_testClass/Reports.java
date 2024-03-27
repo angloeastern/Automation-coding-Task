@@ -1,4 +1,4 @@
-package testClass;
+package myAE_testClass;
 
 import java.io.IOException;
 
@@ -83,61 +83,7 @@ public class Reports extends VesselSearchOLD {
 					System.out.println();
 				}
 	        }
-  /*
-		boolean RecordE = driver.findElements(By.xpath("//*[text()='No record to display']")).size() != 0;
-		boolean RecordEMPages= driver.findElements(By.xpath("//*[@title='navigation']")).size() != 0;
-		if (RecordE) {
-			System.out.println(ANSI_RED+"External Inspections: " + eWaitText(selection.NoRecords)+ANSI_RESET);
-			ReadExcelFile.setData(4, row,2, "No record to display",IndexedColors.RED.getIndex());
-		} 
-		else if (RecordEMPages) {
-			WebElement wb = driver.findElement(By.xpath("//*[@title='navigation']"));
-			 ListSize = wb.findElements(By.tagName("li")).size();
-			 ReadExcelFile.setData(4, row,2, "record display",IndexedColors.GREEN.getIndex());
-			System.out.println("Pages : " + ListSize);
-			for (int j = 1; j < ListSize; j++) {
-				int ListSizeI = selection.table.findElements(By.tagName("tr")).size();
-				ListSize = wb.findElements(By.tagName("li")).size();
-				System.out.println("Page :"+j);
-				for (int i = 1; i <= ListSizeI; i++) {
-					String port = driver
-							.findElement(By.xpath("//*[@id='view-body']/div/div/div/table/tbody/tr[" + i + "]/td[1]/span"))
-							.getText();
-					String type = driver
-							.findElement(By.xpath("//*[@id='view-body']/div/div/div/table/tbody/tr[" + i + "]/td[2]/span"))
-							.getText();
-					String status = driver
-							.findElement(By.xpath("//*[@id='view-body']/div/div/div/table/tbody/tr[" + i + "]/td[6]/span"))
-							.getText();
-					System.out.print(ANSI_Y+"Port: "+ANSI_RESET + port);
-					System.out.print(ANSI_Y+"  Inspection Type: "+ANSI_RESET + type);
-					System.out.print(ANSI_Y+"  Status: " +ANSI_RESET+ status);
-					System.out.println();
-				}
-				driver.findElement(By.xpath("//*[@title='navigation']/li[" + ListSize + "]")).click();
-				Thread.sleep(500);
-			}
-		}
-		else {
-			ReadExcelFile.setData(4, row,2, "record display",IndexedColors.GREEN.getIndex());
-			int ListSizeSEI = selection.table.findElements(By.tagName("tr")).size();
-			System.out.println("Total External Inspections List: " + ListSizeSEI);
-			for (int i = 1; i <= ListSizeSEI; i++) {
-				String port = driver
-						.findElement(By.xpath("//*[@id='view-body']/div/div/div/table/tbody/tr[" + i + "]/td[1]/span"))
-						.getText();
-				String type = driver
-						.findElement(By.xpath("//*[@id='view-body']/div/div/div/table/tbody/tr[" + i + "]/td[2]/span"))
-						.getText();
-				String status = driver
-						.findElement(By.xpath("//*[@id='view-body']/div/div/div/table/tbody/tr[" + i + "]/td[6]/span"))
-						.getText();
-				System.out.print(ANSI_Y+"Port: "+ANSI_RESET + port);
-				System.out.print(ANSI_Y+"  Inspection Type: "+ANSI_RESET + type);
-				System.out.print(ANSI_Y+"  Status: " +ANSI_RESET+ status);
-				System.out.println();
-			}
-		}*/
+ 
 		Thread.sleep(1000);
 
 		// InternalInspections
@@ -203,21 +149,33 @@ public class Reports extends VesselSearchOLD {
 				System.out.println();
 			}
 		}
-		
+		Thread.sleep(1000);
 		// Dry-Dock
 		eWaitClick(selection.DryDock);
 		System.out.println(ConsoleColors.YELLOW_BOLD+"Dry-Dock"+ANSI_RESET);
-		Thread.sleep(2000);
+		Thread.sleep(4000);
+	//	boolean RecordDD = (boolean) ((JavascriptExecutor) driver).executeScript(
+     //          "return document.evaluate(\"//div[contains(text(),'No record to display')]\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
 		boolean RecordDD = (boolean) ((JavascriptExecutor) driver).executeScript(
+                "return document.evaluate(\"//*[@id='view-body']/div/div/div/div/div/div\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
+		
+		boolean RecordDDd = (boolean) ((JavascriptExecutor) driver).executeScript(
                 "return document.evaluate(\"//div[contains(text(),'No record to display')]\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
 	 
+	 System.out.println(RecordDD);
 	 	String type = null;
 		String port =null;
-		if (RecordDD) {
+		if (RecordDD||RecordDDd) {
 			System.out.println(ANSI_RED+"Dry-Dock: " + eWaitText(selection.NoRecords)+ANSI_RESET);
 			ReadExcelFile.setData(4, row,4, "No record to display",IndexedColors.RED.getIndex());
 		} 
 		else {
+			if(!(boolean) ((JavascriptExecutor) driver).executeScript(
+	                "return document.evaluate(\"//*[@id='view-body']/div/div/div/div/table/tbody\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;")) {
+				System.out.println(ANSI_RED+"Dry-Dock: No record to display" +ANSI_RESET);
+				ReadExcelFile.setData(4, row,4, "No record to display",IndexedColors.RED.getIndex());
+			}
+			else{
 			ReadExcelFile.setData(4, row,4, "record display",IndexedColors.GREEN.getIndex());
 			int ListSizeSII = selection.table1.findElements(By.tagName("tr")).size();
 			System.out.println("Total Dry-Dock List: " + ListSizeSII);
@@ -265,7 +223,7 @@ public class Reports extends VesselSearchOLD {
 						eWaitClick(selection.OK);
 					}*/
 				}
-		}
+		}}
 		// Claims
 		eWaitClick(selection.Claims);
 		System.out.println(ConsoleColors.YELLOW_BOLD+"Claims"+ANSI_RESET);
@@ -275,10 +233,16 @@ public class Reports extends VesselSearchOLD {
                 "return document.evaluate(\"//div[contains(text(),'No record to display')]\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;");
 	 
 		if (RecordCL) {
-			System.out.println(ANSI_RED+"Claims: " + eWaitText(selection.NoRecords)+ANSI_RESET);
+			System.out.println(ANSI_RED+"Claims: "+ eWaitText(selection.NoRecords)+ANSI_RESET);
 			ReadExcelFile.setData(4, row,6, "No record to display",IndexedColors.RED.getIndex());
 		} 
-		else {
+		else {	
+		if(!(boolean) ((JavascriptExecutor) driver).executeScript(
+                "return document.evaluate(\"//*[@id='view-body']/div/div/div/div/table/tbody\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;")) {
+			System.out.println(ANSI_RED+"Claims: No record to display"+ANSI_RESET);
+			ReadExcelFile.setData(4, row,6, "No record to display",IndexedColors.RED.getIndex());
+		}
+		else{
 			ReadExcelFile.setData(4, row,6, "record display",IndexedColors.GREEN.getIndex());
 			int ListSizeSII = selection.table1.findElements(By.tagName("tr")).size();
 			System.out.println("Total Claims List: " + ListSizeSII);
@@ -320,7 +284,7 @@ public class Reports extends VesselSearchOLD {
 					driver.findElement(By.xpath("//*[text()='"+port+"']/../../td[5]/div")).click();
 					downlaodFileChecker2(port,4,row,7);
 				}
-		}
+		}}
 		// Commercial
 		eWaitClick(selection.Commercial);
 		System.out.println(ConsoleColors.YELLOW_BOLD+"Commercial"+ANSI_RESET);
@@ -333,6 +297,12 @@ public class Reports extends VesselSearchOLD {
 			ReadExcelFile.setData(4, row,8, "No record to display",IndexedColors.RED.getIndex());
 		} 
 		else {
+			if(!(boolean) ((JavascriptExecutor) driver).executeScript(
+	                "return document.evaluate(\"//*[@id='view-body']/div/div/div/div/table/tbody\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;")) {
+				System.out.println(ANSI_RED+"Commercial: No record to display" +ANSI_RESET);
+				ReadExcelFile.setData(4, row,8, "No record to display",IndexedColors.RED.getIndex());
+			}
+			else{
 			ReadExcelFile.setData(4, row,8, "record display",IndexedColors.GREEN.getIndex());
 			int ListSizeSII = selection.table1.findElements(By.tagName("tr")).size();
 			System.out.println("Total Commercial List: " + ListSizeSII);
@@ -375,7 +345,7 @@ public class Reports extends VesselSearchOLD {
 					driver.findElement(By.xpath("//*[text()='"+port+"']/../../td[5]/div")).click();
 					downlaodFileChecker2(port,4,row,9);
 				}
-		}
+		}}
 		// Gallery
 		eWaitClick(selection.Gallery);
 		System.out.println(ConsoleColors.YELLOW_BOLD+"Gallery"+ANSI_RESET);
@@ -388,6 +358,12 @@ public class Reports extends VesselSearchOLD {
 			ReadExcelFile.setData(4, row,10, "No record to display",IndexedColors.RED.getIndex());
 		} 
 		else {
+			if(!(boolean) ((JavascriptExecutor) driver).executeScript(
+	                "return document.evaluate(\"//*[@id='view-body']/div/div/div/div/table/tbody\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;")) {
+				System.out.println(ANSI_RED+"Gallery: No record to display"+ANSI_RESET);
+				ReadExcelFile.setData(4, row,10, "No record to display",IndexedColors.RED.getIndex());
+			}
+			else{
 			ReadExcelFile.setData(4, row,10, "record display",IndexedColors.GREEN.getIndex());
 			int ListSizeSII = driver.findElements(By.xpath("//*[@id='view-body']/div/div/div/div/div/div[1]/div/div[2]")).size();//*[@id="view-body"]/div/div/div/div/div/div[1]/div[1]/div
 			System.out.println("Total Gallery List: " + ListSizeSII);
@@ -399,7 +375,7 @@ public class Reports extends VesselSearchOLD {
 				System.out.print(ANSI_Y+"Port: "+ANSI_RESET + port);
 				System.out.println();
 			}
-		}
+		}}
 		// Other Reports
 		eWaitClick(selection.OtherReports);
 		System.out.println(ConsoleColors.YELLOW_BOLD+"Other Reports"+ANSI_RESET);
@@ -412,6 +388,12 @@ public class Reports extends VesselSearchOLD {
 			ReadExcelFile.setData(4, row,11, "No record to display",IndexedColors.RED.getIndex());
 		} 
 		else {
+			if(!(boolean) ((JavascriptExecutor) driver).executeScript(
+	                "return document.evaluate(\"//*[@id='view-body']/div/div/div/div/table/tbody\", document, null, XPathResult.BOOLEAN_TYPE, null).booleanValue;")) {
+				System.out.println(ANSI_RED+"Other Reports: No record to display"+ANSI_RESET);
+				ReadExcelFile.setData(4, row,11, "No record to display",IndexedColors.RED.getIndex());
+			}
+			else{
 			ReadExcelFile.setData(4, row,11, "record display",IndexedColors.GREEN.getIndex());
 			int ListSizeSII = selection.table1.findElements(By.tagName("tr")).size();
 			System.out.println("Total Other Reports List: " + ListSizeSII);
@@ -452,6 +434,6 @@ public class Reports extends VesselSearchOLD {
 			driver.findElement(By.xpath("//*[text()='" + port + "']/../../td[5]/div")).click();
 			downlaodFileChecker2(port, 4, row, 12);
 		}
-		}
+		}}
 	}
 }

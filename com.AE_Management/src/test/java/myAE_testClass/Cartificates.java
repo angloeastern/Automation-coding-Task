@@ -1,4 +1,4 @@
-package testClass;
+package myAE_testClass;
 
 import java.io.IOException;
 
@@ -22,7 +22,7 @@ public class Cartificates extends VesselSearchOLD {
 	     if(certList!=0){
 	     System.out.println(ConsoleColors.YELLOW_BOLD+"All Certificates :"+certList+ANSI_RESET);
 	     ReadExcelFile.setData(3, row,2,s,IndexedColors.GREEN.getIndex());
-	    eWaitClick(driver.findElement(By.xpath("(//div[@data-testid='collapse-content' or @aria-label='collapse-content'])[1]/table/tbody/tr[2]/td[2]/span")));
+	     eWaitClick(driver.findElement(By.xpath("(//div[@data-testid='collapse-content' or @aria-label='collapse-content'])[1]/table/tbody/tr[2]/td[2]/span")));
 		eWait(driver.findElement(By.xpath("//*[@id='view-body']/div[2]/div/div[1]/h3")));
 		Thread.sleep(8000);
 		String fileName=driver.findElement(By.xpath("//*[@id='view-body']/div[2]/div/div[1]/h3")).getText();

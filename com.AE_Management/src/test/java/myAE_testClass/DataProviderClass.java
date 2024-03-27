@@ -1,4 +1,4 @@
-package testClass;
+package myAE_testClass;
 
 import java.io.IOException;
 import java.util.stream.IntStream;

@@ -143,7 +143,6 @@ public class Base {
 	public static void eWaitClick(WebElement element) {
 		WebDriverWait wait = new WebDriverWait(driver, 50);
 		wait.until(ExpectedConditions.elementToBeClickable(element)).click();
-		;
 	}
 
 	public static String eWaitText(WebElement element) {

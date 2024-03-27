@@ -1,4 +1,4 @@
-package testClass;
+package myAE_testClass;
 
 import java.io.IOException;
 
@@ -70,7 +70,7 @@ public class AEResource extends VesselSearchOLD {
 			eWaitClick(selection.LD);
 			Thread.sleep(8000);
 			getPageText(selection.Text);
-			softAssert.assertEquals(eWaitText(selection.LD), getPageText(selection.Text));
+			softAssert.assertEquals(eWaitText(selection.LD)+".pdf", getPageText(selection.Text));
 			Thread.sleep(2000);
 			eWaitClick(selection.download);
 			Thread.sleep(3000);
@@ -103,7 +103,7 @@ public class AEResource extends VesselSearchOLD {
 			eWaitClick(selection.LD);
 			Thread.sleep(8000);
 			getPageText(selection.Text);
-			softAssert.assertEquals(eWaitText(selection.LD), getPageText(selection.Text));
+			softAssert.assertEquals(eWaitText(selection.LD)+".pdf", getPageText(selection.Text));
 			Thread.sleep(2000);
 			eWaitClick(selection.download);
 			Thread.sleep(3000);
@@ -164,7 +164,7 @@ public class AEResource extends VesselSearchOLD {
 			eWaitClick(selection.LD);
 			Thread.sleep(8000);
 			getPageText(selection.Text);
-			softAssert.assertEquals(eWaitText(selection.LD), getPageText(selection.Text));
+			softAssert.assertEquals(eWaitText(selection.LD)+".pdf", getPageText(selection.Text));
 			Thread.sleep(2000);
 			eWaitClick(selection.download);
 			Thread.sleep(3000);
@@ -198,7 +198,7 @@ public class AEResource extends VesselSearchOLD {
 			eWaitClick(selection.LD);
 			Thread.sleep(8000);
 			getPageText(selection.Text);
-			softAssert.assertEquals(eWaitText(selection.LD), getPageText(selection.Text));
+			softAssert.assertEquals(eWaitText(selection.LD)+".pdf", getPageText(selection.Text));
 			Thread.sleep(2000);
 			eWaitClick(selection.download);
 			Thread.sleep(3000);
